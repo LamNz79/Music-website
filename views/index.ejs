@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<%- include('./partials/head'); %>
+</head>
+
+<body>
+	<div class="container-sm">
+		<%- include('./partials/header'); %>
+			<div class="main-sector">
+				<button class="fas fa-arrow-left"></button>
+				<div class="album album-gallery-previous">
+					<a href="https://www.youtube.com/watch?v=AxHETRIPBck" target="_blank"><img src="images/album1.png" alt=""></a>
+				</div>
+				<div class="album album-gallery-selected">
+					<a href="https://www.youtube.com/watch?v=XyGBu4wARpA" target="_blank"><img src="images/album2.png" alt=""></a>
+				</div>
+				<div class="album album-gallery-next">
+					<a href="https://www.youtube.com/watch?v=IidpYPQaOZM" target="_blank"><img src="images/album3.png" alt=""></a>
+				</div>
+				<button class="fas fa-arrow-right"></button>
+			</div>
+			<div class="main-suggest-title">
+				<h2 style="color: white;">Âm nhạc dành cho bạn</h2>
+			</div>
+			<div class="main-suggest">
+				<div class="main-suggest-content">
+					<%for (let index=0; index < dataAlbum.length; index++) {%>
+						<div class="items items-gallery-next">
+							<img src="<%=dataAlbum[index].image%>" alt="">
+							<div class="layer">
+								<div class="items-icon">
+									<i class="far fa-heart" title="Thêm vào thư viện"></i>
+									<a href="./Album/<%=dataAlbum[index].name%>"><i class="fas fa-play-circle"
+											title="Thêm vào thư viện"></i></a>
+									<i class="fas fa-ellipsis-h" title="Thêm vào thư viện"></i>
+								</div>
+							</div>
+
+						</div>
+						<%}%>
+
+
+							<!-- <div class="items items-gallery-next">
+						<img src="images/items2.png" alt="">
+						<div class="layer">
+							<div class="items-icon">
+								<i class="far fa-heart" title="Thêm vào thư viện"></i>
+								<i class="fas fa-play-circle"></i>
+								<i class="fas fa-ellipsis-h"></i>
+							</div>
+						</div>
+					</div>
+					<div class="items items-gallery-next">
+						<img src="images/items3.png" alt="">
+						<div class="layer">
+							<div class="items-icon">
+								<i class="far fa-heart" title="Thêm vào thư viện"></i>
+								<i class="fas fa-play-circle"></i>
+								<i class="fas fa-ellipsis-h"></i>
+							</div>
+						</div>
+					</div>
+					<div class="items items-gallery-next">
+						<a><img src="images/items4.png" alt=""></a>
+						<div class="layer">
+							<div class="items-icon">
+								<i class="far fa-heart" title="Thêm vào thư viện"></i>
+								<i class="fas fa-play-circle"></i>
+								<i class="fas fa-ellipsis-h"></i>
+							</div>
+						</div>
+					</div>
+					<div class="items items-gallery-next">
+						<img src="images/items5.png" alt="">
+						<div class="layer">
+							<div class="items-icon">
+								<i class="far fa-heart" title="Thêm vào thư viện"></i>
+								<i class="fas fa-play-circle"></i>
+								<i class="fas fa-ellipsis-h"></i>
+							</div>
+						</div>
+					</div>
+					<div class="items items-gallery-next">
+						<img src="images/items6.png" alt="">
+						<div class="layer">
+							<div class="items-icon">
+								<i class="far fa-heart" title="Thêm vào thư viện"></i>
+								<i class="fas fa-play-circle"></i>
+								<i class="fas fa-ellipsis-h"></i>
+							</div>
+						</div>
+					</div> -->
+				</div>
+			</div>
+
+			<div class="new-song-title">
+				<h2 style="color: white;">Mới Phát Hành</h2>
+			</div>
+			<div class="new-song-main">
+				<div class="new-song-content">
+					<% a=0%>
+						<%for (let index=0; index < dataPlaylist.length; index++) {%>
+							<% a+=1%>
+								<div class="nsong nsong-galerry-1">
+									<div class="nsong-left">
+										<img src="<%= dataPlaylist[index].image%>" alt="">
+										<div class="new-layer">
+											<div class="new-icon">
+												<a href="./Playlist/<%=dataPlaylist[index].name%>">
+													<i class="fas fa-play-circle" title="Thêm vào thư viện"></i>
+												</a>
+											</div>
+										</div>
+									</div>
+									<div class="nsong-content">
+										<p>
+											<%=dataPlaylist[index].name%>
+										</p>
+										<p style="opacity: 0.7; font-size: 1em; color: white; text-shadow: white;">
+											Meep
+											& AONG
+										</p>
+										</p>
+										<span>#<%=a%></span>
+									</div>
+
+								</div>
+
+								<%};%>
+
+									<!-- <div class="nsong nsong-galerry-1">
+						<div class="nsong-left">
+							<img src="images/aknd.jpg" alt="">
+							<div class="new-layer">
+								<div class="new-icon">
+									<i class="fas fa-play-circle" title="Thêm vào thư viện"></i>
+								</div>
+							</div>
+						</div>
+						<div class="nsong-content">
+							<p>Anh Không Nói Điêu</p>
+							<p style="opacity: 0.7; font-size: 1em; color: white; text-shadow: white;">Meep & AONG</p>
+							</p>
+							<span>#1</span>
+						</div>
+					</div>
+					<div class="nsong nsong-galerry-2">
+						<div class="nsong-left">
+							<img src="images/maykhi.jpg" alt="">
+							<div class="new-layer">
+								<div class="new-icon">
+									<i class="fas fa-play-circle" title="Thêm vào thư viện"></i>
+								</div>
+							</div>
+						</div>
+						<div class="nsong-content">
+							<p>Mấy Khi</p>
+							<p style="opacity: 0.7; font-size: 1em; color: white; text-shadow: white;">The Flob</p>
+							</p>
+							<span>#2</span>
+						</div>
+					</div>
+					<div class="nsong nsong-galerry-3">
+						<div class="nsong-left">
+							<img src="images/odln.jpg" alt="">
+							<div class="new-layer">
+								<div class="new-icon">
+									<i class="fas fa-play-circle" title="Play"></i>
+								</div>
+							</div>
+						</div>
+						<div class="nsong-content">
+							<p>Ở Đây Lúc Này<br>
+							<p style="opacity: 0.7; font-size: 1em; color: white; text-shadow: white;">Tùng</p>
+							</p>
+							<span>#3</span>
+						</div>
+					</div>
+					<div class="nsong nsong-galerry-4">
+						<div class="nsong-left">
+							<img src="images/mascara.jpg" alt="">
+						</div>
+						<div class="nsong-content">
+							<p>Mascara</p>
+							<p style="opacity: 0.7; font-size: 1em; color: white; text-shadow: white;">Chillies</p>
+							</p>
+							<span>#4</span>
+						</div>
+					</div>
+					<div class="nsong nsong-galerry-5">
+						<div class="nsong-left">
+							<img src="images/bhce.jpg" alt="">
+						</div>
+						<div class="nsong-content">
+							<p>Bài Hát Của Em<br>
+							<p style="opacity: 0.7; font-size: 1em; color: white; text-shadow: white;">VeeTee</p>
+							</p>
+							<span>#5</span>
+						</div>
+					</div>
+				</div>
+				<div class="new-song-content">
+					<div class="nsong nsong-galerry-1">
+						<div class="nsong-left">
+							<img src="images/honey-umie.jpg" alt="">
+						</div>
+						<div class="nsong-content">
+							<p>HONEY</p>
+							<p style="opacity: 0.7; font-size: 1em; color: white; text-shadow: white;">AnhVu ft. UMIE
+							</p>
+							</p>
+							<span>#6</span>
+						</div>
+					</div>
+					<div class="nsong nsong-galerry-2">
+						<div class="nsong-left">
+							<img src="images/emodau.jpg" alt="">
+						</div>
+						<div class="nsong-content">
+							<p>Em Ở Đâu</p>
+							<p style="opacity: 0.7; font-size: 1em; color: white; text-shadow: white;">MANBO</p>
+							</p>
+							<span>#7</span>
+						</div>
+					</div>
+					<div class="nsong nsong-galerry-3">
+						<div class="nsong-left">
+							<img src="images/toi.jpg" alt="">
+						</div>
+						<div class="nsong-content">
+							<p>Tối<br>
+							<p style="opacity: 0.7; font-size: 1em; color: white; text-shadow: white;">Dkayz ft.Brian
+							</p>
+							</p>
+							<span>#8</span>
+						</div>
+					</div>
+					<div class="nsong nsong-galerry-4">
+						<div class="nsong-left">
+							<img src="images/thucgiac.jpg" alt="">
+						</div>
+						<div class="nsong-content">
+							<p>Thức Giấc</p>
+							<p style="opacity: 0.7; font-size: 1em; color: white; text-shadow: white;">DaLab</p>
+							</p>
+							<span>#9</span>
+						</div>
+					</div>
+					<div class="nsong nsong-galerry-5">
+						<div class="nsong-left">
+							<img src="images/chuyenrang.jpg" alt="">
+						</div>
+						<div class="nsong-content">
+							<p>Chuyện Rằng<br>
+							<p style="opacity: 0.7; font-size: 1em; color: white; text-shadow: white;">Thịnh Suy</p>
+							</p>
+							<span>#10</span>
+						</div>
+					</div> -->
+				</div>
+			</div>
+			<div class="footer">
+				This website all ©copyright by AngelsTeam
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>

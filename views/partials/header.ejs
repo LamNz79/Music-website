@@ -1,0 +1,109 @@
+<aside class="m-sidebar">
+    <div class="sidebar-brand">
+        <a href="/"><img src="/images/logo.png" alt="BRAND LOGO"></a>
+    </div>
+    <div class="sidebar-content">
+        <ul>
+            <li id="canhan">
+                <i class="fas fa-icons"></i>
+                <a href="/login" style="text-decoration: none; color: white;" title="Cá nhân">Cá Nhân</a>
+            </li>
+            <li style="
+            background-color: #3B2F52;
+            color:white;
+            border-left: 3px solid #8600b3;
+            opacity: 100%;" id="khampha">
+                <i class="fas fa-compact-disc"></i>
+                <a href="/" style="text-decoration: none; color: white;" title="Khám phá">Khám Phá</a>
+            </li>
+            <li>
+                <i class="fab fa-hotjar" style="opacity: 0.5;"></i>
+                <a href="" style="text-decoration: none; color: white; opacity: 0.5; cursor: default;" title="Đang phát triển">HOT</a>
+            </li>
+            <li>
+                <i class="fas fa-comments" style="opacity: 0.5;"></i>
+                <a href="" style="text-decoration: none; color: white; opacity: 0.5; cursor: default;" title="Đang phát triển">Trò
+                    Chuyện</a>
+            </li>
+        </ul>
+    </div>
+    <div class="sidebar-login">
+        <div class="login-content" id="login-box-no">
+            <p>
+                Đăng nhập để khám phá những playlist dành riêng cho chính bạn.
+                <a href="/login"><button class="btn btn-primary">ĐĂNG NHẬP</button></a>
+            </p>
+        </div>
+    </div>
+</aside>
+<div class="m-main">
+    <div class="main-header">
+        <div class="main-left">
+            <i class="fas fa-arrow-left" style="cursor: pointer;" onclick="goBack()"></i>
+            <i class="fas fa-arrow-right" style="cursor: pointer;" onclick="goForward()"></i>
+            <div class="search-container">
+                <div class="search-bar">
+                    <a class="fas fa-search" onclick="Find()"></a>
+                    <input id="searchBarInput" type="text" placeholder="Nhập tên bài hát, nghệ sĩ hoặc MV…" value="">
+                </div>
+            </div>
+            <p style="height: 80px;"></p>
+            <div class="settings">
+                <div id="circle">
+                    <button class="fas fa-tshirt" id="icon-settings" style="text-align: center;"
+                        title="Giao diện"></button>
+                </div>
+            </div>
+
+            <div class="settings">
+                <div id="circle">
+                    <button class="fas fa-cog" id="icon-settings" style="text-align: center;" title="Cài đặt"></button>
+                </div>
+            </div>
+
+            <div class="settings">
+                <div id="circle">
+                    <button class="user-info user-image" id="icon-settings-user-image"
+                        style="text-align: center; background-image: url(); background-size: cover;"
+                        title="Thông Tin" 
+                        onclick="userOptions()"
+                        >
+                        <div id="myDropdown" class="dropdown-content">
+                            <a id="loginuser" href="/login" title="Đăng nhập">Đăng nhập</a>
+                            <a id="profile" href="#" title="Cá nhân">Cá nhân</a>
+                            <a id="logOut" onclick="logOutUser()" title="Đăng xuất">Đăng xuất</a>
+                        </div>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        $(document).ready(function () {
+            var user = localStorage.getItem('user')
+            if (user != null || user != undefined) {
+                $.get('/', {}, (data, status) => {
+
+                    var objUser = JSON.parse(localStorage.getItem("user"))
+                    ChangeID(objUser)
+                })
+            }
+            else {
+                document.getElementById('icon-settings-user-image').style.cssText = `text-align: center; background-image: url(/images/guest.png); background-size: cover;`;
+            }
+            function ChangeID(objUser) {
+
+                document.getElementById('icon-settings-user-image').style.cssText = `text-align: center; background-image: url(/${objUser[0].images}); background-size: cover;`;
+                document.getElementById('loginuser').style.cssText =  `display: none;`;
+                document.getElementById('profile').style.cssText =  `display: block;`;
+                document.getElementById('logOut').style.cssText =  `display: block;`;
+                document.getElementById('login-box-no').innerHTML = `<p>
+                    Xin chào <b>${objUser[0].showName}</b>!<br>
+                    Hãy thõa sức khám phá những bài hát không giới hạn với Music You Love.
+                    <a title="Đánh giá website"><button class="btn btn-primary">ĐÁNH GIÁ</button></a> </p>`
+                document.getElementById('canhan').innerHTML = `<i class="fas fa-icons"></i>
+                <a href="/Album/KPOP" style="text-decoration: none; color: white;" title="Cá nhân">Cá Nhân</a>`
+            }
+        })
+
+    </script>
