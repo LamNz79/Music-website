@@ -21,10 +21,9 @@ function getLogin() {
 
     }, async (data, status) => {
         // alert(`${JSON.stringify(data)}`)
-        if (data.length === 0 || data == 'empty') {
+        if (data.length === 0 || data == 'empty' || data == '') {
             alert('Sai tài khoản hoặc mật khẩu! Vui lòng thử lại')
         }
-        
         else {
             await localStorage.setItem("user", JSON.stringify(data))
             var objUser = await JSON.parse(localStorage.getItem("user"))
@@ -52,22 +51,22 @@ function logOutUser() {
 
 function userOptions() {
     document.getElementById("myDropdown").classList.toggle("show");
-  }
-  
-    onclick = function(event) {
-        if (!event.target.matches('.user-info')) {
-          var dropdowns = document.getElementsByClassName("dropdown-content");
-          var i;
-          for (i = 0; i < dropdowns.length; i++) {
+}
+
+onclick = function (event) {
+    if (!event.target.matches('.user-info')) {
+        var dropdowns = document.getElementsByClassName("dropdown-content");
+        var i;
+        for (i = 0; i < dropdowns.length; i++) {
             var openDropdown = dropdowns[i];
             if (openDropdown.classList.contains('show')) {
-              openDropdown.classList.remove('show');
+                openDropdown.classList.remove('show');
             }
-          }
         }
     }
-    
-  
+}
+
+
 
 
 
@@ -105,10 +104,10 @@ function url_redirect(url) {
 
 // }
 
-function goBack(){
+function goBack() {
     window.history.back();
 }
-function goForward(){
+function goForward() {
     window.history.forward();
 }
 

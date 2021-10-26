@@ -22,7 +22,7 @@ let track_list = [
     name: "An Thần",
     artist: "(ft.Thắng), LOW G, Rap Nhà Làm",
     image: "/images/anthan.jpg",
-    path: "https://cf-media.sndcdn.com/tMOaZqGO98VI.128.mp3?Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiKjovL2NmLW1lZGlhLnNuZGNkbi5jb20vdE1PYVpxR085OFZJLjEyOC5tcDMqIiwiQ29uZGl0aW9uIjp7IkRhdGVMZXNzVGhhbiI6eyJBV1M6RXBvY2hUaW1lIjoxNjM1MTUwMDM2fX19XX0_&Signature=Ywjg4vhlXPHEJ8DomHKvVrkr8FYrvJKj8OE8Oiwjj0nSyOTjrx4YVYT44F5uLFdrrZ0UJx4Ophk4c26XqvabtBi5IiT9U1RAB7eaNd7QbI4YhrOf-4asenafWOWqimcfgMiBC~d4eSpu8tqY0AZW1xO~lWpyeCTtn2G4kuMgFSLLDmlFgVWA4ETye8u8Ss~lYfc9OpmKzqp0l7fGh4L90ANIxaUDFXG6TRwnBJQ1VjOwmAaoV7pVCRsMwvh6X7SWQkkVYowOQFV7aIlS5zAkuUincaqpM0eewYn4Hz7unqqRboeTpM5uqsZ4EtHu48kZaboq-qRk0itgQ4yOGcg7fg__&Key-Pair-Id=APKAI6TU7MMXM5DG6EPQ"
+    path: "https://cf-media.sndcdn.com/tMOaZqGO98VI.128.mp3?Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiKjovL2NmLW1lZGlhLnNuZGNkbi5jb20vdE1PYVpxR085OFZJLjEyOC5tcDMqIiwiQ29uZGl0aW9uIjp7IkRhdGVMZXNzVGhhbiI6eyJBV1M6RXBvY2hUaW1lIjoxNjM1MTU4MDc4fX19XX0_&Signature=a-sDn7IYluFo2Ohb04h~RmJQ805fHsCfATNMUNJWmZMEzgEqN5Xto9Ws12dVJ49bmtKXFzzB8nZA~db8nGAxMUF3yr8QA1FpNUCEDoBXh9NOSyNt3k0olEY1rd~zxvWIRTR4hbLUjcUNZ4g17pN1wwVlxFF9NDw0hyvsQTpARPC5RSwjFDsXoAav69NM1usqGnxC-l687vYm~cLNP1Zl6TL~Ph5oGhAaUm9lIxZce1ZEGSXKVLQYoes7FgYuSEcz9c81qOHOGZcmyGwYkHjBwIRoQJI7wPBsLiJQZNv2~BzsCk3q8EmJFeVeOIgRPq3WI3VauN0BYgaxAYxxVOguAA__&Key-Pair-Id=APKAI6TU7MMXM5DG6EPQ"
   },
   {
     name: "1 Phút",
@@ -56,8 +56,8 @@ let track_list = [
 
 
 function loadTrack(track_index) {
-//   clearInterval(updateTimer);
-//   resetValues();
+  //   clearInterval(updateTimer);
+  //   resetValues();
   curr_track.src = track_list[track_index].path;
   curr_track.load();
   updateTimer = setInterval(seekUpdate, 1000);
@@ -65,8 +65,8 @@ function loadTrack(track_index) {
 }
 
 function resetValues() {
-//   curr_time.textContent  = "00.00";
-//   total_duration.textContent = "00:00";
+  //   curr_time.textContent  = "00.00";
+  //   total_duration.textContent = "00:00";
   seek_slider.value = 0;
 }
 
@@ -85,8 +85,8 @@ function playTrack() {
   document.querySelector(".btn-play-all").innerHTML = '<i class="fas fa-pause" style="width: 100px; height: 23px;"></i><span>TẠM DỪNG</span>';
   document.querySelector(".is-50x50").style.animationPlayState = "running";
   document.querySelector("#songicon1").style.animationPlayState = "running";
-  document.querySelector("#songicon1").style.cssText =  `display: block;`;
-  document.querySelector("#songicon2").style.cssText =  `display: block;`;
+  document.querySelector("#songicon1").style.cssText = `display: block;`;
+  document.querySelector("#songicon2").style.cssText = `display: block;`;
 }
 
 function pauseTrack() {
