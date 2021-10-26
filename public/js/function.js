@@ -111,3 +111,6 @@ function goForward() {
     window.history.forward();
 }
 
+
+
+console.log('alm')
