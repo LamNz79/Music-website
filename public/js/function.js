@@ -5,7 +5,9 @@ function Find() {
     let searchBarInput = $('#searchBarInput').val()
     // window.open(`/search/${capitalize(searchBarInput)}`)
     url_redirect(`http://localhost:3000/search/${capitalize(searchBarInput)}`)
+    
 }
+
 
 function capitalize(s) {
     return s && s[0].toUpperCase() + s.slice(1);
@@ -21,7 +23,7 @@ function getLogin() {
 
     }, async (data, status) => {
         // alert(`${JSON.stringify(data)}`)
-        if (data.length === 0 || data == 'empty' || data == '') {
+        if (data.length === 0 || data == 'empty' || data == ' ') {
             alert('Sai tài khoản hoặc mật khẩu! Vui lòng thử lại')
         }
         else {
@@ -113,4 +115,4 @@ function goForward() {
 
 
 
-console.log('hellolamne')
+

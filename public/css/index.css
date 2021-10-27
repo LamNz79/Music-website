@@ -207,26 +207,31 @@ body{
 }
 .main-header {
 	background-color: #120822;
-	display: flex;
 	align-items: center;
     position: relative;
     height: 80px;
+	position: fixed;
+	z-index: 1;
     min-width: 660px;
     padding: 0 30px 0 30px;
+	border-bottom: 1px solid #2a213a;
 }
 .main-left{
-	display: grid;
-    grid-template-columns: 50px 50px 600px 300px 80px 80px 80px;
+	display: flex;
+	flex-direction: row;
+	width: 100%;
+	height: 80px;
+	justify-content:last baseline;
+	text-align: center;
 }
 .main-left i {
 	line-height: 70px;
 	font-size: 1.4em;
+	width: 50px;
 }
+
 .search-container {
-	display: grid;
-	grid-template-columns: 550px 10px;
-	grid-column-gap: 50px; 
-	width: 100%;
+	width: 40%;
 	padding: 20px;
 	max-height: 100px;
 }
@@ -235,7 +240,7 @@ body{
 	border-radius: 20px;
 	color: #eee;
 	padding: 0 10px 0 10px;
-	height: 40px
+	height: 40px;
 }
 .search-bar a{
 	width: 30px;
@@ -255,7 +260,7 @@ body{
 	width: auto;
 	background-color: #3B2F52;
 	border: none;
-	width: 500px;
+	width: 95%;
 	height: 40px;
 	font-size: 1.2em;
 	border-radius: 10px;
@@ -265,7 +270,6 @@ body{
 }
 
 .settings{
-	display: flex;
 	padding: 20px;
 	width: 80px;
 	height: 80px;
@@ -276,7 +280,6 @@ body{
 	border-radius: 100px;
 	width: 40px;
 	height: 40px;
-	align-items: center;
 }
 #circle button{
 	background-color: #3b2f52;
@@ -284,7 +287,6 @@ body{
 	border:0;
 	width: 100%;
 	height: 100%;
-
 }
 
 #icon-settings {
@@ -303,6 +305,7 @@ body{
 	width: 100%;
 	height: 250px;
 	border:0;
+	margin-top: 100px;
 }
 
 .main-sector .fas {
