@@ -14,29 +14,35 @@ function capitalize(s) {
 function getLogin() {
     var name = $('#username').val()
     var password = $("#password").val()
+    if (name != "" && password != "") {
 
-    $.post('getLogin', {
-        name: name,
-        password: password
+        $.post('getLogin', {
+            name: name,
+            password: password
 
-    }, async (data, status) => {
-        // alert(`${JSON.stringify(data)}`)
-        if (data.length === 0 || data == 'empty' || data == '') {
-            alert('Sai tài khoản hoặc mật khẩu! Vui lòng thử lại')
-        }
-        else {
-            await localStorage.setItem("user", JSON.stringify(data))
-            var objUser = await JSON.parse(localStorage.getItem("user"))
-            $("#icon-settings").css(style = `text-align: center; background-image: url(${objUser[0]}); background-size: cover;`
-            )
-            $("#loginuser").css(style = `display: none;`)
-            $("#profile").css(style = `display: block;`)
-            $("#logOut").css(style = `display: block;`)
-            await url_redirect('http://localhost:3000/')
-            // window.location.href = 'http://localhost:3000/', true
-        }
+        }, async (data, status) => {
+            // alert(`${JSON.stringify(data)}`)
+            if (data.length === 0 || data == 'empty' || data == '') {
+                alert('Sai tài khoản hoặc mật khẩu! Vui lòng thử lại')
+            }
+            else {
+                await localStorage.setItem("user", JSON.stringify(data))
+                var objUser = await JSON.parse(localStorage.getItem("user"))
+                $("#icon-settings").css(style = `text-align: center; background-image: url(${objUser[0]}); background-size: cover;`
+                )
+                $("#loginuser").css(style = `display: none;`)
+                $("#profile").css(style = `display: block;`)
+                $("#logOut").css(style = `display: block;`)
+                await url_redirect('http://localhost:3000/')
+                // window.location.href = 'http://localhost:3000/', true
+            }
 
-    })
+        })
+    }
+    else {
+        alert('Sai tài khoản hoặc mật khẩu! Vui lòng thử lại')
+
+    }
 }
 
 function logOutUser() {
