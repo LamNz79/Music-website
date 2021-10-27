@@ -22,7 +22,7 @@ function getLogin() {
 
     }, (data, status) => {
         alert(JSON.stringify(data))
-        if (data.length == 0 || data == 'empty' || data == '') {
+        if (data.length !== 0 || data !== 'empty' || data !== '') {
             if (name == data[0].name && password == data[0].pass) {
                 localStorage.setItem("user", JSON.stringify(data))
                 var objUser = JSON.parse(localStorage.getItem("user"))
