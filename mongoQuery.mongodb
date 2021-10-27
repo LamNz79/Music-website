@@ -4,4 +4,4 @@ use('ZingMp3');
 // db.albums.distinct('songList.name')
 
 
-db.songs.find({}, {author:1,_id:0}).distinct('author')
+db.users.find({})
