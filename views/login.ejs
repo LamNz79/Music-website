@@ -85,7 +85,7 @@
 	<script>
 		$(document).ready(function () {
 			var user = localStorage.getItem('user')
-			if (user != null || user != undefined) {
+			/*if (user != null || user != undefined) {
 				$.get('/', {}, (data, status) => {
 
 					var objUser = JSON.parse(localStorage.getItem("user"))
@@ -99,7 +99,7 @@
 
 				document.getElementById('icon-settings-user-image').style.cssText = `text-align: center; background-image: url(${objUser[0].images}); background-size: cover;`
 					;
-			}
+			}*/
 		})
 
 	</script>

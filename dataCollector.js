@@ -146,9 +146,7 @@ module.exports.redirectUsingParmFile = (res, file) => {
 
 
 module.exports.getUserAndPass = (res, name, password, getData) => {
-    console.log('ok')
     User.users.find({ name: name, pass: password }, function (err, data) {
-        console.log('okk')
 
         if (err) console.log(err)
         else getData(res, data)
