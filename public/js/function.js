@@ -21,7 +21,7 @@ function getLogin() {
 
     }, async (data, status) => {
         // alert(`${JSON.stringify(data)}`)
-        if (data.length === 0 || data == 'empty' || data == '') {
+        if (data.length === 0 || data == 'empty' || data == ' ') {
             alert('Sai tài khoản hoặc mật khẩu! Vui lòng thử lại')
         }
         else {
