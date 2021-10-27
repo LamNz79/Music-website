@@ -4,4 +4,4 @@ use('ZingMp3');
 // db.albums.distinct('songList.name')
 
 
-db.users.find({})
+db.users.find({name:'lam',pass:123})
