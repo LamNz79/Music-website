@@ -127,71 +127,8 @@ body{
 	width: 100%;
 	height: 100%;
 }
-.main-header {
-	background-color: #120822;
-	display: flex;
-	align-items: center;
-    position: relative;
-    height: 80px;
-    min-width: 660px;
-    padding: 0 30px 0 30px;
-}
-.main-left{
-	display: grid;
-    grid-template-columns: 50px 50px 600px 300px 80px 80px 80px;
-}
-.main-left i {
-	line-height: 70px;
-	font-size: 1.4em;
-}
-.search-container {
-	display: grid;
-	grid-template-columns: 550px 10px;
-	grid-column-gap: 50px; 
-	width: 100%;
-	padding: 20px;
-	max-height: 100px;
-}
-.search-bar{
-	background-color: #3B2F52; 
-	border-radius: 20px;
-	color: #eee;
-	padding: 0 10px 0 10px;
-	height: 40px
-}
-.search-bar i{
-	width: 30px;
-	float: left;
-	line-height: 30px;
-	cursor: pointer;
-}
-.search-bar input{
-	width: auto;
-	background-color: #3B2F52;
-	border: none;
-	width: 500px;
-	height: 40px;
-	font-size: 1.2em;
-	border-radius: 10px;
-	border:0;
-	outline:0;
-	outline:none!important;
-}
 
-.settings{
-	display: flex;
-	padding: 20px;
-	width: 80px;
-	height: 80px;
-}
 
-#circle{
-	background-color: blue;
-	border-radius: 100px;
-	width: 40px;
-	height: 40px;
-	align-items: center;
-}
 #circle button{
 	background-color: #3b2f52;
 	color: white;
@@ -335,7 +272,7 @@ body{
 	color: white;
 	margin-left: 430px;
 	word-wrap: break-word;
-	margin-top: 20px;
+	margin-top: 100px;
 	
 }
 
@@ -585,6 +522,7 @@ figure {
 .result-container{
 	padding-left: 70px;
 	width: 100%;
+	margin-top: 100px;
 }
 
 .search-author {
@@ -647,9 +585,10 @@ figure {
 	width: 100%;
 	padding: 0 30px;
 }
-.main-suggest-content{
+.author-album .main-suggest-content{
 	display: flex;
 	flex-wrap: wrap;
+	padding: 0 30px 70px 0;
 }
 
 .items-gallery-next{
