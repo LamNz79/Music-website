@@ -43,7 +43,7 @@
             <i class="fas fa-arrow-right" style="cursor: pointer;" onclick="goForward()"></i>
             <div class="search-container">
                 <div class="search-bar">
-                    <a class="fas fa-search" onclick="Find()"></a>
+                    <a id="findpress" class="fas fa-search" onclick="Find()"></a>
                     <input id="searchBarInput" type="text" placeholder="Nhập tên bài hát, nghệ sĩ hoặc MV…" value="">
                 </div>
             </div>
@@ -106,4 +106,9 @@
             }
         })
 
+        $('#searchBarInput').keypress(function(event){
+            if(event.keyCode === 13){//Enter key pressed
+                $('#findpress').click();//Trigger search button click event
+            }
+        });
     </script>

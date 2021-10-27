@@ -5,7 +5,9 @@ function Find() {
     let searchBarInput = $('#searchBarInput').val()
     // window.open(`/search/${capitalize(searchBarInput)}`)
     url_redirect(`http://localhost:3000/search/${capitalize(searchBarInput)}`)
+    
 }
+
 
 function capitalize(s) {
     return s && s[0].toUpperCase() + s.slice(1);
