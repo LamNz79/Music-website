@@ -240,12 +240,12 @@
 }
 
 
-.level-item .fa-step-backward, .fa-play-circle, .fa-step-forward{
+.level-item .fa-step-backward,.actions .fa-play-circle, .fa-step-forward{
     opacity: 0.5;
     transition: 0.2s;
 }
 
-.level-item .fa-step-backward:hover, .fa-play-circle:hover, .fa-step-forward:hover{
+.level-item .fa-step-backward:hover,.actions .fa-play-circle:hover, .fa-step-forward:hover{
     opacity: 1;
     transition: 0.2s;
 }
