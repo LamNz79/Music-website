@@ -21,8 +21,10 @@ function getLogin() {
         password: password
 
     }, (data, status) => {
+
         if (data.length !== 0 || data !== 'empty' || data !== '') {
             if (name === data[0].name && password == data[0].pass) {
+
                 localStorage.setItem("user", JSON.stringify(data))
                 var objUser = JSON.parse(localStorage.getItem("user"))
                 $("#icon-settings").css(style = `text-align: center; background-image: url(${objUser[0]}); background-size: cover;`
