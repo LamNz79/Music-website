@@ -4,4 +4,19 @@ use('ZingMp3');
 // db.albums.distinct('songList.name')
 
 
-db.users.find({name:'lam',pass:123})
+// db.users.updateOne({name:"lam"},{/**
+//  * field: The field name
+//  * expression: The expression.
+//  */
+// $set: {
+//   songCollection: ['615d60141708fd3169e58b5d']
+// }})
+
+db.users.aggregate([
+    {/**
+     * query: The query in MQL.
+     */
+    $match: {
+      name:'lam'
+    }}
+])

@@ -153,3 +153,34 @@ module.exports.getUserAndPass = (res, name, password, getData) => {
 
     })
 }
+
+
+module.exports.getUserSongCollection = (res, name, getData) => {
+    User.users.aggregate([
+        {/**
+         * query: The query in MQL.
+         */
+            $match: {
+                name: name
+            }
+        },
+        {/**
+         * from: The target collection.
+         * localField: The local join field.
+         * foreignField: The target join field.
+         * as: The name for the results.
+         * pipeline: The pipeline to run on the joined collection.
+         * let: Optional variables to use in the pipeline field stages.
+         */
+            $lookup: {
+                from: 'songs',
+                localField: 'songCollection',
+                foreignField: '_id',
+                as: 'songCollection'
+            }
+        }
+    ], (err, data) => {
+        if (err) console.log(err)
+        else getData(res, data)
+    })
+}

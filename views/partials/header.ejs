@@ -6,7 +6,7 @@
         <ul>
             <li id="canhan">
                 <i class="fas fa-icons"></i>
-                <a href="/login" style="text-decoration: none; color: white;" title="Cá nhân">Cá Nhân</a>
+                <a href="/personal" style="text-decoration: none; color: white;" title="Cá nhân">Cá Nhân</a>
             </li>
             <li style="
             background-color: #3B2F52;
@@ -18,11 +18,13 @@
             </li>
             <li>
                 <i class="fab fa-hotjar" style="opacity: 0.5;"></i>
-                <a href="" style="text-decoration: none; color: white; opacity: 0.5; cursor: default;" title="Đang phát triển">HOT</a>
+                <a href="" style="text-decoration: none; color: white; opacity: 0.5; cursor: default;"
+                    title="Đang phát triển">HOT</a>
             </li>
             <li>
                 <i class="fas fa-comments" style="opacity: 0.5;"></i>
-                <a href="" style="text-decoration: none; color: white; opacity: 0.5; cursor: default;" title="Đang phát triển">Trò
+                <a href="" style="text-decoration: none; color: white; opacity: 0.5; cursor: default;"
+                    title="Đang phát triển">Trò
                     Chuyện</a>
             </li>
         </ul>
@@ -64,10 +66,8 @@
             <div class="settings">
                 <div id="circle">
                     <button class="user-info user-image" id="icon-settings-user-image"
-                        style="text-align: center; background-image: url(); background-size: cover;"
-                        title="Thông Tin" 
-                        onclick="userOptions()"
-                        >
+                        style="text-align: center; background-image: url(); background-size: cover;" title="Thông Tin"
+                        onclick="userOptions()">
                         <div id="myDropdown" class="dropdown-content">
                             <a id="loginuser" href="/login" title="Đăng nhập">Đăng nhập</a>
                             <a id="profile" href="#" title="Cá nhân">Cá nhân</a>
@@ -94,21 +94,24 @@
             function ChangeID(objUser) {
 
                 document.getElementById('icon-settings-user-image').style.cssText = `text-align: center; background-image: url(/${objUser[0].images}); background-size: cover;`;
-                document.getElementById('loginuser').style.cssText =  `display: none;`;
-                document.getElementById('profile').style.cssText =  `display: block;`;
-                document.getElementById('logOut').style.cssText =  `display: block;`;
+                document.getElementById('loginuser').style.cssText = `display: none;`;
+                document.getElementById('profile').style.cssText = `display: block;`;
+                document.getElementById('logOut').style.cssText = `display: block;`;
                 document.getElementById('login-box-no').innerHTML = `<p>
                     Xin chào <b>${objUser[0].showName}</b>!<br>
                     Hãy thõa sức khám phá những bài hát không giới hạn với Music You Love.
                     <a title="Đánh giá website"><button class="btn btn-primary">ĐÁNH GIÁ</button></a> </p>`
                 document.getElementById('canhan').innerHTML = `<i class="fas fa-icons"></i>
-                <a href="/Album/KPOP" style="text-decoration: none; color: white;" title="Cá nhân">Cá Nhân</a>`
+                <a href="/personal/${objUser[0].name}" style="text-decoration: none; color: white;" title="Cá nhân">Cá Nhân</a>`
             }
         })
 
-        $('#searchBarInput').keypress(function(event){
-            if(event.keyCode === 13){//Enter key pressed
+        $('#searchBarInput').keypress(function (event) {
+            if (event.keyCode === 13) {//Enter key pressed
                 $('#findpress').click();//Trigger search button click event
             }
         });
+        function getID() {
+            var objUser = JSON.parse(localStorage.getItem("user"))
+        }
     </script>
