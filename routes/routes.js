@@ -1,4 +1,5 @@
 const express = require("express");
+const { personal } = require("../controllers/controller");
 const router = express.Router();
 controller = require("../controllers/controller")
 dataCollector = require('../dataCollector')
@@ -32,12 +33,19 @@ router.get('/search/:songName', (req, res) => {
 
 })
 
+router.get("/personal/:userName", (req, res) => {
+    var userName = req.params[`userName`]
+    // var objUser = JSON.parse(localStorage.getItem("user"))
+    dataCollector.getUserSongCollection(res, userName, controller.personal)
+})
+
 router.post('/getLogin', async (req, res) => {
     var userName = await req.body.name
     var password = await req.body.password
     console.log(userName, password)
     dataCollector.getUserAndPass(res, userName, password, dataCollector.send1ParmFile)
 })
+
 
 
 module.exports = router

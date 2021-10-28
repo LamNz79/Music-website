@@ -28,3 +28,6 @@ exports.up = (req, res, data) => {
 
 }
 
+exports.personal = (res, songFile) => {
+    res.render("caNhan", { dataSong: songFile })
+}

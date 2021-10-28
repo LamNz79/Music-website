@@ -13,17 +13,16 @@ function capitalize(s) {
 }
 
 function getLogin() {
-    var name = $('#username').val()
-    var password = $("#password").val()
+    var name = String($('#username').val())
+    var password = String($("#password").val())
 
     $.post('getLogin', {
         name: name,
         password: password
 
     }, (data, status) => {
-        alert(JSON.stringify(data))
-        if (data.length === 0 || data === 'empty' || data === '') {
-            if (name === data[0].name && password === data[0].pass) {
+        if (data.length !== 0 || data !== 'empty' || data !== '') {
+            if (name === data[0].name && password == data[0].pass) {
                 localStorage.setItem("user", JSON.stringify(data))
                 var objUser = JSON.parse(localStorage.getItem("user"))
                 $("#icon-settings").css(style = `text-align: center; background-image: url(${objUser[0]}); background-size: cover;`
