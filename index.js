@@ -32,6 +32,7 @@ app.use('/getSong', require(Router))
 app.use('/login', require(Router))
 app.use('/search', require(Router))
 app.use('/personal', require(Router))
+app.use('/register', require(Router))
 //function
 
 app.use('/getLogin', require(Router))

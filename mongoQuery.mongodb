@@ -12,11 +12,8 @@ use('ZingMp3');
 //   songCollection: ['615d60141708fd3169e58b5d']
 // }})
 
-db.users.aggregate([
-    {/**
-     * query: The query in MQL.
-     */
-    $match: {
-      name:'lam'
-    }}
-])
+// db.users.find()
+db.users.update(
+  {name:"lam"},
+  {$push: {songCollection:'615e6a072a24e2f1ba2a4457'}}
+  )
