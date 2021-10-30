@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Đăng ký</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link rel="stylesheet" href='css/login.css'>
+    <link rel="icon" href="/images/favicon-32x32.png">
+    <script src="/js/function.js"></script>
+</head>
+
+<body>
+    <section class="ftco-section">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-6 text-center mb-5">
+                    <h2 class="heading-section" sty le="font-weight: bold;">ĐĂNG KÝ</h2>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-md-12 col-lg-10">
+                    <div class="wrap d-md-flex">
+                        <div class="text-wrap p-4 p-lg-5 text-center d-flex align-items-center order-md-last">
+                            <div class="text w-100">
+                            </div>
+                        </div>
+                        <div class="login-wrap p-4 p-lg-5">
+                            <div class="d-flex">
+                                <div class="w-100">
+                                    <h3 class="mb-4">ĐĂNG KÝ</h3>
+                                </div>
+                                <div class="w-100">
+                                    <p class="social-media d-flex justify-content-end">
+                                        <a onclick="`${login.js}`" href="#"
+                                            class="social-icon d-flex align-items-center justify-content-center"><span
+                                                class="fa fa-facebook"></span></a>
+                                        <a href="#"
+                                            class="social-icon d-flex align-items-center justify-content-center"><span
+                                                class="fa fa-google"></span></a>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="form-group mb-3">
+                                <label class="label" for="name">Tên tài khoản</label>
+                                <input id="username" type="text" class="form-control" placeholder="Tài khoản" required>
+                            </div>
+                            <div class="form-group mb-3">
+                                <label class="label" for="password">Mật khẩu</label>
+                                <input id="password" type="password" class="form-control" placeholder="Mật khẩu"
+                                    required>
+                            </div>
+                            <div class="form-group mb-3">
+                                <label class="label" for="tenHienThi">Họ tên</label>
+                                <input id="tenHienThi" type="text" class="form-control" placeholder="họ tên" required>
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" class="form-control btn btn-primary submit px-3" onclick="">Đăng
+                                    ký</button>
+                            </div>
+
+                            <a href="/"><button class="btn-success form-control">Quay lại trang chủ</button></a>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script>
+        $(document).ready(function () {
+            var user = localStorage.getItem('user')
+            /*if (user != null || user != undefined) {
+                $.get('/', {}, (data, status) => {
+
+                    var objUser = JSON.parse(localStorage.getItem("user"))
+                    ChangeID(objUser)
+                })
+            }
+            else {
+                document.getElementById('icon-settings-user-image').style.cssText = `text-align: center; background-image: url(images/quangne.png); background-size: cover;`;
+            }
+            function ChangeID(objUser) {
+
+                document.getElementById('icon-settings-user-image').style.cssText = `text-align: center; background-image: url(${objUser[0].images}); background-size: cover;`
+                    ;
+            }*/
+        })
+
+    </script>
+</body>
+
+</html>

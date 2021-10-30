@@ -39,6 +39,11 @@ router.get("/personal/:userName", (req, res) => {
     dataCollector.getUserSongCollection(res, userName, controller.personal)
 })
 
+router.get("/register", (req, res) => {
+
+    controller.register(res, null)
+})
+
 router.post('/getLogin', async (req, res) => {
     var userName = await req.body.name
     var password = await req.body.password
