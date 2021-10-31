@@ -6,6 +6,7 @@ let prev_btn = document.querySelector(".prev-track");
 let seek_slider = document.querySelector(".seek_slider");
 let curr_time = document.querySelector(".current-time");
 let total_duration = document.querySelector(".total-duration");
+let volume_slider = document.querySelector(".volume_slider");
 
 
 let track_index = 0;
