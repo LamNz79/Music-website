@@ -13,7 +13,33 @@ use('ZingMp3');
 // }})
 
 // db.users.find()
-db.users.update(
-  {name:"lam"},
-  {$push: {songCollection:'615e6a072a24e2f1ba2a4457'}}
-  )
+// db.users.update(
+//   {name:"lam"},
+//   {$push: {songCollection:'615e6a072a24e2f1ba2a4457'}}
+//   )
+
+// db.counters.insert(
+//    {
+//       _id: "userid",
+//       seq: 0
+//    }
+// )
+// db.users.insertOne(
+//    {
+//       _id:5,
+//       name:'levanB',
+//       showName:'Van B',
+//       songCollection:[]
+//    }
+// )
+// db.counters.find().Count()
+// db.counters.findAndModify(
+//         {
+//             query: { _id: 4 },
+//             update: { $inc: { seq: 1 } },
+//             new: true
+//         }
+//     )
+
+db.users.find()
+// db.users.deleteMany({$or:[{name:'123'},{name:'khang'}]})

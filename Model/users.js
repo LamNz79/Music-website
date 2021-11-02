@@ -10,9 +10,11 @@ const song = new mongoose.Schema({
 })
 
 const users = new mongoose.Schema({
-    _id: mongoose.Schema.Types.ObjectId,
     name: String,
-    password: String
+    pass: String,
+    showName: String,
+    images: String,
+    songCollection: Array
 })
 
 const playlist = new mongoose.Schema({

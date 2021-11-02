@@ -21,7 +21,7 @@ function getLogin() {
         password: password
 
     }, (data, status) => {
-
+        alert(JSON.stringify(data))
         if (data.length != 0) {
             if (name === data[0].name && password == data[0].pass) {
 
@@ -52,6 +52,20 @@ function logOutUser() {
         // alert(`${JSON.stringify(data)}`)
         await localStorage.removeItem("user", JSON.stringify(data))
         await url_redirect('http://localhost:3000/login')
+    })
+}
+
+function addingUser() {
+    var username = ($('#username').val())
+    var password = ($('#password').val())
+    var tenHienThi = ($('#tenHienThi').val())
+    $.post('addingUser', {
+        username: username,
+        password: password,
+        tenHienThi: tenHienThi
+    }, (data, status) => {
+        url_redirect('http://localhost:3000/login')
+
     })
 }
 
