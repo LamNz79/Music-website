@@ -147,3 +147,10 @@ function seekUpdate() {
   }
 }
 
+function showMV(){
+  document.querySelector(".background-mv").style.cssText = `display: block;`;
+}
+function hiddenMV(){
+  document.querySelector(".background-mv").style.cssText = `display: none;`;
+  document.querySelector(".layer-middle").prop('disabled', true);
+}
