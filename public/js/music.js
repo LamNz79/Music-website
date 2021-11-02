@@ -81,7 +81,7 @@ function playpauseTrack() {
 function playTrack() {
   curr_track.play();
   isPlaying = true;
-  document.querySelector(".playpause-track").innerHTML = '<i class="far fa-pause-circle fa-2x" style="opacity: 1;">';
+  document.querySelector(".playpause-track").innerHTML = '<i class="far fa-pause-circle fa-2x" style="opacity: 1; color: #7200a1;">';
   document.querySelector(".btn-play-all").innerHTML = '<i class="fas fa-pause" style="width: 100px; height: 23px;"></i><span>TẠM DỪNG</span>';
   document.querySelector(".is-50x50").style.animationPlayState = "running";
   document.querySelector("#songicon1").style.animationPlayState = "running";
@@ -92,7 +92,7 @@ function playTrack() {
 function pauseTrack() {
   curr_track.pause();
   isPlaying = false;
-  document.querySelector(".playpause-track").innerHTML = '<i class="far fa-play-circle fa-2x" style="opacity: 1;">';
+  document.querySelector(".playpause-track").innerHTML = '<i class="far fa-play-circle fa-2x" style="opacity: 1; color: #7200a1;">';
   document.querySelector(".btn-play-all").innerHTML = '<i class="fas fa-play"></i><span>TIẾP TỤC PHÁT</span>';
   document.querySelector(".is-50x50").style.animationPlayState = "paused";
   document.querySelector("#songicon1").style.animationPlayState = "paused";

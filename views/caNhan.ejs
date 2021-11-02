@@ -2,20 +2,379 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <%- include('./partials/head'); %>
 </head>
 
 <body>
-    <%dataSong.forEach(element=> {%>
+    <!-- <%dataSong.forEach(element=> {%>
         <%element.songCollection.forEach(song=> {%>
             <h1>
                 <%=song.name%>
             </h1>
             <%});%>
-                <%});%>
+                <%});%> -->
+
+    <div class="container-sm">
+        <%- include('./partials/header'); %>
+        <div class="app-top-right_top-bt">
+            <div class="puser-info">
+                <div class="user-info-list">
+                    <div class="user-avt"><img src="/images/quangne.png" alt=""></div>
+                    <h2>Đăng Quang</h2>
+                </div>
+            </div>
+        </div>
+
+        <div class="app-top-right_bottom">
+            <div class="box-nav-items">
+                <div class="nav-items">
+                    <div class="nav-item active2">TỔNG QUAN</div>
+                    <div class="nav-item">BÀI HÁT</div>
+                    <div class="nav-item">PLAYLIST</div>
+                    <div class="nav-item">NGHỆ SĨ</div>
+                    <div class="nav-item">ALBUM</div>
+                    <div class="nav-item">MV</div>
+                </div>
+            </div>
+
+            <div class="box-allmusic">
+                <div class="tablist active2">
+                    <div class="box-music-content">
+                        <div class="box-music-content-t">
+                            <div class="textnamemusic">Bài hát</div>
+                            <div class="buttonmusic">
+                                <div class="buttonplayall">
+                                    <i class="fas fa-play" style="width: 30px;"></i>
+                                    Phát tất cả
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="box-music-content-b">
+                            <div class="image-musicplay">
+                                <img src="/images/items1.png" alt="">
+                            </div>
+                                <div class="list song-list-select">
+                                    <div class="select-item">
+                                        <div class="list-item bor-b-1 media-item active">
+                                            <div class="media">
+                                                <div class="media-left">
+                                                    <div class="song-thumb">
+                                                        <figure class="image is-40x40" title="Anh Không Nói Điêu">
+                                                            <img src="/images/aknd.jpg" alt="">
+                                                        </figure>
+                                                    </div>
+                                                    <div class="card-info">
+                                                        <div class="title-wrapper">
+                                                            <span class="item-title title">Anh Không Nói Điêu</span>
+                                                        </div>
+                                                        <div class="subtitle">
+                                                            <i class="fas fa-music"></i>
+                                                            <a href="https://facebook.com/quangmanuel">Meep</a> ft.
+                                                            <a href="https://facebook.com/troixanhmaytrang.2411">AONG</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="media-content">
+                                                    3:02
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="select-item">
+                                        <div class="list-item bor-b-1 media-item active">
+                                            <div class="media">
+                                                <div class="media-left">
+                                                    <div class="song-thumb">
+                                                        <figure class="image is-40x40" title="Anh Không Nói Điêu">
+                                                            <img src="/images/aknd.jpg" alt="">
+                                                        </figure>
+                                                    </div>
+                                                    <div class="card-info">
+                                                        <div class="title-wrapper">
+                                                            <span class="item-title title">Anh Không Nói Điêu</span>
+                                                        </div>
+                                                        <div class="subtitle">
+                                                            <i class="fas fa-music"></i>
+                                                            <a href="https://facebook.com/quangmanuel">Meep</a> ft.
+                                                            <a href="https://facebook.com/troixanhmaytrang.2411">AONG</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="media-content">
+                                                    3:02
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="select-item">
+                                        <div class="list-item bor-b-1 media-item active">
+                                            <div class="media">
+                                                <div class="media-left">
+                                                    <div class="song-thumb">
+                                                        <figure class="image is-40x40" title="Anh Không Nói Điêu">
+                                                            <img src="/images/aknd.jpg" alt="">
+                                                        </figure>
+                                                    </div>
+                                                    <div class="card-info">
+                                                        <div class="title-wrapper">
+                                                            <span class="item-title title">Anh Không Nói Điêu</span>
+                                                        </div>
+                                                        <div class="subtitle">
+                                                            <i class="fas fa-music"></i>
+                                                            <a href="https://facebook.com/quangmanuel">Meep</a> ft.
+                                                            <a href="https://facebook.com/troixanhmaytrang.2411">AONG</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="media-content">
+                                                    3:02
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="select-item">
+                                        <div class="list-item bor-b-1 media-item active">
+                                            <div class="media">
+                                                <div class="media-left">
+                                                    <div class="song-thumb">
+                                                        <figure class="image is-40x40" title="Anh Không Nói Điêu">
+                                                            <img src="/images/aknd.jpg" alt="">
+                                                        </figure>
+                                                    </div>
+                                                    <div class="card-info">
+                                                        <div class="title-wrapper">
+                                                            <span class="item-title title">Anh Không Nói Điêu</span>
+                                                        </div>
+                                                        <div class="subtitle">
+                                                            <i class="fas fa-music"></i>
+                                                            <a href="https://facebook.com/quangmanuel">Meep</a> ft.
+                                                            <a href="https://facebook.com/troixanhmaytrang.2411">AONG</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="media-content">
+                                                    3:02
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="select-item">
+                                        <div class="list-item bor-b-1 media-item active">
+                                            <div class="media">
+                                                <div class="media-left">
+                                                    <div class="song-thumb">
+                                                        <figure class="image is-40x40" title="Anh Không Nói Điêu">
+                                                            <img src="/images/aknd.jpg" alt="">
+                                                        </figure>
+                                                    </div>
+                                                    <div class="card-info">
+                                                        <div class="title-wrapper">
+                                                            <span class="item-title title">Anh Không Nói Điêu</span>
+                                                        </div>
+                                                        <div class="subtitle">
+                                                            <i class="fas fa-music"></i>
+                                                            <a href="https://facebook.com/quangmanuel">Meep</a> ft.
+                                                            <a href="https://facebook.com/troixanhmaytrang.2411">AONG</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="media-content">
+                                                    3:02
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="select-item">
+                                        <div class="list-item bor-b-1 media-item active">
+                                            <div class="media">
+                                                <div class="media-left">
+                                                    <div class="song-thumb">
+                                                        <figure class="image is-40x40" title="Anh Không Nói Điêu">
+                                                            <img src="/images/aknd.jpg" alt="">
+                                                        </figure>
+                                                    </div>
+                                                    <div class="card-info">
+                                                        <div class="title-wrapper">
+                                                            <span class="item-title title">Anh Không Nói Điêu</span>
+                                                        </div>
+                                                        <div class="subtitle">
+                                                            <i class="fas fa-music"></i>
+                                                            <a href="https://facebook.com/quangmanuel">Meep</a> ft.
+                                                            <a href="https://facebook.com/troixanhmaytrang.2411">AONG</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="media-content">
+                                                    3:02
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="select-item">
+                                        <div class="list-item bor-b-1 media-item active">
+                                            <div class="media">
+                                                <div class="media-left">
+                                                    <div class="song-thumb">
+                                                        <figure class="image is-40x40" title="Anh Không Nói Điêu">
+                                                            <img src="/images/aknd.jpg" alt="">
+                                                        </figure>
+                                                    </div>
+                                                    <div class="card-info">
+                                                        <div class="title-wrapper">
+                                                            <span class="item-title title">Anh Không Nói Điêu</span>
+                                                        </div>
+                                                        <div class="subtitle">
+                                                            <i class="fas fa-music"></i>
+                                                            <a href="https://facebook.com/quangmanuel">Meep</a> ft.
+                                                            <a href="https://facebook.com/troixanhmaytrang.2411">AONG</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="media-content">
+                                                    3:02
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="select-item">
+                                        <div class="list-item bor-b-1 media-item active">
+                                            <div class="media">
+                                                <div class="media-left">
+                                                    <div class="song-thumb">
+                                                        <figure class="image is-40x40" title="Anh Không Nói Điêu">
+                                                            <img src="/images/aknd.jpg" alt="">
+                                                        </figure>
+                                                    </div>
+                                                    <div class="card-info">
+                                                        <div class="title-wrapper">
+                                                            <span class="item-title title">Anh Không Nói Điêu</span>
+                                                        </div>
+                                                        <div class="subtitle">
+                                                            <i class="fas fa-music"></i>
+                                                            <a href="https://facebook.com/quangmanuel">Meep</a> ft.
+                                                            <a href="https://facebook.com/troixanhmaytrang.2411">AONG</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="media-content">
+                                                    3:02
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="select-item">
+                                        <div class="list-item bor-b-1 media-item active">
+                                            <div class="media">
+                                                <div class="media-left">
+                                                    <div class="song-thumb">
+                                                        <figure class="image is-40x40" title="Anh Không Nói Điêu">
+                                                            <img src="/images/aknd.jpg" alt="">
+                                                        </figure>
+                                                    </div>
+                                                    <div class="card-info">
+                                                        <div class="title-wrapper">
+                                                            <span class="item-title title">Anh Không Nói Điêu</span>
+                                                        </div>
+                                                        <div class="subtitle">
+                                                            <i class="fas fa-music"></i>
+                                                            <a href="https://facebook.com/quangmanuel">Meep</a> ft.
+                                                            <a href="https://facebook.com/troixanhmaytrang.2411">AONG</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="media-content">
+                                                    3:02
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="select-item">
+                                        <div class="list-item bor-b-1 media-item active">
+                                            <div class="media">
+                                                <div class="media-left">
+                                                    <div class="song-thumb">
+                                                        <figure class="image is-40x40" title="Anh Không Nói Điêu">
+                                                            <img src="/images/aknd.jpg" alt="">
+                                                        </figure>
+                                                    </div>
+                                                    <div class="card-info">
+                                                        <div class="title-wrapper">
+                                                            <span class="item-title title">Anh Không Nói Điêu</span>
+                                                        </div>
+                                                        <div class="subtitle">
+                                                            <i class="fas fa-music"></i>
+                                                            <a href="https://facebook.com/quangmanuel">Meep</a> ft.
+                                                            <a href="https://facebook.com/troixanhmaytrang.2411">AONG</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="media-content">
+                                                    3:02
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="select-item">
+                                        <div class="list-item bor-b-1 media-item active">
+                                            <div class="media">
+                                                <div class="media-left">
+                                                    <div class="song-thumb">
+                                                        <figure class="image is-40x40" title="Anh Không Nói Điêu">
+                                                            <img src="/images/aknd.jpg" alt="">
+                                                        </figure>
+                                                    </div>
+                                                    <div class="card-info">
+                                                        <div class="title-wrapper">
+                                                            <span class="item-title title">Anh Không Nói Điêu</span>
+                                                        </div>
+                                                        <div class="subtitle">
+                                                            <i class="fas fa-music"></i>
+                                                            <a href="https://facebook.com/quangmanuel">Meep</a> ft.
+                                                            <a href="https://facebook.com/troixanhmaytrang.2411">AONG</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="media-content">
+                                                    3:02
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="select-item">
+                                        <div class="list-item bor-b-1 media-item active">
+                                            <div class="media">
+                                                <div class="media-left">
+                                                    <div class="song-thumb">
+                                                        <figure class="image is-40x40" title="Anh Không Nói Điêu">
+                                                            <img src="/images/aknd.jpg" alt="">
+                                                        </figure>
+                                                    </div>
+                                                    <div class="card-info">
+                                                        <div class="title-wrapper">
+                                                            <span class="item-title title">Anh Không Nói Điêu</span>
+                                                        </div>
+                                                        <div class="subtitle">
+                                                            <i class="fas fa-music"></i>
+                                                            <a href="https://facebook.com/quangmanuel">Meep</a> ft.
+                                                            <a href="https://facebook.com/troixanhmaytrang.2411">AONG</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="media-content">
+                                                    3:02
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 
 </html>

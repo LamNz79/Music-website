@@ -278,7 +278,20 @@ body{
 
 .song-list-select{
 	border-bottom: 1px solid #2a213a;
-    height: 100%;
+    height: 725px;
+	overflow:hidden;
+	overflow-y: scroll;
+}
+.song-list-select::-webkit-scrollbar {
+    width: 4px;
+    z-index: 1;
+}
+.song-list-select::-webkit-scrollbar-button {
+    height: 5px;
+}
+.song-list-select::-webkit-scrollbar-thumb {
+    background-color: #5b5364;
+    border-radius: 10px;
 }
 
 .media {

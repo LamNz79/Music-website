@@ -240,13 +240,13 @@
 }
 
 
-.level-item .fa-step-backward,.actions .fa-play-circle, .fa-step-forward{
-    opacity: 0.5;
+.level-item .fa-step-backward,.actions .fa-play-circle, .fa-step-forward, .fa-random, .fa-retweet{
+    opacity: 1;
     transition: 0.2s;
 }
 
-.level-item .fa-step-backward:hover,.actions .fa-play-circle:hover, .fa-step-forward:hover{
-    opacity: 1;
+.level-item .fa-step-backward:hover,.actions .fa-play-circle:hover, .fa-step-forward:hover, .fa-random:hover, .fa-retweet:hover{
+    opacity: 0.7;
     transition: 0.2s;
 }
 
@@ -255,7 +255,6 @@
 .player-controls__player-bar .zm-duration-bar {
     height: 15px;
     width: 100%;
-    cursor: pointer;
     color: #fff;
 }
 .player-controls__player-bar .zm-duration-bar .zm-slider-bar {
@@ -266,4 +265,30 @@
 .player-controls__player-bar .zm-duration-bar .zm-slider-bar {
     width: 100%;
     height: 3px;
+}
+.level .level-right {
+    display: flex;
+}
+
+.player-controls-right {
+    width: 30%;
+}
+.level-right {
+    align-items: center;
+    justify-content: flex-end;
+}
+.volume-control{
+    display: flex;
+    justify-content: center;
+    width: 30%;
+}
+.player-controls-right{
+    text-align: right;
+}
+.fa-youtube{
+    font-size: 1.2em;
+    
+}
+.fa-youtube:hover{
+    opacity: 0.8;
 }

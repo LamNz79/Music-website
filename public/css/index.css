@@ -143,12 +143,13 @@ body{
 	opacity: 80%;
 }
 
-.sidebar-content #khampha, #canhan:hover{
+.sidebar-content #khampha:hover, #canhan:hover{
 	background-color: #3B2F52;
 	color:white;
 	border-left: 3px solid #8600b3;
 	opacity: 100%;
 }
+
 
 .sidebar-content a, i {
 	color: #fafafa;
@@ -573,3 +574,138 @@ body{
 	color: white;
 }
 /*Footer*/
+
+
+
+
+
+
+
+
+
+
+
+
+/* Cá nhân */
+.app-top-right_top-bt {
+    height: 300px;
+    display: flex;
+	margin-top: 80px;
+}
+.puser-info {
+    width: 100%;
+    height: 100%;
+}
+.user-info-list {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+	color: #fff
+}
+.user-avt, .user-avt img {
+    width: 200px;
+    height: 200px;
+    background-size: cover;
+    object-fit: cover;
+    border-radius: 200px;
+}
+
+
+.app-top-right_bottom {
+    height: calc(100% - 290px - 90px);
+}
+
+.box-nav-items {
+    padding-top: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+.nav-items {
+    width: 735px;
+    height: 32px;
+    background: #2F2739;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-radius: 20px;
+	text-align: center;
+}
+.nav-item {
+    padding: 5px 20px;
+    border-radius: 20px;
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 16px;
+    cursor: pointer;
+    opacity: 0.9;
+    transition: all 0.3s ease;
+}
+
+.nav-item.active2{
+	background: #6E6875;
+}
+.tablist.active2 {
+    display: block;
+}
+
+.tablist {
+    display: none;
+}
+.box-music-content {
+    margin: 40px 0 0 0;
+	padding: 0 60px;
+}
+.box-music-content-t {
+    display: flex;
+    justify-content: space-between;
+}
+
+.box-music-content-b {
+    display: flex;
+    color: #fff;
+    margin-top: 15px;
+}
+.textnamemusic {
+    color: #fff;
+    font-size: 20px;
+    font-weight: 600;
+}
+.buttonmusic {
+    display: flex;
+    justify-content: flex-end;
+}
+.buttonplayall {
+    height: 29px;
+    width: 137px;
+    background: #7200A1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #fff;
+}
+.image-musicplay{
+    width: 250px;
+    height: 200px;
+    border-radius: 10px;
+}
+.image-musicplay img{
+	width: 200px;
+    height: 200px;
+    border-radius: 10px;
+}
+.all-musicplay {
+    height: 560px;
+}
+
+.all-musicplay {
+    height: 241px;
+    width: 100%;
+    overflow: hidden;
+    overflow-y: scroll;
+}
