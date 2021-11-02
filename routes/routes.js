@@ -52,6 +52,18 @@ router.post('/getLogin', async (req, res) => {
 })
 
 
+router.post('/addingUser', async (req, res) => {
+    var userName = await req.body.username
+    var password = await req.body.password
+    var tenHienThi = await req.body.tenHienThi
+    try {
+        dataCollector.addingUser(userName, password, tenHienThi)
+        res.send(`${userName},${password},${tenHienThi}`)
+    } catch (error) {
+        console.log(error)
+    }
+})
+
 
 module.exports = router
 

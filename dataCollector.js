@@ -184,3 +184,45 @@ module.exports.getUserSongCollection = (res, name, getData) => {
         else getData(res, data)
     })
 }
+
+module.exports.addingUser = (username, password, shownName) => {
+    try {
+        // User.users.insert(
+        //     {
+        //         _id: User.users.find().count() + 1,
+        //         name: username,
+        //         password: password,
+        //         showName: shownName,
+        //         songCollection: []
+        //     }
+        // )
+        // 
+        let newvalue = new User.users({
+            // _id: getNextSequence(1),
+            name: username,
+            pass: password,
+            showName: shownName,
+            songCollection: [],
+            images: "images/guest.png",
+        });
+        newvalue.save();
+    }
+
+    catch (error) {
+        console.log(error)
+    }
+}
+
+function getNextSequence(id) {
+    var ret = User.counters.findOneAndUpdate(
+        {
+            query: { _id: id },
+            update: { $inc: { seq: 1 } },
+            new: true
+        }
+    );
+    console.log(ret.seq)
+    return ret.seq;
+}
+
+
