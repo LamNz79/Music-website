@@ -203,7 +203,7 @@ module.exports.addingUser = (username, password, shownName) => {
             pass: password,
             showName: shownName,
             songCollection: [],
-            images: "images/guest.png",
+            images: "images/register-user.png",
         });
         newvalue.save();
     }
