@@ -169,5 +169,5 @@ function loadTrackTest(songLink) {
   curr_track.load();
   updateTimer = setInterval(seekUpdate, 1000);
   curr_track.addEventListener("ended", nextTrack);
-  alert(songLink)
+  curr_track.play();
 }
