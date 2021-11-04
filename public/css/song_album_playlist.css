@@ -355,9 +355,12 @@ body{
 	transition: 0.3s;
 }
 .song-list-select .select-item .media-item:hover {
-    background-color: #5147614f;
-	transition: 0.3s;
+    background-color: #4b4b4b4f;
 }
+.song-list-select .select-item .media-item:focus{
+    background-color: #4b4b4b4f;
+}
+
 
 .bor-b-1 {
     border-bottom: 1px solid #2a213a;

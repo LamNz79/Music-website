@@ -254,13 +254,15 @@
 
 
 .player-controls__player-bar .zm-duration-bar {
-    height: 15px;
-    width: 100%;
-    color: #fff;
-}
-.player-controls__player-bar .zm-duration-bar .zm-slider-bar {
-    width: 100%;
     height: 3px;
+    width: 100%;
+    color: #670388;
+    transition: 0.3s ease-in-out;
+    
+}
+.player-controls__player-bar .zm-duration-bar:hover{
+    height: 10px;
+    transition: 0.3s ease-in-out;
 }
 
 .player-controls__player-bar .zm-duration-bar .zm-slider-bar {

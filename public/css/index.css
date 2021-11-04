@@ -709,3 +709,9 @@ body{
     overflow: hidden;
     overflow-y: scroll;
 }
+
+.dropdown-content .fa-user{
+	width: 50px;
+	height: 76px;
+	justify-content: center;
+}

@@ -117,4 +117,3 @@ function goBack() {
 function goForward() {
     window.history.forward();
 }
-
