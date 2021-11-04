@@ -65,7 +65,7 @@ function loadTrack(track_index) {
 }
 
 function resetValues() {
-  curr_time.textContent  = "00.00";
+  curr_time.textContent = "00.00";
   total_duration.textContent = "00:00";
   seek_slider.value = 0;
 }
@@ -85,8 +85,8 @@ function playTrack() {
   document.querySelector(".btn-play-all").innerHTML = '<i class="fas fa-pause" style="width: 100px; height: 23px;"></i><span>TẠM DỪNG</span>';
   document.querySelector(".is-50x50").style.animationPlayState = "running";
   document.querySelector("#songicon1").style.animationPlayState = "running";
-  document.querySelector("#songicon1").style.cssText =  `display: block;`;
-  document.querySelector("#songicon2").style.cssText =  `display: block;`;
+  document.querySelector("#songicon1").style.cssText = `display: block;`;
+  document.querySelector("#songicon2").style.cssText = `display: block;`;
 }
 
 function pauseTrack() {
