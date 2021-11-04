@@ -406,8 +406,15 @@ figure {
     width: 100%;
 	padding-left: 10px;
 	color: white;
+	justify-content: center;
 }
-
+.box-music-content-b .card-info .title-wrapper{
+	font-size: 1.2em;
+	padding: 0;
+}
+.box-music-content-b .card-info{
+	padding: 0;
+}
 
 .subtitle{
 	opacity: 0.7;

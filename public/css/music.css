@@ -1,3 +1,4 @@
+
 .player-controls.clickable {
     cursor: pointer;
 }
@@ -291,4 +292,81 @@
 }
 .fa-youtube:hover{
     opacity: 0.8;
+}
+
+.background-mv{
+    position: fixed;
+    display: none;
+    width: 100%;
+    background-color: #670388;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 3;
+    opacity: 1;
+    -webkit-animation:mvlayer 3s ease-in-out;
+	animation:mvlayer 3s ease-in-out; 
+}
+
+.layer-mv{
+    position: absolute;
+    display: fixed;
+    filter: blur(50px);
+    top: 0;
+    z-index: -1;
+    background-color: #670388;
+    opacity: 0.6;
+}
+.layer-header-top{
+    position: relative;
+    justify-content: center;
+    flex-wrap: wrap;
+    display: flex;
+    text-align: center;
+    width: 100%;
+    margin-top: 20px;
+    opacity: 1;
+}
+.header-top{
+    width: 220px;
+}
+.toggle-layer, .layer-control{
+    position: fixed;
+    align-self: center;
+    top: 0;
+    height: 100px;
+}
+.layer-control{
+    position: fixed;
+    display: flex;
+    width: 100%;
+    text-align: right;
+    right: 0;
+    top: 10px;
+}
+.circle-icon{
+    font-size: 1.2em;
+    margin-right: 0;
+    width: 60px;
+    height: 60px;
+    background: rgba(255, 255, 255, 0.062);
+    text-align: right;
+    border-radius: 100%;
+    padding: 16px;
+    cursor: pointer;
+    margin-left: 10px;
+
+}
+
+.layer-middle{
+    position: relative;
+    width:  1280px;
+    height: 720px;
+    margin: auto;
+    top: 40px;
+}
+.layer-middle iframe{
+    border-radius: 10px;
+    width: 1280px;
+    height: 720px;
 }

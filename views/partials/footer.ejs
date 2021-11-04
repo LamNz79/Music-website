@@ -48,10 +48,36 @@
 
         <div class="player-controls-right level-right">
             <div class="volume-control">
-                <i class="fab fa-youtube" style="width: 30px; "></i>
-                <i class="fa fa-volume-up" style="width: 30px; "></i>
+                <i class="fab fa-youtube" title="Xem MV" style="width: 30px; " onclick="showMV()"></i>
+                <i class="fa fa-volume-up" title="Âm lượng" style="width: 30px; "></i>
                 <input type="range" min="1" max="100" value="99" class="volume_slider" onchange="setVolume()">
             </div>
         </div>
+    </div>
+</div>
+<div class="background-mv">
+    <div class="layer-header-top">
+        <div class="header-top">
+            <img src="/images/logo.png" alt="">
+            <h3 style="color: white;">PARTY AT HOME</h3>
+        </div>
+        <div class="toggle-layer">
+            <div class="layer-control">
+                <div class="circle-icon" title='Đóng cửa sổ' >
+                    <div class="" onclick="hiddenMV()"><i class="fas fa-chevron-down"></i></div>
+                </div>
+                <div class="circle-icon" title='Cài đặt' >
+                    <div class=""onclick=""><i class="fas fa-cog"></i></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="layer-middle">
+        <iframe id="player-frame" src="https://www.youtube.com/embed/J7eYhM6wXPo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+
+    <div class="layer-mv">
+        <img src="/images/blur-background.jpg" alt="">
     </div>
 </div>
