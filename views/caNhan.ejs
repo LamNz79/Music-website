@@ -51,8 +51,9 @@
 
                                     <%dataSong.forEach(element=> {%>
                                         <%element.songCollection.forEach(song=> {%>
-                                            <div class="select-item">
-                                                <div class="list-item bor-b-1 media-item active">
+                                            <div class="select-item" onclick="loadTrackTest(playSelectedSong(getData(<%= JSON.stringify(song)
+                                            %>)))">
+                                                <div class="list-item bor-b-1 media-item active" tabindex="0">
                                                     <div class="media">
                                                         <div class="media-left">
                                                             <div class="song-thumb">
@@ -89,6 +90,9 @@
                 </div>
             </div>
     </div>
+    <footer>
+        <%- include('./partials/footer'); %>
+    </footer>
     </div>
     <script>
         $(document).ready(function () {
@@ -96,11 +100,9 @@
             var objUser = JSON.parse(localStorage.getItem("user"))
             document.getElementById("user_ava").src = `/${objUser[0].images}`
             document.getElementById("shownName").innerHTML = `${objUser[0].showName}`
-
-
         })
-
     </script>
+    <script src="/js/music.js"></script>
 </body>
 
 </html>

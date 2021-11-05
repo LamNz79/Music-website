@@ -78,26 +78,7 @@ function playpauseTrack() {
   else pauseTrack();
 }
 
-function playTrack() {
-  curr_track.play();
-  isPlaying = true;
-  document.querySelector(".playpause-track").innerHTML = '<i class="far fa-pause-circle fa-2x" style="opacity: 1; color: #7200a1;">';
-  document.querySelector(".btn-play-all").innerHTML = '<i class="fas fa-pause" style="width: 100px; height: 23px;"></i><span>TẠM DỪNG</span>';
-  document.querySelector(".is-50x50").style.animationPlayState = "running";
-  document.querySelector("#songicon1").style.animationPlayState = "running";
-  document.querySelector("#songicon1").style.cssText = `display: block;`;
-  document.querySelector("#songicon2").style.cssText = `display: block;`;
-}
 
-function pauseTrack() {
-  curr_track.pause();
-  isPlaying = false;
-  document.querySelector(".playpause-track").innerHTML = '<i class="far fa-play-circle fa-2x" style="opacity: 1; color: #7200a1;">';
-  document.querySelector(".btn-play-all").innerHTML = '<i class="fas fa-play"></i><span>TIẾP TỤC PHÁT</span>';
-  document.querySelector(".is-50x50").style.animationPlayState = "paused";
-  document.querySelector("#songicon1").style.animationPlayState = "paused";
-  document.querySelector("#songicon2").style.animationPlayState = "paused";
-}
 
 function nextTrack() {
   if (track_index < track_list.length - 1)
@@ -174,14 +155,11 @@ function loadTrackTest(songLink) {
   curr_track.load();
   updateTimer = setInterval(seekUpdate, 1000);
   curr_track.addEventListener("ended", nextTrack);
-  playTrack();
   document.getElementById("footer_song_icon").src = getSelectedSongImage();
   document.getElementById("footer_song_author").innerHTML = `${getSelectedSongAuthor()}`;
   document.getElementById("footer_song_name").innerHTML = `${getSelectedSongName()}`;
+  playTrack();
 }
-
-
-
 
 function getSelectedSongImage() {
 
@@ -196,4 +174,24 @@ function getSelectedSongName() {
 function getSelectedSongAuthor() {
 
   return curr_song.author
+}
+function playTrack() {
+  curr_track.play();
+  isPlaying = true;
+  document.querySelector(".playpause-track").innerHTML = '<i class="far fa-pause-circle fa-2x" style="opacity: 1; color: #7200a1;">';
+  document.querySelector(".is-50x50").style.animationPlayState = "running";
+  document.querySelector("#songicon1").style.animationPlayState = "running";
+  document.querySelector("#songicon1").style.cssText = `display: block;`;
+  document.querySelector("#songicon2").style.cssText = `display: block;`;
+  document.querySelector(".btn-play-all").innerHTML = '<i class="fas fa-pause" style="width: 100px; height: 23px;"></i><span>TẠM DỪNG</span>';
+}
+
+function pauseTrack() {
+  curr_track.pause();
+  isPlaying = false;
+  document.querySelector(".playpause-track").innerHTML = '<i class="far fa-play-circle fa-2x" style="opacity: 1; color: #7200a1;">';
+  document.querySelector(".is-50x50").style.animationPlayState = "paused";
+  document.querySelector("#songicon1").style.animationPlayState = "paused";
+  document.querySelector("#songicon2").style.animationPlayState = "paused";
+  document.querySelector(".btn-play-all").innerHTML = '<i class="fas fa-play"></i><span>TIẾP TỤC PHÁT</span>';
 }
