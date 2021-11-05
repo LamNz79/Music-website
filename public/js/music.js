@@ -147,14 +147,17 @@ function seekUpdate() {
   }
 }
 
-function showMV(){
+function showMV() {
   document.querySelector(".background-mv").style.cssText = `display: block;`;
 }
-function hiddenMV(){
+function hiddenMV() {
   document.querySelector(".background-mv").style.cssText = `display: none;`;
   document.querySelector(".layer-middle").prop('disabled', true);
 }
+var curr_song = ""
+
 function getData(data) {
+  curr_song = data
 
   return data
 }
@@ -163,6 +166,8 @@ function playSelectedSong(song) {
   return songLink
 }
 function loadTrackTest(songLink) {
+
+
   clearInterval(updateTimer);
   resetValues();
   curr_track.src = songLink;
@@ -170,4 +175,25 @@ function loadTrackTest(songLink) {
   updateTimer = setInterval(seekUpdate, 1000);
   curr_track.addEventListener("ended", nextTrack);
   playTrack();
+  document.getElementById("footer_song_icon").src = getSelectedSongImage();
+  document.getElementById("footer_song_author").innerHTML = `${getSelectedSongAuthor()}`;
+  document.getElementById("footer_song_name").innerHTML = `${getSelectedSongName()}`;
+}
+
+
+
+
+function getSelectedSongImage() {
+
+  return curr_song.image
+}
+
+function getSelectedSongName() {
+  return curr_song.name
+}
+
+
+function getSelectedSongAuthor() {
+
+  return curr_song.author
 }

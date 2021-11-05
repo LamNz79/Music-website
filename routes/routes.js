@@ -1,4 +1,5 @@
 const express = require("express");
+const { data } = require("jquery");
 const { personal } = require("../controllers/controller");
 const router = express.Router();
 controller = require("../controllers/controller")
@@ -62,6 +63,10 @@ router.post('/addingUser', async (req, res) => {
     } catch (error) {
         console.log(error)
     }
+})
+
+router.post('/getSongInfo', (req, res) => {
+    dataCollector.getSong(res, controller.footer)
 })
 
 

@@ -8,16 +8,17 @@
                             <img id="songicon1" src="/images/songicon1.png" style="animation-play-state: paused;">
                             <img id="songicon2" src="/images/songicon2.png" style="animation-play-state: paused;">
                             <figure class="image is-50x50 is-rounded" style="animation-play-state: paused;">
-                                <img src="/images/anthan.jpg" alt="">
+                                <img id="footer_song_icon" src="/images/anthan.jpg" alt="">
                             </figure>
                         </div>
                         <div class="card-info">
                             <div class="title-wrapper">
-                                <span class="item-title title">An Thần</span>
-                             </div>
+                                <span class="item-title title" id="footer_song_name">An Thần</span>
+                            </div>
                             <div class="subtitle">
                                 <i class="fas fa-music"></i>
-                                <a href="http://wwww.facebook.com/quangmanuel">(ft.Thắng), LOW G, Rap Nhà Làm</a>
+                                <a href="http://wwww.facebook.com/quangmanuel" id="footer_song_author">(ft.Thắng), LOW
+                                    G, Rap Nhà Làm</a>
                             </div>
                         </div>
                     </div>
@@ -30,7 +31,8 @@
                 <div class="actions buttons">
                     <i class="fas fa-random"></i>
                     <div class="prev-track" onclick="prevTrack()"><i class="fas fa-step-backward"></i></div>
-                    <div class="playpause-track" onclick="playpauseTrack()"><i class="far fa-play-circle fa-2x"></i></div>
+                    <div class="playpause-track" onclick="playpauseTrack()"><i class="far fa-play-circle fa-2x"></i>
+                    </div>
                     <div class="next-track" onclick="nextTrack()"><i class="fas fa-step-forward"></i></div>
                     <i class="fas fa-retweet"></i>
                 </div>
@@ -42,7 +44,7 @@
                     <input type="range" min="1" max="100" value="0" class="seek_slider" onchange="seekTo()">
                 </div>
                 <span class=" total-duration time-right" style="text-align: right;">00:00</span>
-                
+
             </div>
         </div>
 
@@ -63,21 +65,25 @@
         </div>
         <div class="toggle-layer">
             <div class="layer-control">
-                <div class="circle-icon" title='Đóng cửa sổ' >
+                <div class="circle-icon" title='Đóng cửa sổ'>
                     <div class="" onclick="hiddenMV()"><i class="fas fa-chevron-down"></i></div>
                 </div>
-                <div class="circle-icon" title='Cài đặt' >
-                    <div class=""onclick=""><i class="fas fa-cog"></i></div>
+                <div class="circle-icon" title='Cài đặt'>
+                    <div class="" onclick=""><i class="fas fa-cog"></i></div>
                 </div>
             </div>
         </div>
     </div>
 
     <div class="layer-middle">
-        <iframe id="player-frame" src="https://www.youtube.com/embed/J7eYhM6wXPo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <iframe id="player-frame" src="https://www.youtube.com/embed/J7eYhM6wXPo" title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen></iframe>
     </div>
 
     <div class="layer-mv">
         <img src="/images/blur-background.jpg" alt="">
     </div>
 </div>
+<script src="/js/music.js"></script>

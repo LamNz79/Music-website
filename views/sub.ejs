@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-    
+
 <head>
     <%- include('./partials/head'); %>
-     
-</head>     
+
+</head>
 
 <body>
     <!-- Menu left bar start -->
@@ -44,167 +44,92 @@
 
                     <!-- Main-content -->
                     <%data.forEach(element=> {%>
-                    <div class="playlist-content">
-                        <div class="description">
-                            <span style="opacity: 0.6;">Nội dung:</span>
-                            Top 100 Nhạc <%=element.name%> là danh sách 100 ca khúc hot nhất hiện tại của thể loại Top 100
-                            Nhạc <%=element.name%>, được Music For You tự động tổng hợp dựa trên thông tin số liệu lượt nghe và lượt
-                            chia sẻ
-                            của từng bài hát trên phiên bản web. Dữ liệu sẽ được lấy trong 30 ngày gần nhất và được cập
-                            nhật
-                            liên tục.
-                        </div>
-                        <!-- Song list header -->
-                        <div class="list song-list-select">
-                            <div class="media select-header">
-                                <div class="media-left">
-                                    <div class="column-text">
-                                        Bài hát
-                                    </div>
-                                </div>
-                                <div class="media-content">
-                                    <div class="column-text">
-                                        Thời gian
-                                    </div>
-                                </div>
+                        <div class="playlist-content">
+                            <div class="description">
+                                <span style="opacity: 0.6;">Nội dung:</span>
+                                Top 100 Nhạc <%=element.name%> là danh sách 100 ca khúc hot nhất hiện tại của thể loại
+                                    Top 100
+                                    Nhạc <%=element.name%>, được Music For You tự động tổng hợp dựa trên thông tin số
+                                        liệu lượt nghe và lượt
+                                        chia sẻ
+                                        của từng bài hát trên phiên bản web. Dữ liệu sẽ được lấy trong 30 ngày gần nhất
+                                        và được cập
+                                        nhật
+                                        liên tục.
                             </div>
-                            <%});%>
-                            <!-- Song list content -->
-                            <div>
-                                <!-- <div class="select-item">
-                            <div class="list-item bor-b-1 media-item active">
-                                <div class="media">
+                            <!-- Song list header -->
+                            <div class="list song-list-select">
+                                <div class="media select-header">
                                     <div class="media-left">
-                                        <div class="song-thumb">
-                                            <figure class="image is-40x40" title="Anh Không Nói Điêu">
-                                                <img src="/images/aknd.jpg" alt="">
-                                            </figure>
-                                        </div>
-                                        <div class="card-info">
-                                            <div class="title-wrapper">
-                                                <span class="item-title title">Anh Không Nói Điêu</span>
-                                            </div>
-                                            <div class="subtitle">
-                                                <i class="fas fa-music"></i>
-                                                <a href="https://facebook.com/quangmanuel">Meep</a> ft.
-                                                <a href="https://facebook.com/troixanhmaytrang.2411">AONG</a>
-                                            </div>
+                                        <div class="column-text">
+                                            Bài hát
                                         </div>
                                     </div>
                                     <div class="media-content">
-                                        3:02
+                                        <div class="column-text">
+                                            Thời gian
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-
-                        <div class="select-item">
-                            <div class="list-item bor-b-1 media-item active">
-                                <div class="media">
-                                    <div class="media-left">
-                                        <div class="song-thumb">
-                                            <figure class="image is-40x40" title="Anh Không Nói Điêu">
-                                                <img src="/images/aknd.jpg" alt="">
-                                            </figure>
-                                        </div>
-                                        <div class="card-info">
-                                            <div class="title-wrapper">
-                                                <span class="item-title title">Anh Không Nói Điêu</span>
-                                            </div>
-                                            <div class="subtitle">
-                                                <i class="fas fa-music"></i>
-                                                <a href="https://facebook.com/quangmanuel">Meep</a> ft.
-                                                <a href="https://facebook.com/troixanhmaytrang.2411">AONG</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="media-content">
-                                        3:02
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="select-item">
-                            <div class="list-item bor-b-1 media-item active">
-                                <div class="media">
-                                    <div class="media-left">
-                                        <div class="song-thumb">
-                                            <figure class="image is-40x40" title="Anh Không Nói Điêu">
-                                                <img src="/images/aknd.jpg" alt="">
-                                            </figure>
-                                        </div>
-                                        <div class="card-info">
-                                            <div class="title-wrapper">
-                                                <span class="item-title title">Anh Không Nói Điêu</span>
-                                            </div>
-                                            <div class="subtitle">
-                                                <i class="fas fa-music"></i>
-                                                <a href="https://facebook.com/quangmanuel">Meep</a> ft.
-                                                <a href="https://facebook.com/troixanhmaytrang.2411">AONG</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="media-content">
-                                        3:02
-                                    </div>
-                                </div>
-                            </div>
-                        </div> -->
-
-                                <%for (let index=0; index < data.length; index++) {%>
-                                    <%data[index].songList.forEach(element=> {%>
-                                        <div class="select-item" onclick="loadTrackTest(playSelectedSong(getData(<%= JSON.stringify(element)
+                                <%});%>
+                                    <!-- Song list content -->
+                                    <div>
+                                        <%for (let index=0; index < data.length; index++) {%>
+                                            <%data[index].songList.forEach(element=> {%>
+                                                <div class="select-item" onclick="loadTrackTest(playSelectedSong(getData(<%= JSON.stringify(element)
                                         %>)))">
-                                            <div class="list-item bor-b-1 media-item active" tabindex="0">
-                                                <div class="media">
-                                                    <div class="media-left">
-                                                        <div class="thumb-overlay">
-                                                            <div class="song-thumb">
-                                                                <div class="play-music">
-                                                                    <i class="fas fa-play"></i>
+                                                    <div class="list-item bor-b-1 media-item active" tabindex="0">
+                                                        <div class="media">
+                                                            <div class="media-left">
+                                                                <div class="thumb-overlay">
+                                                                    <div class="song-thumb">
+                                                                        <div class="play-music">
+                                                                            <i class="fas fa-play"></i>
+                                                                        </div>
+                                                                        <figure class="image is-40x40"
+                                                                            title="Anh Không Nói Điêu">
+                                                                            <img src="<%=element.image%>" alt="">
+                                                                        </figure>
+                                                                    </div>
                                                                 </div>
-                                                                <figure class="image is-40x40" title="Anh Không Nói Điêu">
-                                                                    <img src="<%=element.image%>" alt="">
-                                                                </figure>
+                                                                <div class="card-info">
+                                                                    <div class="title-wrapper">
+                                                                        <span class="item-title title">
+                                                                            <%=element.name%>
+                                                                        </span>
+                                                                    </div>
+                                                                    <div class="subtitle">
+                                                                        <i class="fas fa-music"></i>
+                                                                        <a href="https://facebook.com/quangmanuel">
+                                                                            <%=element.author%>
+                                                                        </a>
+                                                                        <a
+                                                                            href="https://www.facebook.com/lamgoodboyyy"></a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="media-content">
+                                                                3:02
                                                             </div>
                                                         </div>
-                                                        <div class="card-info">
-                                                            <div class="title-wrapper">
-                                                                <span class="item-title title">
-                                                                    <%=element.name%>
-                                                                </span>
-                                                            </div>
-                                                            <div class="subtitle">
-                                                                <i class="fas fa-music"></i>
-                                                                <a href="https://facebook.com/quangmanuel">
-                                                                    <%=element.author%>
-                                                                </a>
-                                                                <a href="https://www.facebook.com/lamgoodboyyy"></a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="media-content">
-                                                        3:02
                                                     </div>
                                                 </div>
-                                            </div>
-                                        </div>
-                                        <%});%>
-                                            <%}%>
+                                                <%});%>
+                                                    <%}%>
 
 
 
-                                                <!-- Song list content END -->
+                                                        <!-- Song list content END -->
+                                    </div>
+                                    <!-- Song list header END-->
                             </div>
-                            <!-- Song list header END-->
+                            <!-- Main-content END -->
                         </div>
-                        <!-- Main-content END -->
-                    </div>
-                    <footer>
-                        <%- include('./partials/footer'); %>
-                    </footer>
-        </div>
+                        <footer>
+                            <%- include('./partials/footer'); %>
+                        </footer>
+    </div>
 </body>
 <script src="/js/music.js"></script>
+
 </html>
