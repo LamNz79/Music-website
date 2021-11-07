@@ -45,6 +45,11 @@ router.get("/register", (req, res) => {
     controller.register(res, null)
 })
 
+router.get('/admin', (req, res) => {
+    controller.admin(req, res)
+})
+
+// Post method
 router.post('/getLogin', async (req, res) => {
     var userName = await req.body.name
     var password = await req.body.password
@@ -69,8 +74,14 @@ router.post('/getSongInfo', (req, res) => {
     dataCollector.getSong(res, controller.footer)
 })
 
-router.get('/admin', (req, res) => {
-    controller.admin(req, res)
+router.post('/deleteSong', (req, res) => {
+    res.send('ok123')
+})
+router.post('/insertSong', (req, res) => {
+    res.send('ok123')
+})
+router.post('/updateSong', (req, res) => {
+    res.send('ok123')
 })
 
 module.exports = router
