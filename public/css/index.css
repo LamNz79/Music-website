@@ -715,3 +715,32 @@ body{
 	height: 76px;
 	justify-content: center;
 }
+
+.box-playlistnew {
+    margin: 40px 60px 0px 60px;
+    height: 260px;
+	color: #fff
+}
+.playlistnew-box {
+    background-image: linear-gradient(45deg, #681FA7, #B72584);
+    width: 206px;
+    height: 206px;
+	border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+	text-align: center;
+    align-items: center;
+	cursor: pointer;
+}
+.playlistnew-box .playlistnew-icon:hover{
+	transform: scale(1.2);
+	transition: 0.2s;
+}
+.playlistnew-icon{
+	font-size: 3em;
+	transition: 0.2s;
+}
+.new-playlist h5{
+	font-size: 1.5em;
+}

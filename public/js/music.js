@@ -161,6 +161,15 @@ function loadTrackTest(songLink) {
   playTrack();
 }
 
+function addFavMusic(){
+  document.querySelector("#fav-no").style.cssText = `display:none`;
+  document.querySelector("#fav-yes").style.cssText = `display:block`;
+}
+function delFavMusic(){
+  document.querySelector("#fav-no").style.cssText = `display:block`;
+  document.querySelector("#fav-yes").style.cssText = `display:none; `;
+}
+
 function getSelectedSongImage() {
 
   return curr_song.image

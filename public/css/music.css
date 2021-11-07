@@ -174,10 +174,10 @@
 }
 
 .level-item .media .media-left .title-wrapper{
-	font-size: 1.6em;
+	font-size: 1.4em;
 }
 .level-item .media .media-left .subtitle{
-	font-size: 1.2em;
+	font-size: 1.1em;
 }
 
 .player-controls{
@@ -372,3 +372,18 @@
     width: 1280px;
     height: 720px;
 }
+.fav-music{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.fav-music #fav-no, #fav-yes{
+    font-size: 1.3em;
+    transition: 0.2s;
+    width: 30px;
+}
+.fav-music #fav-no:hover, #fav-yes:hover{
+    font-size: 1.3em;
+    opacity: 0.8;
+}
+

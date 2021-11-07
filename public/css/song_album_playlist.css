@@ -210,8 +210,17 @@ body{
     justify-content: space-between;
     align-items: flex-start;
     align-items: left;
-    width: 100%;
+    width: 10px;
     margin-left: 0px;
+	color: #8d8796;
+}
+.media-right{
+	width: 90px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-right: 10px;
+    color: #898294;
 }
 
 .content-top {
