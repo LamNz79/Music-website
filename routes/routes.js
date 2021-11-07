@@ -69,6 +69,9 @@ router.post('/getSongInfo', (req, res) => {
     dataCollector.getSong(res, controller.footer)
 })
 
+router.get('/admin', (req, res) => {
+    controller.admin(req, res)
+})
 
 module.exports = router
 

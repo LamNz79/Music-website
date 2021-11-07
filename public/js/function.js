@@ -21,8 +21,10 @@ function getLogin() {
         password: password
 
     }, (data, status) => {
-        alert(JSON.stringify(data))
-        if (data.length != 0) {
+        if (isAdmin(name, password)) {
+            url_redirect('http://localhost:3000/admin')
+        }
+        else if (data.length != 0) {
             if (name === data[0].name && password == data[0].pass) {
 
                 localStorage.setItem("user", JSON.stringify(data))
@@ -116,4 +118,9 @@ function goBack() {
 }
 function goForward() {
     window.history.forward();
+}
+
+function isAdmin(name, pass) {
+    if (name == 'admin' && pass == '123') return true
+    return false
 }

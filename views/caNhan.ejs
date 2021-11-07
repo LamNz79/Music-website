@@ -51,8 +51,8 @@
 
                                     <%dataSong.forEach(element=> {%>
                                         <%element.songCollection.forEach(song=> {%>
-                                            <div class="select-item" onclick="loadTrackTest(playSelectedSong(getData(<%= JSON.stringify(song)
-                                            %>)))">
+                                            <div class="select-item"
+                                                onclick="loadTrackTest(playSelectedSong(getData(<%= JSON.stringify(song)%>)))">
                                                 <div class="list-item bor-b-1 media-item active" tabindex="0">
                                                     <div class="media">
                                                         <div class="media-left">
@@ -70,7 +70,9 @@
                                                                 </div>
                                                                 <div class="subtitle">
                                                                     <i class="fas fa-music"></i>
-                                                                    <a href=""><%=song.author%></a>
+                                                                    <a href="">
+                                                                        <%=song.author%>
+                                                                    </a>
                                                                 </div>
                                                             </div>
                                                         </div>

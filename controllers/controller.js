@@ -36,5 +36,9 @@ exports.personal = (res, songFile) => {
 }
 
 exports.register = (res, data) => {
-    res.    render("register")
+    res.render("register")
+}
+
+exports.admin = (req, res) => {
+    res.render('admin')
 }
