@@ -33,6 +33,7 @@ app.use('/login', require(Router))
 app.use('/search', require(Router))
 app.use('/personal', require(Router))
 app.use('/register', require(Router))
+app.use('/admin', require(Router))
 //function
 
 app.use('/getLogin', require(Router))

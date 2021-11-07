@@ -2,16 +2,57 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <%- include('./partials/head'); %>
 </head>
 
 <body>
     <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque non, architecto distinctio facilis praesentium
         tempore, consequatur molestiae expedita eveniet magni sed, tenetur officiis. Exercitationem, animi nihil?
         Debitis qui suscipit fuga.</h1>
+    <select name="albumList" id="albumList">
+
+    </select>
+
+    <select name="songList" id="songList">
+
+    </select>
+
+    <input type="text" placeholder="song Name">
+    <input type="text" placeholder="song picture">
+    <input type="text" placeholder="song path">
+    <input type="text" placeholder="song author">
+    <input type="button" value="insert" onclick="insertFunc()">
+    <input type="button" value="delete" onclick="deleteFunc()">
+    <input type="button" value="update" onclick="updateFunc()">
+    <h3>trang sẽ dùng để quản lý thêm xóa sửa nhạc từ trong album hoặc playlist, đồng thời cũng để thêm xóa sửa cái loại
+        album,playlist</h3>
+
+    <script>
+        function deleteFunc() {
+            $.post('deleteSong', {
+
+            }, (data, status) => {
+                alert(data)
+
+            })
+        }
+        function insertFunc() {
+            $.post('insertSong', {
+
+            }, (data, status) => {
+                alert(data)
+
+            })
+        }
+        function updateFunc() {
+            $.post('updateSong', {
+
+            }, (data, status) => {
+                alert(data)
+
+            })
+        }
+    </script>
 </body>
 
 </html>
