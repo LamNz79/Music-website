@@ -13,10 +13,6 @@ use('ZingMp3');
 // }})
 
 // db.users.find()
-// db.users.update(
-//   {name:"lam"},
-//   {$push: {songCollection:'615e6a072a24e2f1ba2a4457'}}
-//   )
 
 // db.counters.insert(
 //    {
@@ -41,5 +37,79 @@ use('ZingMp3');
 //         }
 //     )
 
-db.users.find()
+// db.users.find()
 // db.users.deleteMany({$or:[{name:'123'},{name:'khang'}]})
+
+
+
+// db.albums.update(
+//     {name:"KPOP"},
+//     {
+//         $push:{
+//             songList:'615e6a072a24e2f1ba2a4457'
+//         }
+
+// })
+
+// db.albums.update(
+//     {name:"KPOP"},
+//     {
+//         $pull :{
+//             songList:'615e6a072a24e2f1ba2a4457'
+//         }
+
+// })
+// db.albums.update(
+//   {name:"KPOP"},
+//   {/**
+//    * fields: The field name(s).
+//    */
+//   $unset: {
+//     songCollection:[]
+//   }}
+//   )
+
+// db.albums.updateOne(
+//     {name:"KPOP"},
+//     {$push: 
+//         {songList:ObjectId('615e6a072a24e2f1ba2a4457')}
+//     }
+// )
+// db.albums.updateOne(
+//     {name:"KPOP"},
+//     {$pull: 
+//         {songList:ObjectId('615e6a072a24e2f1ba2a4457')}
+//     }
+// )
+// db.albums.find({name:"KPOP"})
+
+// db.songs.find({name:"Honey"})
+
+// db.albums.aggregate(
+//     [
+//         {/**
+//          * query: The query in MQL.
+//          */
+//             $match: {
+//             name: 'US-UK'
+//             }
+//         },
+//         /**
+//          * from: The target collection.
+//          * localField: The local join field.
+//          * foreignField: The target join field.
+//          * as: The name for the results.
+//          * pipeline: The pipeline to run on the joined collection.
+//          * let: Optional variables to use in the pipeline field stages.
+//          */
+//         {$lookup: {
+//           from: 'songs',
+//           localField: 'songList',
+//           foreignField: '_id',
+//           as: 'songList'
+//         }}
+//     ]
+// )
+
+
+db.songs.find()

@@ -1,5 +1,5 @@
 const User = require('./Model/users')
-
+const mongoose = require('mongoose');
 // Getting the data from Mongo
 module.exports.getSong = (res, callback) => {
     User.songs.find((err, data) => {
@@ -73,15 +73,6 @@ module.exports.getAlbumByName = (res, getData, name) => {
                 getData(res, data)
             })
 }
-
-
-module.exports.getSongbyAuthor = (res, getData, name) => {
-    User.songs.find({ author: { $regex: name } }, (err, data) => {
-        if (err) console.error
-        getData(res, data)
-    })
-}
-
 module.exports.getPlaylistAndAlbum = (res, getData) => {
     User.playlists.find({}, function (err, collection) {
         if (err) {
@@ -98,8 +89,49 @@ module.exports.getPlaylistAndAlbum = (res, getData) => {
     });
 }
 
+module.exports.getSongbyAuthor = (res, getData, name) => {
+    User.songs.find({ author: { $regex: name } }, (err, data) => {
+        if (err) console.error
+        getData(res, data)
+    })
+}
+
+module.exports.getAlbumAndAlbumSongAndPlaylistAndPlaylistSong = (res, getData) => {
+    User.albums.aggregate(
+        [
+            {
+                $lookup: {
+                    from: 'songs',
+                    localField: 'songList',
+                    foreignField: '_id',
+                    as: 'songList'
+                }
+            }], (err, data) => {
+                if (err) console.error
+                getData(res, data)
+
+            })
+}
+
 module.exports.getSongByAuthorAndAlbum = (res, getData, name) => {
     User.songs.find({ author: { $regex: name } }, function (err, collection) {
+        if (err) {
+            console.log(err);
+        } else {
+            User.albums.find({}, function (err, collection2) {
+                if (err) {
+                    console.log(err)
+                } else {
+                    console.log(collection2)
+                    getData(res, collection, collection2)
+                }
+            });
+        }
+    });
+}
+
+module.exports.getSongAndAlbum = (res, getData) => {
+    User.songs.find({}, function (err, collection) {
         if (err) {
             console.log(err);
         } else {
@@ -185,27 +217,32 @@ module.exports.getUserSongCollection = (res, name, getData) => {
     })
 }
 
-module.exports.addingUser = (username, password, shownName) => {
+module.exports.addingUser = (username, password, shownName, res) => {
     try {
-        // User.users.insert(
-        //     {
-        //         _id: User.users.find().count() + 1,
-        //         name: username,
-        //         password: password,
-        //         showName: shownName,
-        //         songCollection: []
-        //     }
-        // )
-        // 
-        let newvalue = new User.users({
-            // _id: getNextSequence(1),
-            name: username,
-            pass: password,
-            showName: shownName,
-            songCollection: [],
-            images: "images/register-user.png",
-        });
-        newvalue.save();
+
+        User.users.find(
+            { name: username }, (err, data) => {
+                if (err) console.err
+                console.log(data)
+                if (data.length == 0) {
+                    let newvalue = new User.users({
+                        // _id: getNextSequence(1),
+                        name: username,
+                        pass: password,
+                        showName: shownName,
+                        songCollection: [],
+                        images: "images/register-user.png",
+                    });
+                    newvalue.save();
+                    this.send1ParmFile(res, 'thanh cong')
+                }
+                else {
+                    this.send1ParmFile(res, 'da co tai khoan')
+
+                }
+            }
+        )
+
     }
 
     catch (error) {
@@ -213,16 +250,110 @@ module.exports.addingUser = (username, password, shownName) => {
     }
 }
 
-function getNextSequence(id) {
-    var ret = User.counters.findOneAndUpdate(
-        {
-            query: { _id: id },
-            update: { $inc: { seq: 1 } },
-            new: true
+module.exports.insertSongIntoAlbum = (name, albumName, res) => {
+    User.songs.find({
+        name: name,
+    }, (err, data) => {
+        console.log(mongoose.Types.ObjectId(`${data[0]._id}`))
+        if (err) console.log(err)
+        else if (data.length !== 0) {
+
+            User.albums.updateOne(
+                { name: albumName },
+                {
+                    $push:
+                    {
+                        songList: mongoose.Types.ObjectId(`${data[0]._id}`)
+                    }
+                }, (err, data2) => {
+                    if (err) console.log(err)
+                    else {
+                        console.log(JSON.stringify(data2))
+                        this.send1ParmFile(res, JSON.stringify(data2))
+                    }
+                }
+            )
         }
-    );
-    console.log(ret.seq)
-    return ret.seq;
+        else {
+            this.send1ParmFile(res, 'khong co bai hat do trong du lieu')
+        }
+    })
 }
 
 
+module.exports.deleteSongFromAlbum = (name, albumName, res) => {
+    User.songs.find({
+        name: name,
+    }, (err, data) => {
+        console.log(mongoose.Types.ObjectId(`${data[0]._id}`))
+        if (err) console.log(err)
+        else if (data.length !== 0) {
+            User.albums.updateOne(
+                { name: albumName },
+                {
+                    $pull:
+                    {
+                        songList: mongoose.Types.ObjectId(`${data[0]._id}`)
+                    }
+                }, (err, data2) => {
+                    if (err) console.log(err)
+                    else {
+                        console.log(JSON.stringify(data2))
+                        this.send1ParmFile(res, JSON.stringify(data2))
+                    }
+                }
+            )
+        }
+        else {
+            this.send1ParmFile(res, 'khong co bai hat do trong du lieu')
+        }
+    })
+}
+// function for adding songs to database
+module.exports.addSong = (name, author, path, image, res) => {
+    try {
+        let newSong = new User.songs({
+            // _id: getNextSequence(1),
+            name: name,
+            author: author,
+            link: `/music/${path}`,
+            image: image
+        });
+        newSong.save();
+        this.send1ParmFile(res, 'thanh cong')
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+// Function for adding album to database
+module.exports.addAlbum = (name, image, res) => {
+    try {
+        let newAlbum = new User.albums({
+            // _id: getNextSequence(1),
+            name: name,
+            image: image,
+            songList: []
+        });
+        newAlbum.save();
+        this.send1ParmFile(res, 'thanh cong')
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+// Function for adding playlist to database
+module.exports.addPlaylist = (name, image, res) => {
+    try {
+        let newPlaylist = new User.playlists({
+            // _id: getNextSequence(1),
+            name: name,
+            image: image,
+            songList: []
+        });
+        newPlaylist.save();
+        this.send1ParmFile(res, 'thanh cong')
+    } catch (error) {
+        console.log(error)
+    }
+}
