@@ -45,8 +45,8 @@ router.get("/register", (req, res) => {
     controller.register(res, null)
 })
 
-router.get('/admin', (req, res) => {
-    controller.admin(req, res)
+router.get('/47dzEhPlfq', (req, res) => {
+    dataCollector.getAlbumAndAlbumSongAndPlaylistAndPlaylistSong(res, controller.admin)
 })
 
 // Post method
@@ -63,8 +63,8 @@ router.post('/addingUser', async (req, res) => {
     var password = await req.body.password
     var tenHienThi = await req.body.tenHienThi
     try {
-        dataCollector.addingUser(userName, password, tenHienThi)
-        res.send(`${userName},${password},${tenHienThi}`)
+        dataCollector.addingUser(userName, password, tenHienThi, res)
+
     } catch (error) {
         console.log(error)
     }
@@ -74,12 +74,20 @@ router.post('/getSongInfo', (req, res) => {
     dataCollector.getSong(res, controller.footer)
 })
 
-router.post('/deleteSong', (req, res) => {
-    res.send('ok123')
+router.post('/deleteSong', async (req, res) => {
+    var songName = await req.body.songName
+    var albumName = await req.body.album
+    dataCollector.deleteSongFromAlbum(songName, albumName, res)
+
 })
-router.post('/insertSong', (req, res) => {
-    res.send('ok123')
+
+router.post('/insertSong', async (req, res) => {
+    var songName = await req.body.songName
+    var albumName = await req.body.album
+    dataCollector.insertSongIntoAlbum(songName, albumName, res)
+
 })
+
 router.post('/updateSong', (req, res) => {
     res.send('ok123')
 })

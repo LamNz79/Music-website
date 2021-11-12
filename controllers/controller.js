@@ -39,6 +39,8 @@ exports.register = (res, data) => {
     res.render("register")
 }
 
-exports.admin = (req, res) => {
-    res.render('admin')
+exports.admin = (res, albumData) => {
+    res.render('admin', {
+        albumData: albumData,
+    })
 }

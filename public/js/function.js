@@ -22,7 +22,7 @@ function getLogin() {
 
     }, (data, status) => {
         if (isAdmin(name, password)) {
-            url_redirect('http://localhost:3000/admin')
+            url_redirect('http://localhost:3000/47dzEhPlfq')
         }
         else if (data.length != 0) {
             if (name === data[0].name && password == data[0].pass) {
@@ -66,11 +66,31 @@ function addingUser() {
         password: password,
         tenHienThi: tenHienThi
     }, (data, status) => {
-        url_redirect('http://localhost:3000/login')
+        alert(data)
+
+        if (data == 'da co tai khoan') {
+            document.getElementById('username').value = ''
+            document.getElementById('password').value = ''
+            document.getElementById('tenHienThi').value = ''
+        }
+        else {
+            url_redirect('http://localhost:3000/login')
+
+        }
 
     })
 }
+function rememberPassword() {
+    var password = ($('#password').val())
+    if (isRememberPasswordTrue) {
+        localStorage.setItem = ("UsrPsw", password)
+        document.getElementById("password").value = localStorage.getItem('UsrPsw')
+    }
+}
 
+function isRememberPasswordTrue() {
+    return (document.getElementById("rememberPass").checked == true) ? true : false
+}
 
 function userOptions() {
     document.getElementById("myDropdown").classList.toggle("show");
@@ -112,15 +132,46 @@ function url_redirect(url) {
     return false;
 };
 
-
 function goBack() {
     window.history.back();
 }
+
 function goForward() {
     window.history.forward();
 }
 
 function isAdmin(name, pass) {
-    if (name == 'admin' && pass == '123') return true
-    return false
+    return (name == 'admin' && pass == '123') ? true : false
+}
+
+function deleteSong() {
+    const songName = $("#songList").val()
+    const album = $("#albumList").val()
+    $.post('deleteSong', {
+        songName: songName,
+        album: album
+    }, (data, status) => {
+        alert(data)
+
+    })
+}
+function insertSong() {
+    const songName = $("#songList").val()
+    const album = $("#albumList").val()
+    alert(songName)
+    $.post('insertSong', {
+        songName: songName,
+        album: album
+    },
+        (data, status) => {
+            alert(data)
+        })
+}
+function updateSong() {
+    $.post('updateSong', {
+
+    }, (data, status) => {
+        alert(data)
+
+    })
 }

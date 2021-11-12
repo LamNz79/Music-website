@@ -3,119 +3,88 @@
 
 <head>
     <title>QUẢN TRỊ</title>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-	<link rel="stylesheet" href='css/admin.css'>
-	<link rel="icon" href="/images/favicon-32x32.png">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link rel="stylesheet" href='css/admin.css'>
+    <link rel="icon" href="/images/favicon-32x32.png">
     <link href="https://fonts.googleapis.com/css2?family=Cuprum&display=swap" rel="stylesheet">
 
 </head>
 
 <body>
     <section class="ftco-section">
-		<div class="container">
-			<div class="row justify-content-center">
-				<div class="col-md-6 text-center mb-5">
-					<h2 class="heading-section" style="font-weight: bold;">ADMIN PANEL</h2>
-				</div>
-			</div>
-			<div class="row justify-content-center">
-				<div class="col-md-12 col-lg-10">
-					<div class="wrap d-md-flex">
-						<div class="login-wrap p-4 p-lg-5">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-6 text-center mb-5">
+                    <h2 class="heading-section" style="font-weight: bold;">ADMIN PANEL</h2>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-md-12 col-lg-10">
+                    <div class="wrap d-md-flex">
+                        <div class="login-wrap p-4 p-lg-5">
                             <select name="albumList" id="albumList">
-
+                                <%albumData.forEach(element=> {%>
+                                    <option>
+                                        <%= element.name%>
+                                    </option>
+                                    <%});%>
                             </select>
-                        
                             <select name="songList" id="songList">
-                        
+                                <%albumData.forEach(element=> {%>
+                                    <%element.songList.forEach(song=> {%>
+                                        <option>
+                                            <%= song.name%>
+                                        </option>
+
+                                        <%});%>
+
+                                            <%});%>
+
                             </select>
-							<div class="form-group mb-3">
-								<label class="label" for="songName">Tên bài hát</label>
-								<input id="songName" type="text" class="form-control" placeholder="Tên bài hát" required>
-							</div>
-							<div class="form-group mb-3">
-								<label class="label" for="image">Hình ảnh</label>
-								<input id="image" type="text" class="form-control" placeholder="Hình ảnh"
-									required>
-							</div>
+
+
                             <div class="form-group mb-3">
-								<label class="label" for="path">Dẫn nhạc</label>
-								<input id="path" type="text" class="form-control" placeholder="Link nhạc"
-									required>
-							</div>
+                                <label class="label" for="songName">Tên bài hát</label>
+                                <input id="songName" type="text" class="form-control" placeholder="Tên bài hát"
+                                    required>
+                            </div>
                             <div class="form-group mb-3">
-								<label class="label" for="author">Tác giả/Ca sĩ</label>
-								<input id="author" type="text" class="form-control" placeholder="Tác giả/Ca sĩ"
-									required>
-							</div>
-							<div class="form-group">
-								<button type="button" value="insert" class="btn btn-success submit px-3"
-									onclick="insertFunc()">INSERT</button>
-                                    <button type="button" value="update" class="btn btn-info submit px-3"
-									onclick="updateFunc()">UPDATE</button>
-                                    <button type="button" value="delete" class="btn btn-danger px-3"
-									onclick="deleteFunc()">DELETE</button>
-							</div>
-							<a href="/"><button class="btn-success form-control">BACK TO HOMEPAGE</button></a>
+                                <label class="label" for="image">Hình ảnh</label>
+                                <input id="image" type="text" class="form-control" placeholder="Hình ảnh" required>
+                            </div>
+                            <div class="form-group mb-3">
+                                <label class="label" for="path">Dẫn nhạc</label>
+                                <input id="path" type="text" class="form-control" placeholder="Link nhạc" required>
+                            </div>
+                            <div class="form-group mb-3">
+                                <label class="label" for="author">Tác giả/Ca sĩ</label>
+                                <input id="author" type="text" class="form-control" placeholder="Tác giả/Ca sĩ"
+                                    required>
+                            </div>
+                            <div class="form-group">
+                                <button type="button" value="insert" class="btn btn-success submit px-3"
+                                    onclick="insertSong()">INSERT</button>
+                                <button type="button" value="update" class="btn btn-info submit px-3"
+                                    onclick="updateSong()">UPDATE</button>
+                                <button type="button" value="delete" class="btn btn-danger px-3"
+                                    onclick="deleteSong()">DELETE</button>
+                            </div>
+                            <a href="/"><button class="btn-success form-control">BACK TO HOMEPAGE</button></a>
 
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
 
 
-    <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque non, architecto distinctio facilis praesentium
-        tempore, consequatur molestiae expedita eveniet magni sed, tenetur officiis. Exercitationem, animi nihil?
-        Debitis qui suscipit fuga.</h1>
-    <select name="albumList" id="albumList">
 
-    </select>
-
-    <select name="songList" id="songList">
-
-    </select>
-
-    <input type="text" placeholder="song Name">
-    <input type="text" placeholder="song picture">
-    <input type="text" placeholder="song path">
-    <input type="text" placeholder="song author">
-    <input type="button" value="insert" onclick="insertFunc()">
-    <input type="button" value="delete" onclick="deleteFunc()">
-    <input type="button" value="update" onclick="updateFunc()">
-    
-
-    <script>
-        function deleteFunc() {
-            $.post('deleteSong', {
-
-            }, (data, status) => {
-                alert(data)
-
-            })
-        }
-        function insertFunc() {
-            $.post('insertSong', {
-
-            }, (data, status) => {
-                alert(data)
-
-            })
-        }
-        function updateFunc() {
-            $.post('updateSong', {
-
-            }, (data, status) => {
-                alert(data)
-
-            })
-        }
-    </script>
+    <script src="/js/function.js"></script>
 </body>
 
 </html>
