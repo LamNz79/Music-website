@@ -4,14 +4,17 @@ const { personal } = require("../controllers/controller");
 const router = express.Router();
 controller = require("../controllers/controller")
 dataCollector = require('../dataCollector')
+const bodyParser = require('body-parser')
 
+router.use(bodyParser.urlencoded({ extended: true }))
+router.use(bodyParser.json())
 // The center which get and send data
 router.get('/login', (req, res) => {
     dataCollector.getData(res, controller.login)
 })
 
 router.get('/playlist/:PlayListName', (req, res) => {
-    let playListName = req.params[`PlayListName`]
+    var playListName = req.params[`PlayListName`]
     console.log(playListName)
     dataCollector.getPlaylistByName(res, controller.sub, playListName)
 })
@@ -29,7 +32,7 @@ router.get("/Album/:AlbumName", (req, res) => {
 })
 
 router.get('/search/:songName', (req, res) => {
-    let songName = req.params[`songName`]
+    var songName = req.params[`songName`]
     dataCollector.getSongByAuthorAndAlbum(res, controller.search, songName)
 
 })
@@ -45,11 +48,61 @@ router.get("/register", (req, res) => {
     controller.register(res, null)
 })
 
-router.get('/47dzEhPlfq', (req, res) => {
-    dataCollector.getAlbumAndAlbumSongAndPlaylistAndPlaylistSong(res, controller.admin)
-})
+router.route('/47dzEhPlfq')
+    .get((req, res) => {
+        dataCollector.adminLoadPage(res, controller.admin)
+    })
+
+
 
 // Post method
+router.post('/deleteSongOnClick', async (req, res) => {
+    var thisID = req.body.thisID
+    console.log(thisID)
+    dataCollector.adminDelSongOnClick(res, thisID)
+})
+router.post('/deleteUserOnClick', async (req, res) => {
+    var thisID = req.body.thisID
+    console.log(thisID)
+    dataCollector.adminDelUserOnClick(res, thisID)
+})
+router.post('/deleteAlbumOnClick', async (req, res) => {
+    var thisID = req.body.thisID
+    console.log(thisID)
+    dataCollector.adminDelAlbumOnClick(res, thisID)
+})
+router.post('/deletePlaylistOnClick', async (req, res) => {
+    var thisID = req.body.thisID
+    console.log(thisID)
+    dataCollector.adminDelPlaylistOnClick(res, thisID)
+})
+
+router.post('/updateOnClick', async (req, res) => {
+    var thisID = req.body.thisID
+    console.log(thisID)
+    res.send(thisID)
+})
+
+router.post('/updateSongOnClick', async (req, res) => {
+    var thisID = req.body.thisID
+    console.log(thisID)
+    res.send(thisID)
+})
+
+router.post('/addFavMusic', async (req, res) => {
+    var songId = await req.body.songId
+    var name = await req.body.name
+    console.log(name)
+    dataCollector.addSongToUserList(name, songId, res)
+})
+
+router.post('/delFavMusic', async (req, res) => {
+    var songId = await req.body.songId
+    var name = await req.body.name
+    console.log(name)
+    dataCollector.removeSongToUserList(name, songId, res)
+})
+
 router.post('/getLogin', async (req, res) => {
     var userName = await req.body.name
     var password = await req.body.password
@@ -57,14 +110,12 @@ router.post('/getLogin', async (req, res) => {
     dataCollector.getUserAndPass(res, userName, password, dataCollector.send1ParmFile)
 })
 
-
 router.post('/addingUser', async (req, res) => {
     var userName = await req.body.username
     var password = await req.body.password
     var tenHienThi = await req.body.tenHienThi
     try {
         dataCollector.addingUser(userName, password, tenHienThi, res)
-
     } catch (error) {
         console.log(error)
     }
@@ -72,24 +123,6 @@ router.post('/addingUser', async (req, res) => {
 
 router.post('/getSongInfo', (req, res) => {
     dataCollector.getSong(res, controller.footer)
-})
-
-router.post('/deleteSong', async (req, res) => {
-    var songName = await req.body.songName
-    var albumName = await req.body.album
-    dataCollector.deleteSongFromAlbum(songName, albumName, res)
-
-})
-
-router.post('/insertSong', async (req, res) => {
-    var songName = await req.body.songName
-    var albumName = await req.body.album
-    dataCollector.insertSongIntoAlbum(songName, albumName, res)
-
-})
-
-router.post('/updateSong', (req, res) => {
-    res.send('ok123')
 })
 
 module.exports = router

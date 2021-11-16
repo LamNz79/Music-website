@@ -39,8 +39,12 @@ exports.register = (res, data) => {
     res.render("register")
 }
 
-exports.admin = (res, albumData) => {
+exports.admin = (res, albumData, songData, playlistData, userData) => {
     res.render('admin', {
         albumData: albumData,
+        songData: songData,
+        playlistData: playlistData,
+        userData: userData
     })
 }
+//   a = li[i].getElementsByTagName("a")[0];

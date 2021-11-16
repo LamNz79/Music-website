@@ -1,13 +1,6 @@
 const User = require('./Model/users')
 const mongoose = require('mongoose');
 // Getting the data from Mongo
-module.exports.getSong = (res, callback) => {
-    User.songs.find((err, data) => {
-        if (err) console.error
-        console.log(data)
-        callback(res, data)
-    })
-}
 
 module.exports.getPlaylist = (res, getData) => {
     User.playlists.find({}, (err, data) => {
@@ -17,16 +10,10 @@ module.exports.getPlaylist = (res, getData) => {
 }
 
 module.exports.getPlaylistByName = (res, getData, name) => {
-    // User.playlists.find({ name: name }, (err, data) => {
-    //     if (err) console.error
-    //     getData(res, data)
-    // })
     User.playlists.aggregate(
         [
             {
-                $match: {
-                    name: name
-                }
+                $match: { name: name }
             },
             {
                 $lookup: {
@@ -49,10 +36,6 @@ module.exports.getAlbum = (res, getData) => {
 }
 
 module.exports.getAlbumByName = (res, getData, name) => {
-    // User.albums.find({ name: name }, (err, data) => {
-    //     if (err) console.error
-    //     getData(res, data)
-    // })
 
     User.albums.aggregate(
         [
@@ -75,9 +58,9 @@ module.exports.getAlbumByName = (res, getData, name) => {
 }
 module.exports.getPlaylistAndAlbum = (res, getData) => {
     User.playlists.find({}, function (err, collection) {
-        if (err) {
-            console.log(err);
-        } else {
+        if (err) console.log(err);
+
+        else {
             User.albums.find({}, function (err, collection2) {
                 if (err) {
                     console.log(err)
@@ -96,28 +79,11 @@ module.exports.getSongbyAuthor = (res, getData, name) => {
     })
 }
 
-module.exports.getAlbumAndAlbumSongAndPlaylistAndPlaylistSong = (res, getData) => {
-    User.albums.aggregate(
-        [
-            {
-                $lookup: {
-                    from: 'songs',
-                    localField: 'songList',
-                    foreignField: '_id',
-                    as: 'songList'
-                }
-            }], (err, data) => {
-                if (err) console.error
-                getData(res, data)
-
-            })
-}
 
 module.exports.getSongByAuthorAndAlbum = (res, getData, name) => {
     User.songs.find({ author: { $regex: name } }, function (err, collection) {
-        if (err) {
-            console.log(err);
-        } else {
+        if (err) console.log(err);
+        else {
             User.albums.find({}, function (err, collection2) {
                 if (err) {
                     console.log(err)
@@ -132,9 +98,8 @@ module.exports.getSongByAuthorAndAlbum = (res, getData, name) => {
 
 module.exports.getSongAndAlbum = (res, getData) => {
     User.songs.find({}, function (err, collection) {
-        if (err) {
-            console.log(err);
-        } else {
+        if (err) console.log(err);
+        else {
             User.albums.find({}, function (err, collection2) {
                 if (err) {
                     console.log(err)
@@ -216,33 +181,42 @@ module.exports.getUserSongCollection = (res, name, getData) => {
         else getData(res, data)
     })
 }
+function makeNewUser(username, password, shownName) {
+    let newvalue = new User.users({
+        // _id: getNextSequence(1),
+        name: username,
+        pass: password,
+        showName: shownName,
+        songCollection: [],
+        images: "images/register-user.png",
+    });
+    newvalue.save();
+
+}
 
 module.exports.addingUser = (username, password, shownName, res) => {
     try {
 
-        User.users.find(
-            { name: username }, (err, data) => {
-                if (err) console.err
-                console.log(data)
-                if (data.length == 0) {
-                    let newvalue = new User.users({
-                        // _id: getNextSequence(1),
-                        name: username,
-                        pass: password,
-                        showName: shownName,
-                        songCollection: [],
-                        images: "images/register-user.png",
-                    });
-                    newvalue.save();
-                    this.send1ParmFile(res, 'thanh cong')
-                }
-                else {
-                    this.send1ParmFile(res, 'da co tai khoan')
+        if (username !== "" && password !== "" && shownName !== "") {
+            User.users.find(
+                { name: username }, (err, data) => {
+                    if (err) console.err
+                    console.log(data)
+                    if (data.length == 0) {
+                        makeNewUser(username, password, shownName)
+                        this.send1ParmFile(res, 'thanh cong')
+                    }
+                    else {
+                        this.send1ParmFile(res, 'da co tai khoan')
 
+                    }
                 }
-            }
-        )
+            )
+        }
+        else {
+            this.send1ParmFile(res, 'tai khoan khong hop le')
 
+        }
     }
 
     catch (error) {
@@ -356,4 +330,134 @@ module.exports.addPlaylist = (name, image, res) => {
     } catch (error) {
         console.log(error)
     }
+}
+
+module.exports.addSongToUserList = (name, songId, res) => {
+    User.users.updateOne(
+        { name: name },
+        {
+            $push:
+                { songCollection: mongoose.Types.ObjectId(`${songId}`) }
+        }, (err, data) => {
+            if (err) console.log(err)
+            this.send1ParmFile(res, data)
+        }
+    )
+}
+
+module.exports.removeSongToUserList = (name, songId, res) => {
+    User.users.updateOne(
+        { name: name },
+        {
+            $pull:
+                { songCollection: mongoose.Types.ObjectId(`${songId}`) }
+        }, (err, data) => {
+            if (err) console.log(err)
+            this.send1ParmFile(res, data)
+        }
+    )
+}
+module.exports.adminLoadPage = (res, callBack) => {
+
+    User.albums.find({},
+        (err, data) => {
+            if (err) console.log(err)
+            else {
+                User.songs.find({}, (err, data2) => {
+                    if (err) console.log(err)
+                    else {
+                        User.playlists.find({}, (err, data3) => {
+                            if (err) console.log(err)
+                            else {
+                                User.users.find({}, (err, data4) => {
+                                    if (err) console.log(err)
+                                    callBack(res, data, data2, data3, data4)
+                                })
+                            }
+                        })
+
+                    }
+                })
+
+            }
+        }
+    )
+}
+
+
+module.exports.adminDelSongOnClick = (res, id) => {
+    User.songs.deleteOne({ _id: mongoose.Types.ObjectId(`${id}`) },
+        (err, data) => {
+            if (err) console.log(err)
+            console.log(mongoose.Types.ObjectId(`${id}`))
+            this.send1ParmFile(res, data)
+
+        })
+
+}
+module.exports.adminDelUserOnClick = (res, id) => {
+    User.users.deleteOne({ _id: mongoose.Types.ObjectId(`${id}`) },
+        (err, data) => {
+            if (err) console.log(err)
+            console.log(mongoose.Types.ObjectId(`${id}`))
+            this.send1ParmFile(res, data)
+
+        })
+
+}
+module.exports.adminDelAlbumOnClick = (res, id) => {
+    User.albums.deleteOne({ _id: mongoose.Types.ObjectId(`${id}`) },
+        (err, data) => {
+            if (err) console.log(err)
+            console.log(mongoose.Types.ObjectId(`${id}`))
+            this.send1ParmFile(res, data)
+
+        })
+
+}
+module.exports.adminDelPlaylistOnClick = (res, id) => {
+    User.playlists.deleteOne({ _id: mongoose.Types.ObjectId(`${id}`) },
+        (err, data) => {
+            if (err) console.log(err)
+            console.log(mongoose.Types.ObjectId(`${id}`))
+            this.send1ParmFile(res, data)
+        })
+
+}
+
+module.exports.adminUpdateSongOnClick = (res, id, name, author, link, image) => {
+    User.songs.updateOne(
+        { _id: mongoose.Types.ObjectId(`${id}`) },
+        {
+            $set: {
+                name: name,
+                author: author,
+                link: `/music/${link}`,
+                image: image
+            }
+        }
+    )
+}
+
+function makeNewSong(name, author, link, image) {
+    let newSong = new User.songs({
+        // _id: getNextSequence(1),
+        name: name,
+        author: author,
+        link: `/music/${link}`,
+        image: image
+    });
+    newSong.save();
+    this.send1ParmFile('thanh cong')
+}
+
+module.exports.adminDelOnClick = (res, name, collection) => {
+    User.collection.deleteOne({ _id: mongoose.Types.ObjectId(`${name}`) },
+        (err, data) => {
+            if (err) console.log(err)
+            console.log(mongoose.Types.ObjectId(`${name}`))
+            this.send1ParmFile(res, data)
+
+        })
+
 }

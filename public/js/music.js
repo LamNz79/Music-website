@@ -1,23 +1,23 @@
 //Music
-let playpause_btn = document.querySelector(".playpause-track");
-let next_btn = document.querySelector(".next-track");
-let prev_btn = document.querySelector(".prev-track");
+var playpause_btn = document.querySelector(".playpause-track");
+var next_btn = document.querySelector(".next-track");
+var prev_btn = document.querySelector(".prev-track");
+var fav = false
+var seek_slider = document.querySelector(".seek_slider");
+var curr_time = document.querySelector(".current-time");
+var total_duration = document.querySelector(".total-duration");
+var volume_slider = document.querySelector(".volume_slider");
 
-let seek_slider = document.querySelector(".seek_slider");
-let curr_time = document.querySelector(".current-time");
-let total_duration = document.querySelector(".total-duration");
-let volume_slider = document.querySelector(".volume_slider");
 
-
-let track_index = 0;
-let isPlaying = false;
-let updateTimer;
+var track_index = 0;
+var isPlaying = false;
+var updateTimer;
 
 // Create new audio element
-let curr_track = document.createElement('audio');
+var curr_track = document.createElement('audio');
 
 // Define the tracks that have to be played
-let track_list = [
+var track_list = [
   {
     name: "An Thần",
     artist: "(ft.Thắng), LOW G, Rap Nhà Làm",
@@ -142,13 +142,13 @@ function getData(data) {
 
   return data
 }
+
 function playSelectedSong(song) {
   songLink = song.link
   return songLink
 }
+
 function loadTrackTest(songLink) {
-
-
   clearInterval(updateTimer);
   resetValues();
   curr_track.src = songLink;
@@ -161,13 +161,34 @@ function loadTrackTest(songLink) {
   playTrack();
 }
 
-function addFavMusic(){
-  document.querySelector("#fav-no").style.cssText = `display:none`;
-  document.querySelector("#fav-yes").style.cssText = `display:block`;
+function addFavMusic() {
+  fav = true
+  var objUser = JSON.parse(localStorage.getItem("user"))
+  $.post('../addFavMusic',
+    {
+      songId: `${getSelectedSongId()}`,
+      name: `${objUser[0].name}`
+    },
+    (data, status) => {
+      document.querySelector("#fav-no").style.cssText = `display:none`;
+      document.querySelector("#fav-yes").style.cssText = `display:block`;
+      alert(data)
+    })
 }
-function delFavMusic(){
-  document.querySelector("#fav-no").style.cssText = `display:block`;
-  document.querySelector("#fav-yes").style.cssText = `display:none; `;
+
+function delFavMusic() {
+  fav = false
+  var objUser = JSON.parse(localStorage.getItem("user"))
+  $.post('../delFavMusic',
+    {
+      songId: `${getSelectedSongId()}`,
+      name: `${objUser[0].name}`
+    },
+    (data, status) => {
+      document.querySelector("#fav-no").style.cssText = `display:block`;
+      document.querySelector("#fav-yes").style.cssText = `display:none; `;
+      alert(data)
+    })
 }
 
 function getSelectedSongImage() {
@@ -175,15 +196,18 @@ function getSelectedSongImage() {
   return curr_song.image
 }
 
+function getSelectedSongId() {
+  return curr_song._id
+}
+
 function getSelectedSongName() {
   return curr_song.name
 }
 
-
 function getSelectedSongAuthor() {
-
   return curr_song.author
 }
+
 function playTrack() {
   curr_track.play();
   isPlaying = true;

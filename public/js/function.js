@@ -2,50 +2,43 @@
 // Make function here
 loggedIn = false
 
+
 function Find() {
-    let searchBarInput = $('#searchBarInput').val()
-    // window.open(`/search/${capitalize(searchBarInput)}`)
+    var searchBarInput = $('#searchBarInput').val()
     url_redirect(`http://localhost:3000/search/${capitalize(searchBarInput)}`)
 }
 
-function capitalize(s) {
-    return s && s[0].toUpperCase() + s.slice(1);
+function capitalize(word) {
+    return word && word[0].toUpperCase() + word.slice(1);
 }
 
 function getLogin() {
     var name = String($('#username').val())
     var password = String($("#password").val())
-
     $.post('getLogin', {
         name: name,
         password: password
 
     }, (data, status) => {
-        if (isAdmin(name, password)) {
-            url_redirect('http://localhost:3000/47dzEhPlfq')
-        }
+
+        if (isAdmin(name, password)) url_redirect('http://localhost:3000/47dzEhPlfq')
         else if (data.length != 0) {
-            if (name === data[0].name && password == data[0].pass) {
-
-                localStorage.setItem("user", JSON.stringify(data))
-                var objUser = JSON.parse(localStorage.getItem("user"))
-                $("#icon-settings").css(style = `text-align: center; background-image: url(${objUser[0]}); background-size: cover;`
-                )
-                $("#loginuser").css(style = `display: none;`)
-                $("#profile").css(style = `display: block;`)
-                $("#logOut").css(style = `display: block;`)
-                url_redirect('http://localhost:3000/')
-                // window.location.href = 'http://localhost:3000/', true
-            }
-            else {
-                alert('Sai tài khoản hoặc mật khẩu! Vui lòng thử lại')
-
-            }
+            if (name === data[0].name && password == data[0].pass) userLogin(data)
+            else alert('Sai tài khoản hoặc mật khẩu! Vui lòng thử lại')
         }
-        else {
-            alert('Sai tài khoản hoặc mật khẩu! Vui lòng thử lại')
-        }
+        else alert('Sai tài khoản hoặc mật khẩu! Vui lòng thử lại')
     })
+}
+
+function userLogin(data) {
+    localStorage.setItem("user", JSON.stringify(data))
+    var objUser = JSON.parse(localStorage.getItem("user"))
+    $("#icon-settings").css(style = `text-align: center; background-image: url(${objUser[0]}); background-size: cover;`
+    )
+    $("#loginuser").css(style = `display: none;`)
+    $("#profile").css(style = `display: block;`)
+    $("#logOut").css(style = `display: block;`)
+    url_redirect('http://localhost:3000/')
 }
 
 function logOutUser() {
@@ -67,47 +60,40 @@ function addingUser() {
         tenHienThi: tenHienThi
     }, (data, status) => {
         alert(data)
-
-        if (data == 'da co tai khoan') {
-            document.getElementById('username').value = ''
-            document.getElementById('password').value = ''
-            document.getElementById('tenHienThi').value = ''
-        }
-        else {
-            url_redirect('http://localhost:3000/login')
-
-        }
+        if (data == 'da co tai khoan') resetRegisInputBox()
+        if (data == 'tai khoan khong hop le') resetRegisInputBox()
+        else url_redirect('http://localhost:3000/login')
 
     })
 }
-function rememberPassword() {
-    var password = ($('#password').val())
-    if (isRememberPasswordTrue) {
-        localStorage.setItem = ("UsrPsw", password)
-        document.getElementById("password").value = localStorage.getItem('UsrPsw')
-    }
+
+function resetRegisInputBox() {
+    document.getElementById('username').value = ''
+    document.getElementById('password').value = ''
+    document.getElementById('tenHienThi').value = ''
+
 }
 
-function isRememberPasswordTrue() {
-    return (document.getElementById("rememberPass").checked == true) ? true : false
-}
+// being tested
+
+
+
 
 function userOptions() {
     document.getElementById("myDropdown").classList.toggle("show");
 }
 
 onclick = function (event) {
-    if (!event.target.matches('.user-info')) {
-        var dropdowns = document.getElementsByClassName("dropdown-content");
-        var i;
-        for (i = 0; i < dropdowns.length; i++) {
-            var openDropdown = dropdowns[i];
-            if (openDropdown.classList.contains('show')) {
-                openDropdown.classList.remove('show');
-            }
-        }
+    if (event.target.matches('.user-info')) return
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+
+    for (var i = 0; i < dropdowns.length; i++) {
+        var openDropdown = dropdowns[i];
+        if (!openDropdown.classList.contains('show')) return
+        openDropdown.classList.remove('show');
     }
 }
+
 
 
 function url_redirect(url) {
@@ -119,11 +105,13 @@ function url_redirect(url) {
     if (window.location = url) {
         clearTimeout(X);
         return true;
-    } else {
+    }
+    else {
         if (window.location.href = url) {
             clearTimeout(X);
             return true;
-        } else {
+        }
+        else {
             clearTimeout(X);
             window.location.replace(url);
             return true;
@@ -144,34 +132,88 @@ function isAdmin(name, pass) {
     return (name == 'admin' && pass == '123') ? true : false
 }
 
-function deleteSong() {
-    const songName = $("#songList").val()
-    const album = $("#albumList").val()
-    $.post('deleteSong', {
-        songName: songName,
-        album: album
+function findUsingSearchBar(inputName, ulName) {
+    // Declare variables
+    var input, filter, ul, li, a, i, txtValue;
+    input = document.getElementById(`${inputName}`);
+    filter = input.value.toUpperCase();
+    ul = document.getElementById(`${ulName}`);
+    li = ul.getElementsByTagName('li');
+    // Loop through all list items, and hide those who don't match the search query
+    for (i = 0; i < li.length; i++) {
+        txtValue = li[i].textContent || li[i].innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            li[i].style.display = "";
+        } else {
+            li[i].style.display = "none";
+        }
+    }
+}
+
+// function deleteOnClick(id) {
+//     var thisID = id.replace(/ /g, "")
+//     $.post('deleteSongOnClick', {
+//         thisID: thisID
+//     }, (data, status) => {
+//         alert(data)
+//     })
+
+// }
+
+
+function deleteSongOnClick(id) {
+    var thisID = id.replace(/ /g, "")
+    $.post('deleteSongOnClick', {
+        thisID: thisID
+    }, (data, status) => {
+        alert(JSON.stringify(data))
+    })
+
+}
+function deleteUserOnClick(id) {
+    var thisID = id.replace(/ /g, "")
+    $.post('deleteUserOnClick', {
+        thisID: thisID
+    }, (data, status) => {
+        alert(JSON.stringify(data))
+    })
+
+}
+function deleteAlbumOnClick(id) {
+    var thisID = id.replace(/ /g, "")
+    $.post('deleteAlbumOnClick', {
+        thisID: thisID
+    }, (data, status) => {
+        alert(JSON.stringify(data))
+    })
+
+}
+function deletePlaylistOnClick(id) {
+    var thisID = id.replace(/ /g, "")
+    $.post('deletePlaylistOnClick', {
+        thisID: thisID
+    }, (data, status) => {
+        alert(JSON.stringify(data))
+    })
+
+}
+
+function updateOnClick(id) {
+    var thisID = id.replace(/ /g, "")
+    $.post('updateOnClick', {
+        thisID: thisID
     }, (data, status) => {
         alert(data)
-
     })
-}
-function insertSong() {
-    const songName = $("#songList").val()
-    const album = $("#albumList").val()
-    alert(songName)
-    $.post('insertSong', {
-        songName: songName,
-        album: album
-    },
-        (data, status) => {
-            alert(data)
-        })
-}
-function updateSong() {
-    $.post('updateSong', {
 
+}
+
+function updateSongOnClick(id) {
+    var thisID = id.replace(/ /g, "")
+    $.post('updateSongOnClick', {
+        thisID: thisID
     }, (data, status) => {
         alert(data)
-
     })
+
 }

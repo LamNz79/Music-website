@@ -33,10 +33,16 @@ app.use('/login', require(Router))
 app.use('/search', require(Router))
 app.use('/personal', require(Router))
 app.use('/register', require(Router))
-app.use('/admin', require(Router))
+app.use('/47dzEhPlfq', require(Router))
 //function
 
 app.use('/getLogin', require(Router))
+app.use('/addFavMusic', require(Router))
+app.use('/addingUser', require(Router))
+app.use('/getSongInfo', require(Router))
+app.use('/deleteSong', require(Router))
+app.use('/insertSong', require(Router))
+app.use('/updateSong', require(Router))
 
 
 

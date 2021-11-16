@@ -69,12 +69,7 @@ use('ZingMp3');
 //   }}
 //   )
 
-// db.albums.updateOne(
-//     {name:"KPOP"},
-//     {$push: 
-//         {songList:ObjectId('615e6a072a24e2f1ba2a4457')}
-//     }
-// )
+
 // db.albums.updateOne(
 //     {name:"KPOP"},
 //     {$pull: 
@@ -85,13 +80,13 @@ use('ZingMp3');
 
 // db.songs.find({name:"Honey"})
 
-// db.albums.aggregate(
+// db.users.aggregate(
 //     [
 //         {/**
 //          * query: The query in MQL.
 //          */
 //             $match: {
-//             name: 'US-UK'
+//             name: "lam"
 //             }
 //         },
 //         /**
@@ -103,13 +98,32 @@ use('ZingMp3');
 //          * let: Optional variables to use in the pipeline field stages.
 //          */
 //         {$lookup: {
-//           from: 'songs',
-//           localField: 'songList',
-//           foreignField: '_id',
-//           as: 'songList'
+//             from: 'songs',
+//             localField: 'songList',
+//             foreignField: '_id',
+//             as: 'songList'
 //         }}
-//     ]
 // )
 
+// db.users.remove( {$or:[{showName : '123'},{name : '123'}]})
 
-db.songs.find()
+// db.users.updateOne(
+//     {name: "lam"},
+//     {$push: 
+//         {songCollection:ObjectId('615e6a072a24e2f1ba2a4457')}
+//     }
+// )
+
+// db.songs.find({name:'lam'})
+
+// db.songs.updateOne(
+//     { name: "Girl Like You"},
+//     {
+//         $set: {
+//             name: 'lam',
+//             author: 'lam',
+//             link: 'lam',
+//             image: 'lam'
+//         }
+//     }
+// )
