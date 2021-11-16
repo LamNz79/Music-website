@@ -150,47 +150,9 @@ function findUsingSearchBar(inputName, ulName) {
     }
 }
 
-// function deleteOnClick(id) {
-//     var thisID = id.replace(/ /g, "")
-//     $.post('deleteSongOnClick', {
-//         thisID: thisID
-//     }, (data, status) => {
-//         alert(data)
-//     })
-
-// }
-
-
-function deleteSongOnClick(id) {
+function deleteOnClick(id, path) {
     var thisID = id.replace(/ /g, "")
-    $.post('deleteSongOnClick', {
-        thisID: thisID
-    }, (data, status) => {
-        alert(JSON.stringify(data))
-    })
-
-}
-function deleteUserOnClick(id) {
-    var thisID = id.replace(/ /g, "")
-    $.post('deleteUserOnClick', {
-        thisID: thisID
-    }, (data, status) => {
-        alert(JSON.stringify(data))
-    })
-
-}
-function deleteAlbumOnClick(id) {
-    var thisID = id.replace(/ /g, "")
-    $.post('deleteAlbumOnClick', {
-        thisID: thisID
-    }, (data, status) => {
-        alert(JSON.stringify(data))
-    })
-
-}
-function deletePlaylistOnClick(id) {
-    var thisID = id.replace(/ /g, "")
-    $.post('deletePlaylistOnClick', {
+    $.post(`${path}`, {
         thisID: thisID
     }, (data, status) => {
         alert(JSON.stringify(data))
@@ -198,9 +160,9 @@ function deletePlaylistOnClick(id) {
 
 }
 
-function updateOnClick(id) {
+function updateOnClick(id, path) {
     var thisID = id.replace(/ /g, "")
-    $.post('updateOnClick', {
+    $.post(`${path}`, {
         thisID: thisID
     }, (data, status) => {
         alert(data)

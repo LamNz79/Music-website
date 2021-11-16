@@ -451,13 +451,14 @@ function makeNewSong(name, author, link, image) {
     this.send1ParmFile('thanh cong')
 }
 
-module.exports.adminDelOnClick = (res, name, collection) => {
-    User.collection.deleteOne({ _id: mongoose.Types.ObjectId(`${name}`) },
-        (err, data) => {
-            if (err) console.log(err)
-            console.log(mongoose.Types.ObjectId(`${name}`))
-            this.send1ParmFile(res, data)
+// module.exports.adminDelOnClick = (res, name, collection) => {
 
-        })
+//     User.collection.deleteOne({ _id: mongoose.Types.ObjectId(`${name}`) },
+//         (err, data) => {
+//             if (err) console.log(err)
+//             console.log(mongoose.Types.ObjectId(`${name}`))
+//             this.send1ParmFile(res, data)
 
-}
+//         })
+
+// }
