@@ -53,6 +53,31 @@ router.route('/47dzEhPlfq')
         dataCollector.adminLoadPage(res, controller.admin)
     })
 
+router.route('/47dzEhPlfq/dashboard')
+    .get((req, res) => {
+        res.send('hello')
+    })
+
+router.route('/47dzEhPlfq/account')
+    .get((req, res) => {
+        res.send('hello')
+    })
+
+router.route('/47dzEhPlfq/s_controls')
+    .get((req, res) => {
+        res.send('hello')
+    })
+
+router.route('/47dzEhPlfq/a_controls')
+    .get((req, res) => {
+        res.send('hello')
+    })
+
+router.route('/47dzEhPlfq/p_controls    ')
+    .get((req, res) => {
+        res.send('hello')
+    })
+
 
 
 // Post method

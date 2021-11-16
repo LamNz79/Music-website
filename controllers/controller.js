@@ -48,3 +48,47 @@ exports.admin = (res, albumData, songData, playlistData, userData) => {
     })
 }
 //   a = li[i].getElementsByTagName("a")[0];
+exports.dashboard = (res, albumData, songData, playlistData, userData) => {
+    res.render('dashboard', {
+        albumData: albumData,
+        songData: songData,
+        playlistData: playlistData,
+        userData: userData
+    })
+}
+//   a = li[i].getElementsByTagName("a")[0];
+exports.account = (res, albumData, songData, playlistData, userData) => {
+    res.render('account', {
+        albumData: albumData,
+        songData: songData,
+        playlistData: playlistData,
+        userData: userData
+    })
+}
+//   a = li[i].getElementsByTagName("a")[0];
+exports.p_controls = (res, albumData, songData, playlistData, userData) => {
+    res.render('p_controls', {
+        albumData: albumData,
+        songData: songData,
+        playlistData: playlistData,
+        userData: userData
+    })
+}
+//   a = li[i].getElementsByTagName("a")[0];
+exports.a_controls = (res, albumData, songData, playlistData, userData) => {
+    res.render('a_controls', {
+        albumData: albumData,
+        songData: songData,
+        playlistData: playlistData,
+        userData: userData
+    })
+}
+exports.s_controls = (res, albumData, songData, playlistData, userData) => {
+    res.render('s_controls', {
+        albumData: albumData,
+        songData: songData,
+        playlistData: playlistData,
+        userData: userData
+    })
+}
+//   a = li[i].getElementsByTagName("a")[0];
