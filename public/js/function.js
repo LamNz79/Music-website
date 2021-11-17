@@ -21,7 +21,7 @@ function getLogin() {
 
     }, (data, status) => {
 
-        if (isAdmin(name, password)) url_redirect('http://localhost:3000/47dzEhPlfq')
+        if (isAdmin(name, password)) url_redirect('http://localhost:3000/47dzEhPlfq/dashboard')
         else if (data.length != 0) {
             if (name === data[0].name && password == data[0].pass) userLogin(data)
             else alert('Sai tài khoản hoặc mật khẩu! Vui lòng thử lại')
@@ -133,19 +133,35 @@ function isAdmin(name, pass) {
 }
 
 function findUsingSearchBar(inputName, ulName) {
-    // Declare variables
-    var input, filter, ul, li, a, i, txtValue;
+    // // Declare variables
+    // var input, filter, ul, li, a, i, txtValue;
+    // input = document.getElementById(`${inputName}`);
+    // filter = input.value.toUpperCase();
+    // ul = document.getElementById(`${ulName}`);
+    // li = ul.getElementsByTagName('td');
+    // // Loop through all list items, and hide those who don't match the search query
+    // for (i = 0; i < li.length; i++) {
+    //     txtValue = li[i].textContent || li[i].innerText;
+    //     if (txtValue.toUpperCase().indexOf(filter) > -1) {
+    //         li[i].style.display = "";
+    //     } else {
+    //         li[i].style.display = "none";
+    //     }
+    // }
+    var input, filter, table, tr, td, i, txtValue;
     input = document.getElementById(`${inputName}`);
     filter = input.value.toUpperCase();
-    ul = document.getElementById(`${ulName}`);
-    li = ul.getElementsByTagName('li');
-    // Loop through all list items, and hide those who don't match the search query
-    for (i = 0; i < li.length; i++) {
-        txtValue = li[i].textContent || li[i].innerText;
-        if (txtValue.toUpperCase().indexOf(filter) > -1) {
-            li[i].style.display = "";
-        } else {
-            li[i].style.display = "none";
+    table = document.getElementById(`${ulName}`);
+    tr = table.getElementsByTagName("tr");
+    for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByTagName("td")[1];
+        if (td) {
+            txtValue = td.textContent || td.innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                tr[i].style.display = "";
+            } else {
+                tr[i].style.display = "none";
+            }
         }
     }
 }
@@ -156,6 +172,7 @@ function deleteOnClick(id, path) {
         thisID: thisID
     }, (data, status) => {
         alert(JSON.stringify(data))
+        window.location.reload()
     })
 
 }
