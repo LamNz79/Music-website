@@ -55,27 +55,27 @@ router.route('/47dzEhPlfq')
 
 router.route('/47dzEhPlfq/dashboard')
     .get((req, res) => {
-        res.render('dashboard.ejs')
+        dataCollector.adminLoadPage(res, controller.dashboard)
     })
 
 router.route('/47dzEhPlfq/account')
     .get((req, res) => {
-        res.render('account.ejs')
+        dataCollector.adminLoadPage(res, controller.account)
     })
 
 router.route('/47dzEhPlfq/s_controls')
     .get((req, res) => {
-        res.render('s_controls.ejs')
+        dataCollector.adminLoadPage(res, controller.s_controls)
     })
 
 router.route('/47dzEhPlfq/a_controls')
     .get((req, res) => {
-        res.render('a_controls.ejs')
+        dataCollector.adminLoadPage(res, controller.a_controls)
     })
 
 router.route('/47dzEhPlfq/p_controls')
     .get((req, res) => {
-        res.render('p_controls.ejs')
+        dataCollector.adminLoadPage(res, controller.p_controls)
     })
 
 

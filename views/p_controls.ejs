@@ -9,9 +9,11 @@
     <meta name="author" content="">
 
     <title>Admin - Dashboard</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
-    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
     <link href="/css/admin.css" rel="stylesheet">
 
 </head>
@@ -50,8 +52,8 @@
 
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="/47dzEhPlfq/account"
-                    aria-expanded="true" aria-controls="collapseTwo">
+                <a class="nav-link collapsed" href="/47dzEhPlfq/account" aria-expanded="true"
+                    aria-controls="collapseTwo">
                     <i class="fas fa-user"></i>
                     <span>Account</span>
                 </a>
@@ -59,18 +61,18 @@
 
             <!-- Nav Item - Utilities Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="/47dzEhPlfq/a_controls"
-                    aria-expanded="true" aria-controls="collapseUtilities">
+                <a class="nav-link collapsed" href="/47dzEhPlfq/a_controls" aria-expanded="true"
+                    aria-controls="collapseUtilities">
                     <i class="fas fa-fw fa-wrench"></i>
                     <span>Albums</span>
                 </a>
-                <a class="nav-link collapsed" href="/47dzEhPlfq/p_controls"
-                    aria-expanded="true" aria-controls="collapseUtilities">
+                <a class="nav-link collapsed" href="/47dzEhPlfq/p_controls" aria-expanded="true"
+                    aria-controls="collapseUtilities">
                     <i class="fas fa-fw fa-wrench"></i>
                     <span>Playlists</span>
                 </a>
-                <a class="nav-link collapsed" href="/47dzEhPlfq/s_controls"
-                    aria-expanded="true" aria-controls="collapseUtilities">
+                <a class="nav-link collapsed" href="/47dzEhPlfq/s_controls" aria-expanded="true"
+                    aria-controls="collapseUtilities">
                     <i class="fas fa-fw fa-wrench"></i>
                     <span>Songs</span>
                 </a>
@@ -113,8 +115,7 @@
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">Đăng Quang</span>
-                                <img class="img-profile rounded-circle"
-                                    src="/images/quangne.png">
+                                <img class="img-profile rounded-circle" src="/images/quangne.png">
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -156,6 +157,10 @@
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
+                                <input type="text" name="" id="playlistSearchBar" placeholder="Find Playlist"
+                                    title="Playlist search bar"
+                                    onkeyup="findUsingSearchBar('playlistSearchBar','PlaylistList')">
+
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
@@ -164,28 +169,33 @@
                                             <th style="width: 10%">Control</th>
                                         </tr>
                                     </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td><img src="/images/aknd.jpg" style="border-radius: 10px; width: 200px; height: 200px;"></td>
-                                            <td>PlayListNhacChill</td>
-                                            <td>
-                                                <button class="btn btn-primary fa-2x"> Edit </button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td><img src="/images/chuyenrang.jpg" style="border-radius: 10px; width: 200px; height: 200px;"></td>
-                                            <td>PlayListNhacUSUK</td>
-                                            <td>
-                                                <button class="btn btn-primary fa-2x"> Edit </button>
-                                            </td>
-                                        </tr><tr>
-                                            <td><img src="/images/emodau.jpg" style="border-radius: 10px; width: 200px; height: 200px;"></td>
-                                            <td>PlayListCuaToi</td>
-                                            <td>
-                                                <button class="btn btn-primary fa-2x"> Edit </button>
-                                            </td>
-                                        </tr>
+                                    <tbody id="PlaylistList">
+
+                                        <% playlistData.forEach(element=> {%>
+                                            <tr>
+                                                <td><img src="/<%=element.image%>"
+                                                        style="border-radius: 10px; width: 200px; height: 200px;"></td>
+                                                <td>
+                                                    <%=element.name%>
+                                                </td>
+                                                <td>
+                                                    <%=element._id%>
+                                                </td>
+
+
+                                                <td>
+                                                    <button class="btn btn-primary fa-2x"
+                                                        onclick="updateOnClick(`<%=element._id%>`)">Edit
+                                                        Permissions</button>
+                                                    <button class="btn btn-danger fa-2x"
+                                                        onclick="deleteOnClick(`<%=element._id%>`,'deletePlaylistOnClick')">Delete
+                                                        Account</button>
+                                                </td>
+                                                <%});%>
+                                            </tr>
+
                                     </tbody>
+
                                 </table>
                             </div>
                         </div>
@@ -238,15 +248,8 @@
         </div>
     </div>
 
-    <!-- Bootstrap core JavaScript-->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/function.js"></script>
 
-    <!-- Core plugin JavaScript-->
-    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-
-    <!-- Custom scripts for all pages-->
-    <script src="js/sb-admin-2.min.js"></script>
 
 </body>
 

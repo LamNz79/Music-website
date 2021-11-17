@@ -9,9 +9,11 @@
     <meta name="author" content="">
 
     <title>Admin - Albums</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
-    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
     <link href="/css/admin.css" rel="stylesheet">
 
 </head>
@@ -23,12 +25,12 @@
         <!-- Sidebar -->
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
-           <!-- Sidebar - Brand -->
-           <a class="sidebar-brand d-flex align-items-center justify-content-center" href="#">
-            <div class="sidebar-brand-icon">
-                <img src="/images/logo2.png" style="width: 40px;">
-            </div>
-        </a>
+            <!-- Sidebar - Brand -->
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="#">
+                <div class="sidebar-brand-icon">
+                    <img src="/images/logo2.png" style="width: 40px;">
+                </div>
+            </a>
 
             <!-- Divider -->
             <hr class="sidebar-divider my-0">
@@ -50,8 +52,8 @@
 
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="/47dzEhPlfq/account"
-                    aria-expanded="true" aria-controls="collapseTwo">
+                <a class="nav-link collapsed" href="/47dzEhPlfq/account" aria-expanded="true"
+                    aria-controls="collapseTwo">
                     <i class="fas fa-user"></i>
                     <span>Account</span>
                 </a>
@@ -59,18 +61,18 @@
 
             <!-- Nav Item - Utilities Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="/47dzEhPlfq/a_controls"
-                    aria-expanded="true" aria-controls="collapseUtilities">
+                <a class="nav-link collapsed" href="/47dzEhPlfq/a_controls" aria-expanded="true"
+                    aria-controls="collapseUtilities">
                     <i class="fas fa-fw fa-wrench"></i>
                     <span>Albums</span>
                 </a>
-                <a class="nav-link collapsed" href="/47dzEhPlfq/p_controls"
-                    aria-expanded="true" aria-controls="collapseUtilities">
+                <a class="nav-link collapsed" href="/47dzEhPlfq/p_controls" aria-expanded="true"
+                    aria-controls="collapseUtilities">
                     <i class="fas fa-fw fa-wrench"></i>
                     <span>Playlists</span>
                 </a>
-                <a class="nav-link collapsed" href="/47dzEhPlfq/s_controls"
-                    aria-expanded="true" aria-controls="collapseUtilities">
+                <a class="nav-link collapsed" href="/47dzEhPlfq/s_controls" aria-expanded="true"
+                    aria-controls="collapseUtilities">
                     <i class="fas fa-fw fa-wrench"></i>
                     <span>Songs</span>
                 </a>
@@ -113,8 +115,7 @@
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">Đăng Quang</span>
-                                <img class="img-profile rounded-circle"
-                                    src="/images/quangne.png">
+                                <img class="img-profile rounded-circle" src="/images/quangne.png">
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -155,59 +156,46 @@
                             <h6 class="m-0 font-weight-bold text-primary">Album</h6>
                         </div>
                         <div class="card-body">
+                            <input type="text" name="" id="albumSearchBar" placeholder="Find Playlist"
+                                title="Playlist search bar" onkeyup="findUsingSearchBar('albumSearchBar','AlbumList')">
+
                             <div class="table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
                                             <th style="width: 200px">Album Image</th>
                                             <th>Name</th>
-                                            <th style="width: 20%">Song List</th>
+                                            <th>Path</th>
+                                            <th style="width: 20%">Permissions</th>
                                         </tr>
                                     </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td><img src="/images/items1.png" style="border-radius: 10px; width: 200px; height: 200px;"></td>
-                                            <td>KPOP</td>
-                                            <td>
-                                                <button class="btn btn-primary fa-2x">View List</button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td><img src="/images/items2.png" style="border-radius: 10px; width: 200px; height: 200px;"></td>
-                                            <td>US-UK</td>
-                                            <td>
-                                                <button class="btn btn-primary fa-2x">View List</button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td><img src="/images/items3.png" alt="KPOP" style="border-radius: 10px; width: 200px; height: 200px;"></td>
-                                            <td>RAPVIET</td>
-                                            <td>
-                                                <button class="btn btn-primary fa-2x">View List</button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td><img src="/images/items4.png" alt="KPOP" style="border-radius: 10px; width: 200px; height: 200px;"></td>
-                                            <td>VPOP</td>
-                                            <td>
-                                                <button class="btn btn-primary fa-2x">View List</button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td><img src="/images/items5.png" alt="KPOP" style="border-radius: 10px; width: 200px; height: 200px;"></td>
-                                            <td>TRUTINH</td>
-                                            <td>
-                                                <button class="btn btn-primary fa-2x">View List</button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td><img src="/images/items6.png" alt="KPOP" style="border-radius: 10px; width: 200px; height: 200px;"></td>
-                                            <td>EDM</td>
-                                            <td>
-                                                <button class="btn btn-primary fa-2x">View List</button>
-                                            </td>
-                                        </tr>
+                                    <tbody id="AlbumList">
+
+                                        <% albumData.forEach(element=> {%>
+                                            <tr>
+                                                <td><img src="/<%=element.image%>"
+                                                        style="border-radius: 10px; width: 200px; height: 200px;"></td>
+                                                <td>
+                                                    <%=element.name%>
+                                                </td>
+                                                <td>
+                                                    <%=element._id%>
+                                                </td>
+
+
+                                                <td>
+                                                    <button class="btn btn-primary fa-2x"
+                                                        onclick="updateOnClick(`<%=element._id%>`)">Edit
+                                                        Permissions</button>
+                                                    <button class="btn btn-danger fa-2x"
+                                                        onclick="deleteOnClick(`<%=element._id%>`,'deleteAlbumOnClick')">Delete
+                                                        Account</button>
+                                                </td>
+                                                <%});%>
+                                            </tr>
+
                                     </tbody>
+
                                 </table>
                             </div>
                         </div>
@@ -260,15 +248,8 @@
         </div>
     </div>
 
-    <!-- Bootstrap core JavaScript-->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-    <!-- Core plugin JavaScript-->
-    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-
-    <!-- Custom scripts for all pages-->
-    <script src="js/sb-admin-2.min.js"></script>
+    <script src="/js/function.js"></script>
 
 </body>
 
