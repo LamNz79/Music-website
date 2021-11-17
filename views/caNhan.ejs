@@ -11,9 +11,25 @@
         <%- include('./partials/header'); %>
             <div class="app-top-right_top-bt">
                 <div class="puser-info">
+                    <input type="file" name="image" id="image" accept="image/*" style="display: none;"/>
+                    <div id="preview">
+                    <div class="user-avt" id="avatar"><img id="user_ava"></div>
+                    <button
+                        id="upload-button"
+                        aria-labelledby="image"
+                        aria-describedby="image"
+                        title="Upload image"
+                    >
+                    <i class="fas fa-arrow-up"></i>
+                    </button>
+                    </div>
                     <div class="user-info-list">
-                        <div class="user-avt"><img id="user_ava" src="/images/quangne.png" alt=""></div>
-                        <h2 id="shownName">Đăng Quang <i class="fas fa-pen"></i></h2>
+                        <!-- <div class="user-avt"><img id="user_ava" src="/images/quangne.png" alt=""></div> -->
+                        <h2 id="shownName">Đăng Quang</i></h2>
+                    </div>
+                    <div class="changeInfo">
+                        <button class="changeName">Đổi tên tài khoản</button>
+                        <button class="changePassword">Đổi mật khẩu</button>
                     </div>
                 </div>
             </div>
@@ -109,6 +125,13 @@
                 </div>
             </div>
     </div>
+    <div class="changeDisplay">
+        <div class="changeNameDisplay">
+            <h2>Đổi tên tài khoản</h2>
+            <input type="text" alt="Tên người dùng">
+            <button class="submitChangeName">XÁC NHẬN</button>
+        </div>
+    </div>
     <footer>
         <%- include('./partials/footer'); %>
     </footer>
@@ -122,6 +145,7 @@
         })
     </script>
     <script src="/js/music.js"></script>
+    <script src="/js/avataruser.js"></script>
 </body>
 
 </html>

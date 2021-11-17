@@ -55,27 +55,27 @@ router.route('/47dzEhPlfq')
 
 router.route('/47dzEhPlfq/dashboard')
     .get((req, res) => {
-        res.send('hello')
+        res.render('dashboard.ejs')
     })
 
 router.route('/47dzEhPlfq/account')
     .get((req, res) => {
-        res.send('hello')
+        res.render('account.ejs')
     })
 
 router.route('/47dzEhPlfq/s_controls')
     .get((req, res) => {
-        res.send('hello')
+        res.render('s_controls.ejs')
     })
 
 router.route('/47dzEhPlfq/a_controls')
     .get((req, res) => {
-        res.send('hello')
+        res.render('a_controls.ejs')
     })
 
-router.route('/47dzEhPlfq/p_controls    ')
+router.route('/47dzEhPlfq/p_controls')
     .get((req, res) => {
-        res.send('hello')
+        res.render('p_controls.ejs')
     })
 
 
