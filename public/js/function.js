@@ -196,3 +196,12 @@ function updateSongOnClick(id) {
     })
 
 }
+
+function table_edit(id){
+    document.querySelector(".table-edit").style.cssText = `display: block`;
+    document.querySelector("#black-bg").style.cssText = `display: block`;
+}
+function cancel_edit(id){
+    document.querySelector(".table-edit").style.cssText = `display: none`;
+    document.querySelector("#black-bg").style.cssText = `display: none`;
+}
