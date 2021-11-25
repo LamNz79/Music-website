@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <% data.forEach(element=>{ %>
+        <label for="" id="songId">
+            <%=element._id%>
+        </label>
+        <input type="text" name="" id="songName" value="<%=element.name%>">NAME
+        <input type="text" name="" id="author" value="<%=element.author%>">author
+
+        <input type="text" name="" id="songImage" value="<%=element.image%>">PATH image
+        <input type="text" name="" id="songLink" value="<%=element.link%>">PATH music
+
+
+        <%})%>
+            <input type="button" value="submit" onclick="adminUpdateSong()">
+            <script>
+                function adminUpdateSong() {
+                    var songId = ($('#songId').text())
+                    var songName = ($('#songName').val())
+                    var songAuthor = String($("#author").val())
+                    var songLink = String($("#songLink").val())
+                    var songImage = String($("#songImage").val())
+                    $.post('../updateSongUsingId', {
+                        songId: songId,
+                        songName: songName,
+                        songAuthor: songAuthor,
+                        songLink: songLink,
+                        songImage: songImage
+                    }, (data, status) => {
+                        alert(JSON.stringify(data))
+                        window.close()
+
+                    })
+                }
+            </script>
+</body>
+
+</html>

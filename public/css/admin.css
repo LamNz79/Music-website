@@ -11292,3 +11292,27 @@ body.sidebar-toggled footer.sticky-footer {
   text-align: center;
   font-size: 1.2em;
 }
+
+.table-edit{
+  z-index: 1;
+  display: none;
+  position: fixed;
+  bottom: 40%;
+  background-color: white;
+  border-radius: 10px;
+  border: 1px solid #cfcfd6;
+  width: 85%;
+  left: 250px;
+  opacity: 1;
+  top: 100px;
+}
+
+#black-bg{
+  background-color: #0000008d;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: none;
+}

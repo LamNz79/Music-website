@@ -56,6 +56,49 @@ module.exports.getAlbumByName = (res, getData, name) => {
                 getData(res, data)
             })
 }
+module.exports.getAlbumById = (res, getData, id) => {
+
+    User.albums.aggregate(
+        [
+            {
+                $match: {
+                    _id: mongoose.Types.ObjectId(`${id}`)
+                }
+            },
+            {
+                $lookup: {
+                    from: 'songs',
+                    localField: 'songList',
+                    foreignField: '_id',
+                    as: 'songList'
+                }
+            }], (err, data) => {
+                if (err) console.error
+                getData(res, data)
+            })
+}
+
+module.exports.getPlaylistById = (res, getData, id) => {
+
+    User.playlists.aggregate(
+        [
+            {
+                $match: {
+                    _id: mongoose.Types.ObjectId(`${id}`)
+                }
+            },
+            {
+                $lookup: {
+                    from: 'songs',
+                    localField: 'songList',
+                    foreignField: '_id',
+                    as: 'songList'
+                }
+            }], (err, data) => {
+                if (err) console.error
+                getData(res, data)
+            })
+}
 module.exports.getPlaylistAndAlbum = (res, getData) => {
     User.playlists.find({}, function (err, collection) {
         if (err) console.log(err);
@@ -435,9 +478,84 @@ module.exports.adminUpdateSongOnClick = (res, id, name, author, link, image) => 
                 link: `/music/${link}`,
                 image: image
             }
+        }, (err, data) => {
+            if (err) console.log(err)
+            console.log(data)
+            this.send1ParmFile(res, data)
         }
     )
 }
+
+module.exports.adminUpdateUserOnClick = (res, id, name, showName, image) => {
+    User.users.updateOne(
+        { _id: mongoose.Types.ObjectId(`${id}`) },
+        {
+            $set: {
+                name: name,
+                showName: showName,
+                images: image
+            }
+        }, (err, data) => {
+            if (err) console.log(err)
+            console.log(data)
+            this.send1ParmFile(res, data)
+        }
+    )
+}
+
+
+
+module.exports.adminUpdateAlbumOnClick = (res, id, name, image) => {
+    User.albums.updateOne(
+        { _id: mongoose.Types.ObjectId(`${id}`) },
+        {
+            $set: {
+                name: name,
+                images: image
+            }
+        }, (err, data) => {
+            if (err) console.log(err)
+            else {
+                User.playlists.updateOne(
+                    { _id: mongoose.Types.ObjectId(`${id}`) },
+                    {
+                        $set: {
+                            name: name,
+                            images: image
+                        }
+                    }, (err, data) => {
+                        if (err) console.log(err)
+                        console.log(data)
+                        this.send1ParmFile(res, data)
+                    }
+                )
+            }
+        }
+    )
+}
+
+
+module.exports.adminFindUsrById = (res, id, callback) => {
+    User.users.find({
+        _id: id
+    }, (err, data) => {
+        if (err) console.log(err)
+        console.log(data)
+        callback(res, data)
+
+    })
+}
+module.exports.adminFindSongById = (res, id, callback) => {
+    User.songs.find({
+        _id: id
+    }, (err, data) => {
+        if (err) console.log(err)
+        console.log(data)
+        callback(res, data)
+
+    })
+}
+
 
 function makeNewSong(name, author, link, image) {
     let newSong = new User.songs({

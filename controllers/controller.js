@@ -92,3 +92,19 @@ exports.s_controls = (res, albumData, songData, playlistData, userData) => {
     })
 }
 //   a = li[i].getElementsByTagName("a")[0];
+
+exports.account_id = (res, data) => {
+    res.render('account_id', {
+        data: data
+    })
+}
+exports.playlist_Album_id = (res, data) => {
+    res.render('playlist_Album_id', {
+        data: data
+    })
+}
+exports.songs_id = (res, data) => {
+    res.render('songs_id', {
+        data: data
+    })
+}
