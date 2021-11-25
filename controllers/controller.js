@@ -23,6 +23,15 @@ exports.search = (res, songFile, albumFile) => {
 exports.login = (res, data) => {
     res.render("login")
 }
+
+exports.nameChange = (res, data) => {
+    res.render("nameChange")
+}
+exports.passwordChange = (res, data) => {
+    res.render("passwordChange")
+}
+
+
 exports.up = (req, res, data) => {
     console.log(req.body);
 
