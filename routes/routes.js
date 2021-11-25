@@ -150,5 +150,12 @@ router.post('/getSongInfo', (req, res) => {
     dataCollector.getSong(res, controller.footer)
 })
 
+
+router.post('/changeUserAva', (req, res) => {
+    var avaFile = req.body.avaFile
+    console.log(avaFile)
+    res.send(avaFile.name)
+})
+
 module.exports = router
 

@@ -80,31 +80,6 @@ use('ZingMp3');
 
 // db.songs.find({name:"Honey"})
 
-// db.users.aggregate(
-//     [
-//         {/**
-//          * query: The query in MQL.
-//          */
-//             $match: {
-//             name: "lam"
-//             }
-//         },
-//         /**
-//          * from: The target collection.
-//          * localField: The local join field.
-//          * foreignField: The target join field.
-//          * as: The name for the results.
-//          * pipeline: The pipeline to run on the joined collection.
-//          * let: Optional variables to use in the pipeline field stages.
-//          */
-//         {$lookup: {
-//             from: 'songs',
-//             localField: 'songList',
-//             foreignField: '_id',
-//             as: 'songList'
-//         }}
-// )
-
 // db.users.remove( {$or:[{showName : '123'},{name : '123'}]})
 
 // db.users.updateOne(
@@ -127,3 +102,15 @@ use('ZingMp3');
 //         }
 //     }
 // )
+// db.comments.insert({
+//     name: 'test',
+//     image:'test',
+//     content:'hello'
+// })
+// db.books.updateMany({},{/**
+//  * field: The field name
+//  * expression: The expression.
+//  */
+// $set: {
+//   comment: []
+// }})
