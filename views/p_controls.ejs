@@ -167,6 +167,12 @@
                                             <th style="width: 200px">Playlist Image</th>
                                             <th>Name</th>
 
+<<<<<<< HEAD
+                                            <th>Id</th>
+                                            <th style="width: 10%">Control</th>
+
+=======
+>>>>>>> 5f4bf2a044fb985c28edb0cad0c42385b2552fc2
                                         </tr>
                                     </thead>
                                     <tbody id="PlaylistList">
@@ -185,11 +191,11 @@
 
                                                 <td>
                                                     <button class="btn btn-primary fa-2x"
-                                                        onclick="table_edit(`<%=element._id%>`)">Edit
+                                                        onclick="goToEditPlaylist(`<%=element._id%>`)">Edit
                                                         Permissions</button>
                                                     <button class="btn btn-danger fa-2x"
                                                         onclick="deleteOnClick(`<%=element._id%>`,'deletePlaylistOnClick')">Delete
-                                                        Playlist    </button>
+                                                        Playlist </button>
                                                 </td>
                                                 <%});%>
                                             </tr>
@@ -211,28 +217,30 @@
                                             </tr>
                                         </thead>
                                         <tbody id="UsersList">
-            
+
                                             <% playlistData.forEach(element=> {%>
                                                 <tr>
                                                     <td>
-                                                        <input type="text" name="" id="" placeholder="<%=element.image%>">
+                                                        <input type="text" name="" id=""
+                                                            placeholder="<%=element.image%>">
                                                     </td>
                                                     <td>
-                                                        <input type="text" name="" id="" placeholder="<%=element.name%>">                                        </td>
+                                                        <input type="text" name="" id=""
+                                                            placeholder="<%=element.name%>">
+                                                    </td>
                                                     <td>
                                                         <%=element.id%>
                                                     </td>
-            
+
                                                     <td>
                                                         <button class="btn btn-primary fa-2x"
                                                             onclick="updateOnClick(`<%=element._id%>`)">Save</button>
-                                                        <button class="btn btn-danger fa-2x"
-                                                            onclick="cancel_edit()">
+                                                        <button class="btn btn-danger fa-2x" onclick="cancel_edit()">
                                                             Cancel</button>
                                                     </td>
                                                     <%});%>
                                                 </tr>
-            
+
                                         </tbody>
                                     </table>
                                 </div>

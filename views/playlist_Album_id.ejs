@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <% data.forEach(element=>{ %>
+        <label for="" id="thisId">
+            <%=element._id%>
+        </label>
+        <input type="text" name="" id="name" value="<%=element.name%>">NAME
+        <input type="text" name="" id="image" value="<%=element.image%>">PATH
+        <input type="button" value="submit" onclick="updateUsingId()">
+
+        <% element.songList.forEach(song=>{ %>
+
+            <form action="">
+                <label for="" id="songID">
+                    <%=song._id%>
+                </label>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+                <label for="">
+                    <%=song.name%>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+                </label>
+
+                <label for="">
+                    <button onclick="deleteOnClick(`<%=song._id%>`,`deleteSongOnClick`)">delete</button>
+                </label>
+            </form>
+            <%})%>
+                <%})%>
+                    <script>
+                        function updateUsingId() {
+                            var thisId = ($('#thisId').text())
+                            var name = ($('#name').val())
+                            var image = String($("#image").val())
+                            $.post('../updateUsingId', {
+                                thisId: thisId,
+                                name: name,
+                                image: image
+                            }, (data, status) => {
+                                alert(JSON.stringify(data))
+                            })
+                        }
+                    </script>
+                    <script src="/js/function.js"></script>
+
+</body>
+
+</html>

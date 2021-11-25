@@ -175,7 +175,7 @@ function findUsingSearchBar(inputName, ulName) {
 
 function deleteOnClick(id, path) {
     var thisID = id.replace(/ /g, "")
-    $.post(`${path}`, {
+    $.post(`../${path}`, {
         thisID: thisID
     }, (data, status) => {
         alert(JSON.stringify(data))
@@ -204,11 +204,29 @@ function updateSongOnClick(id) {
 
 }
 
-function table_edit(id){
+function table_edit(id) {
     document.querySelector(".table-edit").style.cssText = `display: block`;
     document.querySelector("#black-bg").style.cssText = `display: block`;
 }
-function cancel_edit(id){
+function cancel_edit(id) {
     document.querySelector(".table-edit").style.cssText = `display: none`;
     document.querySelector("#black-bg").style.cssText = `display: none`;
+}
+
+function goToEditAccount(id) {
+    console.log(id)
+    window.open(`/47dzEhPlfq/account/${id}`)
+}
+
+function goToEditAlbum(id) {
+    console.log(id)
+    window.open(`/47dzEhPlfq/a_controls/${id}`)
+}
+function goToEditPlaylist(id) {
+    console.log(id)
+    window.open(`/47dzEhPlfq/p_controls/${id}`)
+}
+function goToEditSong(id) {
+    console.log(id)
+    window.open(`/47dzEhPlfq/s_controls/${id}`)
 }

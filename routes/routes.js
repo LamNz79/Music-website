@@ -84,9 +84,58 @@ router.route('/47dzEhPlfq/p_controls')
         dataCollector.adminLoadPage(res, controller.p_controls)
     })
 
+router.get("/47dzEhPlfq/account/:accountId", (req, res) => {
+    var id = req.params[`accountId`]
+    // var objUser = JSON.parse(localStorage.getItem("user"))
+    dataCollector.adminFindUsrById(res, id, controller.account_id)
+})
+router.get("/47dzEhPlfq/a_controls/:album", (req, res) => {
+    var id = req.params[`album`]
+    // var objUser = JSON.parse(localStorage.getItem("user"))
+    dataCollector.getAlbumById(res, controller.playlist_Album_id, id)
+})
+router.get("/47dzEhPlfq/p_controls/:playlist", (req, res) => {
+    var id = req.params[`playlist`]
+    // var objUser = JSON.parse(localStorage.getItem("user"))
+    dataCollector.getPlaylistById(res, controller.playlist_Album_id, id)
+})
+router.get("/47dzEhPlfq/s_controls/:songId", (req, res) => {
+    var id = req.params[`songId`]
+    // var objUser = JSON.parse(localStorage.getItem("user"))
+    dataCollector.adminFindSongById(res, id, controller.songs_id)
+})
+
 
 
 // Post method
+router.post('/updateUsingId', async (req, res) => {
+    var id = await (req.body.thisId).trim()
+    await console.log(id)
+
+    var name = await req.body.name
+    var image = await req.body.image
+    dataCollector.adminUpdateAlbumOnClick(res, id, name, image)
+})
+router.post('/updateSongUsingId', async (req, res) => {
+    var id = await (req.body.songId).trim()
+    var name = await (req.body.songName).trim()
+    var author = await (req.body.songAuthor).trim()
+    var songLink = await (req.body.songLink).trim()
+    var songImage = await (req.body.songImage).trim()
+
+    dataCollector.adminUpdateSongOnClick(res, id, name, author, songLink, songImage)
+})
+
+
+router.post('/updateAccount', async (req, res) => {
+    var userId = await req.body.userId.trim()
+    console.log(userId)
+    var userName = await req.body.userName
+    var userImage = await req.body.userImage
+    var userShownName = await req.body.userShownName
+    dataCollector.adminUpdateUserOnClick(res, userId, userName, userShownName, userImage)
+})
+
 router.post('/deleteSongOnClick', async (req, res) => {
     var thisID = req.body.thisID
     console.log(thisID)

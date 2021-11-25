@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <% data.forEach(element=>{ %>
+        <label for="" id="userId">
+            <%=element._id%>
+        </label>
+        <input type="text" name="" id="userName" value="<%=element.name%>">NAME
+        <input type="text" name="" id="userImage" value="<%=element.images%>">PATH
+        <input type="text" name="" id="userShownName" value="<%=element.showName%>">SHOW NAME
+
+        <%})%>
+            <input type="button" value="submit" onclick="updateAccount()">
+            <script>
+                function updateAccount() {
+                    var userId = ($('#userId').text())
+                    var userName = ($('#userName').val())
+                    var userImage = String($("#userImage").val())
+                    var userShownName = String($("#userShownName").val())
+                    $.post('../updateAccount', {
+                        userId: userId,
+                        userName: userName,
+                        userImage: userImage,
+                        userShownName: userShownName
+                    }, (data, status) => {
+                        alert(JSON.stringify(data))
+                        window.close()
+
+                    })
+                }
+            </script>
+</body>
+
+</html>

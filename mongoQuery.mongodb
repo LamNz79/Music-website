@@ -58,16 +58,16 @@ use('ZingMp3');
 //             songList:'615e6a072a24e2f1ba2a4457'
 //         }
 
-// })
-// db.albums.update(
-//   {name:"KPOP"},
-//   {/**
-//    * fields: The field name(s).
-//    */
-//   $unset: {
-//     songCollection:[]
-//   }}
-//   )
+})
+db.users.updateOne(
+  {name:"lam"},
+  {/**
+   * fields: The field name(s).
+   */
+  $set: {
+    showName:'lamlamalm'
+  }}
+  )
 
 
 // db.albums.updateOne(
@@ -107,10 +107,12 @@ use('ZingMp3');
 //     image:'test',
 //     content:'hello'
 // })
-// db.books.updateMany({},{/**
+// db.songs.updateMany({},{/**
 //  * field: The field name
 //  * expression: The expression.
 //  */
 // $set: {
 //   comment: []
 // }})
+
+db.users.find()
