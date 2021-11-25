@@ -44,8 +44,14 @@ router.get("/personal/:userName", (req, res) => {
 })
 
 router.get("/register", (req, res) => {
-
     controller.register(res, null)
+})
+
+router.get("/nameChange", (req, res) => {
+    controller.nameChange(res, null)
+})
+router.get("/passwordChange", (req, res) => {
+    controller.passwordChange(res, null)
 })
 
 router.route('/47dzEhPlfq')

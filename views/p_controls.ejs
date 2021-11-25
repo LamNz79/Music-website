@@ -166,8 +166,7 @@
                                         <tr>
                                             <th style="width: 200px">Playlist Image</th>
                                             <th>Name</th>
-                                            <th>Id</th>
-                                            <th style="width: 10%">Control</th>
+
                                         </tr>
                                     </thead>
                                     <tbody id="PlaylistList">
@@ -186,11 +185,11 @@
 
                                                 <td>
                                                     <button class="btn btn-primary fa-2x"
-                                                        onclick="updateOnClick(`<%=element._id%>`)">Edit
+                                                        onclick="table_edit(`<%=element._id%>`)">Edit
                                                         Permissions</button>
                                                     <button class="btn btn-danger fa-2x"
                                                         onclick="deleteOnClick(`<%=element._id%>`,'deletePlaylistOnClick')">Delete
-                                                        Account</button>
+                                                        Playlist    </button>
                                                 </td>
                                                 <%});%>
                                             </tr>
@@ -199,6 +198,46 @@
 
                                 </table>
                             </div>
+
+                            <div id="black-bg">
+                                <div class="table-responsive table-edit">
+                                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                        <thead>
+                                            <tr>
+                                                <th style="width: 200px">Playlist Image</th>
+                                                <th>Name</th>
+                                                <th>id</th>
+                                                <th style="width: 20%">Permissions</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="UsersList">
+            
+                                            <% playlistData.forEach(element=> {%>
+                                                <tr>
+                                                    <td>
+                                                        <input type="text" name="" id="" placeholder="<%=element.image%>">
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" name="" id="" placeholder="<%=element.name%>">                                        </td>
+                                                    <td>
+                                                        <%=element.id%>
+                                                    </td>
+            
+                                                    <td>
+                                                        <button class="btn btn-primary fa-2x"
+                                                            onclick="updateOnClick(`<%=element._id%>`)">Save</button>
+                                                        <button class="btn btn-danger fa-2x"
+                                                            onclick="cancel_edit()">
+                                                            Cancel</button>
+                                                    </td>
+                                                    <%});%>
+                                                </tr>
+            
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
 

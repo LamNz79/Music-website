@@ -128,6 +128,13 @@ function goForward() {
     window.history.forward();
 }
 
+function nameChange(){
+
+}
+function passwordChange(){
+    
+}
+
 function isAdmin(name, pass) {
     return (name == 'admin' && pass == '123') ? true : false
 }
@@ -195,4 +202,13 @@ function updateSongOnClick(id) {
         alert(data)
     })
 
+}
+
+function table_edit(id){
+    document.querySelector(".table-edit").style.cssText = `display: block`;
+    document.querySelector("#black-bg").style.cssText = `display: block`;
+}
+function cancel_edit(id){
+    document.querySelector(".table-edit").style.cssText = `display: none`;
+    document.querySelector("#black-bg").style.cssText = `display: none`;
 }

@@ -34,6 +34,8 @@ app.use('/search', require(Router))
 app.use('/personal', require(Router))
 app.use('/register', require(Router))
 app.use('/47dzEhPlfq', require(Router))
+app.use('/nameChange', require(Router))
+app.use('/passwordChange', require(Router))
 //function
 
 app.use('/getLogin', require(Router))

@@ -28,8 +28,12 @@
                         <h2 id="shownName">Đăng Quang</i></h2>
                     </div>
                     <div class="changeInfo">
-                        <button class="changeName">Đổi tên tài khoản</button>
-                        <button class="changePassword">Đổi mật khẩu</button>
+                        <button class="changeName" onclick="window.open('/nameChange', 
+                        'newwindow', 
+                        'width=500,height=600');">Đổi tên tài khoản</button>
+                        <button class="changePassword" onclick="window.open('/passwordChange', 
+                        'newwindow', 
+                        'width=500,height=700');">Đổi mật khẩu</button>
                     </div>
                 </div>
             </div>
@@ -124,13 +128,6 @@
                     </div>
                 </div>
             </div>
-    </div>
-    <div class="changeDisplay">
-        <div class="changeNameDisplay">
-            <h2>Đổi tên tài khoản</h2>
-            <input type="text" alt="Tên người dùng">
-            <button class="submitChangeName">XÁC NHẬN</button>
-        </div>
     </div>
     <footer>
         <%- include('./partials/footer'); %>
