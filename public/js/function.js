@@ -128,6 +128,13 @@ function goForward() {
     window.history.forward();
 }
 
+function nameChange(){
+
+}
+function passwordChange(){
+    
+}
+
 function isAdmin(name, pass) {
     return (name == 'admin' && pass == '123') ? true : false
 }
