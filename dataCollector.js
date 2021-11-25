@@ -462,3 +462,40 @@ function makeNewSong(name, author, link, image) {
 //         })
 
 // }
+
+module.exports.changeUsrImage = (res, path, currUsr) => {
+    User.users.updateOne(
+        { name: currUsr },
+        {
+            $set: {
+                images: `/${path}`
+            }
+        }, (err, data) => {
+            if (err) console.log(err)
+            this.send1ParmFile(data)
+        }
+    )
+}
+
+module.exports.makeNewComment = (res, name, img, content) => {
+    let newComment = new User.comments({
+        name: name,
+        image: img,
+        content: content
+    });
+    newComment.save();
+    this.send1ParmFile(res, 'thanh cong')
+    return newComment._id
+}
+
+module.exports.addCommentToSong = (res, songName, comments) => {
+    User.songs.updateOne(
+        { name: songName },
+        {
+            $push:
+                { comments: mongoose.Types.ObjectId(`${comments}`) }
+        }, (err, data) => {
+            if (err) console.log(err)
+            this.send1ParmFile(res, data)
+        })
+}

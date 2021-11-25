@@ -173,6 +173,8 @@ function addFavMusic() {
       document.querySelector("#fav-no").style.cssText = `display:none`;
       document.querySelector("#fav-yes").style.cssText = `display:block`;
       alert(data)
+      window.location.reload()
+
     })
 }
 
@@ -188,6 +190,8 @@ function delFavMusic() {
       document.querySelector("#fav-no").style.cssText = `display:block`;
       document.querySelector("#fav-yes").style.cssText = `display:none; `;
       alert(data)
+      window.location.reload()
+
     })
 }
 

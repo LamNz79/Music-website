@@ -61,7 +61,7 @@ function addingUser() {
     }, (data, status) => {
         alert(data)
         if (data == 'da co tai khoan') resetRegisInputBox()
-        if (data == 'tai khoan khong hop le') resetRegisInputBox()
+        else if (data == 'tai khoan khong hop le') resetRegisInputBox()
         else url_redirect('http://localhost:3000/login')
 
     })

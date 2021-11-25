@@ -8,6 +8,7 @@ FILE_INPUT.addEventListener("change", event => {
   const file = event.target.files[0];
 
   const reader = new FileReader();
+
   reader.readAsDataURL(file);
 
   reader.onloadend = () => {
@@ -17,3 +18,13 @@ FILE_INPUT.addEventListener("change", event => {
     JSON.parse(localStorage.getItem(file.name));
   };
 });
+
+function changeAva(file) {
+  console.log(file.name)
+  $.post('changeUserAva ', {
+    avaFile: file
+  },
+    (data, status) => {
+      alert(data.name)
+    })
+}
