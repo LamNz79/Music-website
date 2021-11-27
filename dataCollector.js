@@ -224,20 +224,20 @@ module.exports.getUserSongCollection = (res, name, getData) => {
         else getData(res, data)
     })
 }
-function makeNewUser(username, password, shownName) {
+function makeNewUser(username, password, shownName, image) {
     let newvalue = new User.users({
         // _id: getNextSequence(1),
         name: username,
         pass: password,
         showName: shownName,
         songCollection: [],
-        images: "images/register-user.png",
+        images: `images/${image}`,
     });
     newvalue.save();
 
 }
 
-module.exports.addingUser = (username, password, shownName, res) => {
+module.exports.addingUser = (username, password, shownName, res, image) => {
     try {
 
         if (username !== "" && password !== "" && shownName !== "") {
@@ -246,7 +246,7 @@ module.exports.addingUser = (username, password, shownName, res) => {
                     if (err) console.err
                     console.log(data)
                     if (data.length == 0) {
-                        makeNewUser(username, password, shownName)
+                        makeNewUser(username, password, shownName, image)
                         this.send1ParmFile(res, 'thanh cong')
                     }
                     else {
@@ -330,11 +330,10 @@ module.exports.deleteSongFromAlbum = (name, albumName, res) => {
 module.exports.addSong = (name, author, path, image, res) => {
     try {
         let newSong = new User.songs({
-            // _id: getNextSequence(1),
             name: name,
             author: author,
             link: `/music/${path}`,
-            image: image
+            image: `/images/${image}`
         });
         newSong.save();
         this.send1ParmFile(res, 'thanh cong')
@@ -476,7 +475,7 @@ module.exports.adminUpdateSongOnClick = (res, id, name, author, link, image) => 
                 name: name,
                 author: author,
                 link: `/music/${link}`,
-                image: image
+                image: `/images/${image}`
             }
         }, (err, data) => {
             if (err) console.log(err)
@@ -493,7 +492,7 @@ module.exports.adminUpdateUserOnClick = (res, id, name, showName, image) => {
             $set: {
                 name: name,
                 showName: showName,
-                images: image
+                images: `images/${image}`
             }
         }, (err, data) => {
             if (err) console.log(err)
@@ -511,7 +510,7 @@ module.exports.adminUpdateAlbumOnClick = (res, id, name, image) => {
         {
             $set: {
                 name: name,
-                images: image
+                images: `images/${image}`
             }
         }, (err, data) => {
             if (err) console.log(err)
@@ -521,7 +520,7 @@ module.exports.adminUpdateAlbumOnClick = (res, id, name, image) => {
                     {
                         $set: {
                             name: name,
-                            images: image
+                            images: `images/${image}`
                         }
                     }, (err, data) => {
                         if (err) console.log(err)
@@ -557,29 +556,68 @@ module.exports.adminFindSongById = (res, id, callback) => {
 }
 
 
-function makeNewSong(name, author, link, image) {
+function makeNewSong(name, author, path, image, res) {
     let newSong = new User.songs({
-        // _id: getNextSequence(1),
         name: name,
         author: author,
-        link: `/music/${link}`,
-        image: image
+        link: `/music/${path}`,
+        image: `/images/${image}`
     });
     newSong.save();
-    this.send1ParmFile('thanh cong')
+
+}
+function makeNewAlbum(name, image, res) {
+    let newList = new User.albums({
+        name: name,
+        image: `images/${image}`,
+        songList: []
+    });
+    newList.save();
+
+}
+function makeNewPlaylist(name, image, res) {
+    let newList = new User.playlists({
+        name: name,
+        image: `images/${image}`,
+        songList: []
+    });
+    newList.save();
+
+}
+module.exports.addingPlaylist = (res, name, image) => {
+
+    if (name !== "" && image !== "") {
+        makeNewPlaylist(name, image, res)
+        this.send1ParmFile(res, 'thanh cong')
+    }
+    else {
+        this.send1ParmFile(res, 'tao khong thanh cong')
+
+    }
+}
+module.exports.addingAlbum = (res, name, image) => {
+
+    if (name !== "" && image !== "") {
+        makeNewAlbum(name, image, res)
+        this.send1ParmFile(res, 'thanh cong')
+    }
+    else {
+        this.send1ParmFile(res, 'tao khong thanh cong')
+
+    }
 }
 
-// module.exports.adminDelOnClick = (res, name, collection) => {
+module.exports.addingSong = (res, name, author, link, image) => {
 
-//     User.collection.deleteOne({ _id: mongoose.Types.ObjectId(`${name}`) },
-//         (err, data) => {
-//             if (err) console.log(err)
-//             console.log(mongoose.Types.ObjectId(`${name}`))
-//             this.send1ParmFile(res, data)
+    if (name !== "" && author !== "" && link !== "" && image !== "") {
+        makeNewSong(name, author, link, image, res)
+        this.send1ParmFile(res, 'thanh cong')
+    }
+    else {
+        this.send1ParmFile(res, 'tao khong thanh cong')
 
-//         })
-
-// }
+    }
+}
 
 module.exports.changeUsrImage = (res, path, currUsr) => {
     User.users.updateOne(

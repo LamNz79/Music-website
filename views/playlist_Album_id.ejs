@@ -11,46 +11,48 @@
 </head>
 
 <body>
+    <form action="">
+        <% data.forEach(element=>{ %>
+            <label for="" id="thisId">
+                <%=element._id%>
+            </label>
+            <label for="">NAME</label>
+            <input type="text" name="" id="name" value="<%=element.name%>">
+            <label for="">PATH</label>
+            <input type="file" name="" id="image" value="<%=element.image%>">
+            <input type="button" value="submit" onclick="updateUsingId()">
 
-    <% data.forEach(element=>{ %>
-        <label for="" id="thisId">
-            <%=element._id%>
+            <% element.songList.forEach(song=>{ %>
+    </form>
+    <form action="">
+        <label for="" id="songID">
+            <%=song._id%>
+        </label>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+        <label for="">
+            <%=song.name%>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
         </label>
-        <input type="text" name="" id="name" value="<%=element.name%>">NAME
-        <input type="text" name="" id="image" value="<%=element.image%>">PATH
-        <input type="button" value="submit" onclick="updateUsingId()">
 
-        <% element.songList.forEach(song=>{ %>
-
-            <form action="">
-                <label for="" id="songID">
-                    <%=song._id%>
-                </label>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-                <label for="">
-                    <%=song.name%>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-                </label>
-
-                <label for="">
-                    <button onclick="deleteOnClick(`<%=song._id%>`,`deleteSongOnClick`)">delete</button>
-                </label>
-            </form>
-            <%})%>
-                <%})%>
-                    <script>
-                        function updateUsingId() {
-                            var thisId = ($('#thisId').text())
-                            var name = ($('#name').val())
-                            var image = String($("#image").val())
-                            $.post('../updateUsingId', {
-                                thisId: thisId,
-                                name: name,
-                                image: image
-                            }, (data, status) => {
-                                alert(JSON.stringify(data))
-                            })
-                        }
-                    </script>
-                    <script src="/js/function.js"></script>
+        <label for="">
+            <button onclick="deleteOnClick(`<%=song._id%>`,`deleteSongOnClick`)">delete</button>
+        </label>
+    </form>
+    <%})%>
+        <%})%>
+            <script>
+                function updateUsingId() {
+                    var thisId = ($('#thisId').text())
+                    var name = ($('#name').val())
+                    var image = $('#image').val().split('\\').pop();
+                    $.post('../updateUsingId', {
+                        thisId: thisId,
+                        name: name,
+                        image: image
+                    }, (data, status) => {
+                        alert(JSON.stringify(data))
+                    })
+                }
+            </script>
+            <script src="/js/function.js"></script>
 
 </body>
 

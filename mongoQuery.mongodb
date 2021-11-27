@@ -58,16 +58,16 @@ use('ZingMp3');
 //             songList:'615e6a072a24e2f1ba2a4457'
 //         }
 
-})
-db.users.updateOne(
-  {name:"lam"},
-  {/**
-   * fields: The field name(s).
-   */
-  $set: {
-    showName:'lamlamalm'
-  }}
-  )
+// })
+// db.users.updateOne(
+//   {name:"lam"},
+//   {/**
+//    * fields: The field name(s).
+//    */
+//   $set: {
+//     showName:'lamlamalm'
+//   }}
+//   )
 
 
 // db.albums.updateOne(
@@ -80,7 +80,6 @@ db.users.updateOne(
 
 // db.songs.find({name:"Honey"})
 
-// db.users.remove( {$or:[{showName : '123'},{name : '123'}]})
 
 // db.users.updateOne(
 //     {name: "lam"},
@@ -115,4 +114,5 @@ db.users.updateOne(
 //   comment: []
 // }})
 
-db.users.find()
+db.songs.find()
+// db.users.remove( {$or:[{name : '3456'},{name : '678'},{name : 'asd'},{name : 'lamn'},{name : 'ong'},{name : 'qwe'}]})

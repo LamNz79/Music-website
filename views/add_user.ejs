@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fugiat, similique libero accusantium quo in optio qui
+        natus aliquam provident, aspernatur aliquid illo quisquam eos? Omnis quas atque magnam quia. Vel.</h1>
+    <form action="">
+        <label for="">name</label>
+        <input type="text" name="name" id="userName">
+        <label for="">pass</label>
+
+        <input type="text" name="pass" id="userPass">
+
+        <label for="">images</label>
+        <input type="file" name="image" id="userImage" value="c/hello.jpg">
+
+        <label for="">showName</label>
+        <input type="text" name="showName" id="userShowName">
+
+        <input type="button" value="Submit" onclick="createNewUser()">
+    </form>
+    <script>
+        function createNewUser() {
+            var userName = $("#userName").val()
+            var userPass = $("#userPass").val()
+            var userImage = $('#userImage').val().split('\\').pop();
+            var userShowName = $("#userShowName").val()
+            alert(userImage)
+
+            $.post('createNewUser', {
+                userName: userName,
+                userPass: userPass,
+                userImage: userImage,
+                userShowName: userShowName,
+            }, (data, status) => {
+                alert(data)
+                if (data == 'da co tai khoan') adminResetRegisInputBox()
+                else if (data == 'tai khoan khong hop le') adminResetRegisInputBox()
+                window.location.reload()
+
+            })
+        }
+        function adminResetRegisInputBox() {
+            document.getElementById('userName').value = ''
+            document.getElementById('userPass').value = ''
+            document.getElementById('userShowName').value = ''
+
+        }
+    </script>
+</body>
+
+</html>

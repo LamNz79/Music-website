@@ -2,7 +2,6 @@ const mongoose = require('mongoose')
 
 // Schema model
 const song = new mongoose.Schema({
-    _id: mongoose.Schema.Types.ObjectId,
     name: String,
     author: String,
     link: String,
