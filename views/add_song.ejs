@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fugiat, similique libero accusantium quo in optio qui
+        natus aliquam provident, aspernatur aliquid illo quisquam eos? Omnis quas atque magnam quia. Vel.</h1>
+    <form action="">
+        <label for="">name</label>
+        <input type="text" name="name" id="songName">
+        <label for="">author</label>
+
+        <input type="text" name="author" id="songAuthor">
+
+        <label for="">link</label>
+        <input type="file" name="image" id="songLink">
+
+        <label for="">image</label>
+        <input type="file" name="image" id="songImage">
+        <input type="button" value="Submit" onclick="createNewSong()">
+    </form>
+    <script>
+        function createNewSong() {
+            var songName = $("#songName").val()
+            var songAuthor = $("#songAuthor").val()
+            var songLink = $('#songLink').val().split('\\').pop();
+            var songImage = $('#songImage').val().split('\\').pop();
+
+
+            $.post('createNewSong', {
+                songName: songName,
+                songAuthor: songAuthor,
+                songLink: songLink,
+                songImage: songImage,
+            }, (data, status) => {
+                alert(data)
+                if (data == 'nhac da ton tai') adminResetRegisInputBox()
+                else if (data == 'nhac khong hop le') adminResetRegisInputBox()
+                window.location.reload()
+
+            })
+        }
+        function adminResetRegisInputBox() {
+            document.getElementById('songName').value = ''
+            document.getElementById('songAuthor').value = ''
+
+        }
+    </script>
+</body>
+
+</html>

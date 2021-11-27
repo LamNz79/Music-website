@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fugiat, similique libero accusantium quo in optio qui
+        natus aliquam provident, aspernatur aliquid illo quisquam eos? Omnis quas atque magnam quia. Vel.</h1>
+    <form action="">
+        <label for="">name</label>
+        <input type="text" name="name" id="name">
+
+        <label for="">image</label>
+        <input type="file" name="image" id="image" value="c/hello.jpg">
+
+
+        <input type="button" value="Submit Album" onclick="createNewAlbum()">
+        <input type="button" value="Submit Playlist" onclick="createNewPlaylist()">
+
+    </form>
+    <script>
+        function createNewAlbum() {
+            var name = $("#name").val()
+            var image = $('#image').val().split('\\').pop();
+
+            $.post('createNewAlbum', {
+                name: name,
+                image: image
+            }, (data, status) => {
+                alert(data)
+                window.location.reload()
+
+            })
+        }
+        function createNewPlaylist() {
+            var name = $("#name").val()
+            var image = $('#image').val().split('\\').pop();
+
+            $.post('createNewPlaylist', {
+                name: name,
+                image: image
+            }, (data, status) => {
+                alert(data)
+                window.location.reload()
+
+            })
+        }
+    </script>
+</body>
+
+</html>

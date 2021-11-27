@@ -11,40 +11,44 @@
 </head>
 
 <body>
+    <form action="">
+        <% data.forEach(element=>{ %>
+            <label for="" id="songId">
+                <%=element._id%>
+            </label>
+            <label for="">NAME</label>
+            <input type="text" name="" id="songName" value="<%=element.name%>">
+            <label for="">author</label>
+            <input type="text" name="" id="author" value="<%=element.author%>">
+            <label for="">PATH image</label>
+            <input type="file" name="" id="songImage" value="<%=element.image%>">
+            <label for="">PATH music</label>
+            <input type="file" name="" id="songLink" value="<%=element.link%>">
 
-    <% data.forEach(element=>{ %>
-        <label for="" id="songId">
-            <%=element._id%>
-        </label>
-        <input type="text" name="" id="songName" value="<%=element.name%>">NAME
-        <input type="text" name="" id="author" value="<%=element.author%>">author
 
-        <input type="text" name="" id="songImage" value="<%=element.image%>">PATH image
-        <input type="text" name="" id="songLink" value="<%=element.link%>">PATH music
+            <%})%>
+    </form>
+    <input type="button" value="submit" onclick="adminUpdateSong()">
+    <script>
+        function adminUpdateSong() {
+            var songId = ($('#songId').text())
+            var songName = ($('#songName').val())
+            var songAuthor = String($("#author").val())
+            var songLink = $('#songLink').val().split('\\').pop();
+            var songImage = $('#songImage').val().split('\\').pop();
+            $.post('../updateSongUsingId', {
+                songId: songId,
+                songName: songName,
+                songAuthor: songAuthor,
+                songLink: songLink,
+                songImage: songImage
+            }, (data, status) => {
+                alert(JSON.stringify(data))
+                window.close()
 
-
-        <%})%>
-            <input type="button" value="submit" onclick="adminUpdateSong()">
-            <script>
-                function adminUpdateSong() {
-                    var songId = ($('#songId').text())
-                    var songName = ($('#songName').val())
-                    var songAuthor = String($("#author").val())
-                    var songLink = String($("#songLink").val())
-                    var songImage = String($("#songImage").val())
-                    $.post('../updateSongUsingId', {
-                        songId: songId,
-                        songName: songName,
-                        songAuthor: songAuthor,
-                        songLink: songLink,
-                        songImage: songImage
-                    }, (data, status) => {
-                        alert(JSON.stringify(data))
-                        window.close()
-
-                    })
-                }
-            </script>
+            })
+        }
+    </script>
 </body>
 
 </html>

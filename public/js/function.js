@@ -128,11 +128,11 @@ function goForward() {
     window.history.forward();
 }
 
-function nameChange(){
+function nameChange() {
 
 }
-function passwordChange(){
-    
+function passwordChange() {
+
 }
 
 function isAdmin(name, pass) {
@@ -212,11 +212,15 @@ function cancel_edit(id) {
     document.querySelector(".table-edit").style.cssText = `display: none`;
     document.querySelector("#black-bg").style.cssText = `display: none`;
 }
-
+function goToEdit(id) {
+    console.log(id)
+    window.open(`/47dzEhPlfq/${id}`)
+}
 function goToEditAccount(id) {
     console.log(id)
     window.open(`/47dzEhPlfq/account/${id}`)
 }
+
 
 function goToEditAlbum(id) {
     console.log(id)

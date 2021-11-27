@@ -12,34 +12,39 @@
 
 <body>
 
-    <% data.forEach(element=>{ %>
-        <label for="" id="userId">
-            <%=element._id%>
-        </label>
-        <input type="text" name="" id="userName" value="<%=element.name%>">NAME
-        <input type="text" name="" id="userImage" value="<%=element.images%>">PATH
-        <input type="text" name="" id="userShownName" value="<%=element.showName%>">SHOW NAME
+    <form action="">
+        <% data.forEach(element=>{ %>
+            <label for="" id="userId">
+                <%=element._id%>
+            </label>
+            <label for="">NAME</label>
+            <input type="text" name="" id="userName" value="<%=element.name%>">
+            <label for="">PATH</label>
+            <input type="file" name="" id="userImage" value="<%=element.images%>">
+            <label for="">SHOW NAME</label>
+            <input type="text" name="" id="userShownName" value="<%=element.showName%>">
 
-        <%})%>
-            <input type="button" value="submit" onclick="updateAccount()">
-            <script>
-                function updateAccount() {
-                    var userId = ($('#userId').text())
-                    var userName = ($('#userName').val())
-                    var userImage = String($("#userImage").val())
-                    var userShownName = String($("#userShownName").val())
-                    $.post('../updateAccount', {
-                        userId: userId,
-                        userName: userName,
-                        userImage: userImage,
-                        userShownName: userShownName
-                    }, (data, status) => {
-                        alert(JSON.stringify(data))
-                        window.close()
+            <%})%>
+    </form>
+    <input type="button" value="submit" onclick="updateAccount()">
+    <script>
+        function updateAccount() {
+            var userId = ($('#userId').text())
+            var userName = ($('#userName').val())
+            var userImage = $('#userImage').val().split('\\').pop();
+            var userShownName = String($("#userShownName").val())
+            $.post('../updateAccount', {
+                userId: userId,
+                userName: userName,
+                userImage: userImage,
+                userShownName: userShownName
+            }, (data, status) => {
+                alert(JSON.stringify(data))
+                window.close()
 
-                    })
-                }
-            </script>
+            })
+        }
+    </script>
 </body>
 
 </html>

@@ -104,10 +104,52 @@ router.get("/47dzEhPlfq/s_controls/:songId", (req, res) => {
     // var objUser = JSON.parse(localStorage.getItem("user"))
     dataCollector.adminFindSongById(res, id, controller.songs_id)
 })
+router.get("/47dzEhPlfq/add_user", (req, res) => {
+    res.render('add_user')
+})
+
+router.get("/47dzEhPlfq/add_song", (req, res) => {
+    res.render('add_song')
+})
+router.get("/47dzEhPlfq/add_album_playlist", (req, res) => {
+    res.render('add_album_playlist')
+})
 
 
 
 // Post method
+router.post('/createNewAlbum', async (req, res) => {
+    var name = await req.body.name.trim()
+    var image = await req.body.image.trim()
+
+    dataCollector.addingAlbum(res, name, image)
+})
+router.post('/createNewPlaylist', async (req, res) => {
+    var name = await req.body.name.trim()
+    var image = await req.body.image.trim()
+
+    dataCollector.addingPlaylist(res, name, image)
+})
+
+router.post('/createNewSong', async (req, res) => {
+    var songName = await req.body.songName.trim()
+    var songAuthor = await req.body.songAuthor.trim()
+    var songLink = await req.body.songLink.trim()
+    var songImage = await req.body.songImage.trim()
+    dataCollector.addingSong(res, songName, songAuthor, songLink, songImage)
+})
+router.post('/createNewUser', async (req, res) => {
+    var userName = await req.body.userName.trim()
+    var userPass = await req.body.userPass.trim()
+    var userImage = await req.body.userImage.trim()
+    var userShowName = await req.body.userShowName.trim()
+
+    if (userImage == '') {
+        userImage = 'register-user.png'
+    }
+    dataCollector.addingUser(userName, userPass, userShowName, res, userImage)
+})
+
 router.post('/updateUsingId', async (req, res) => {
     var id = await (req.body.thisId).trim()
     await console.log(id)
@@ -191,11 +233,11 @@ router.post('/getLogin', async (req, res) => {
 })
 
 router.post('/addingUser', async (req, res) => {
-    var userName = await req.body.username
-    var password = await req.body.password
-    var tenHienThi = await req.body.tenHienThi
+    var userName = await (req.body.username).trim()
+    var password = await (req.body.password).trim()
+    var tenHienThi = await (req.body.tenHienThi).trim()
     try {
-        dataCollector.addingUser(userName, password, tenHienThi, res)
+        dataCollector.addingUser(userName, password, tenHienThi, res, 'register-user.png')
     } catch (error) {
         console.log(error)
     }
