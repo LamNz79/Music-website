@@ -20,25 +20,26 @@
 		<div class="container">
 			<div class="row justify-content-center">
 				<div class="col-md-6 text-center mb-5">
-					<h2 class="heading-section" style="font-weight: bold;">ĐỔI TÊN TÀI KHOẢN</h2>
+					<h2 class="heading-section" style="font-weight: bold;">ĐỔI TÊN HIỂN THỊ</h2>
 				</div>
 			</div>
 			<div class="row justify-content-center">
 				<div class="col-md-12 col-lg-10">
 					<div class="d-md-flex">
-						<div class="login-wrap p-4 p-lg-5" style="border-top-right-radius: 20px; border-bottom-right-radius: 20px;">
+						<div class="login-wrap p-4 p-lg-5"
+							style="border-top-right-radius: 20px; border-bottom-right-radius: 20px;">
 							<div class="d-flex">
 								<div class="w-100">
 									<h3 class="mb-4">Xin chào User!</h3>
 								</div>
 							</div>
 							<div class="form-group mb-3">
-								<label class="label" for="name">Tên tài khoản mới</label>
-								<input id="username" type="text" class="form-control" placeholder="Tên tài khoản mới" required>
+								<label class="label" for="name">Tên mới</label>
+								<input id="username" type="text" class="form-control" placeholder="Tên mới" required>
 							</div>
 							<div class="form-group">
 								<button type="submit" class="form-control btn btn-primary submit px-3"
-									onclick="">Lưu</button>
+									onclick="changeUserShownName()">Lưu</button>
 							</div>
 						</div>
 					</div>
@@ -47,6 +48,22 @@
 		</div>
 	</section>
 	<script>
+		function changeUserShownName() {
+			var currentUser = JSON.parse(localStorage.getItem("user"))[0]
+			var userName = $("#username").val()
+			var newTab = window.open(`http://localhost:3000/personal/${currentUser.name}`);
+			$.post('../changeUserShownName', {
+				currentUserID: currentUser._id,
+				userName: userName
+			}, (data, status) => {
+				alert(JSON.stringify(data))
+				localStorage.setItem("user", JSON.stringify(data));
+				console.log(localStorage.getItem("user"));
+				window.close()
+				newTab.document.location.reload(true);
+
+			})
+		}
 		$(document).ready(function () {
 			var user = localStorage.getItem('user')
 
