@@ -32,6 +32,7 @@
             var userId = ($('#userId').text())
             var userName = ($('#userName').val())
             var userImage = $('#userImage').val().split('\\').pop();
+            alert(userImage)
             var userShownName = String($("#userShownName").val())
             $.post('../updateAccount', {
                 userId: userId,

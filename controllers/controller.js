@@ -117,3 +117,8 @@ exports.songs_id = (res, data) => {
         data: data
     })
 }
+exports.comment = (res, data) => {
+    res.render('comment', {
+        data: data
+    })
+}

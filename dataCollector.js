@@ -655,3 +655,76 @@ module.exports.addCommentToSong = (res, songName, comments) => {
             this.send1ParmFile(res, data)
         })
 }
+
+
+module.exports.changeUserShownName = (res, showName, id) => {
+    User.users.updateOne(
+        { _id: mongoose.Types.ObjectId(`${id}`) },
+        {
+            $set: {
+                showName: showName,
+            }
+        }, (err, data) => {
+            if (err) console.log(err)
+            else {
+                User.users.find({
+                    _id: mongoose.Types.ObjectId(`${id}`)
+                }, (err, data2) => {
+                    console.log(data)
+                    this.send1ParmFile(res, data2)
+                })
+            }
+        }
+    )
+}
+module.exports.changeUserAva = (res, image, id) => {
+    User.users.updateOne(
+        { _id: mongoose.Types.ObjectId(`${id}`) },
+        {
+            $set: {
+                images: `images/${image}`,
+            }
+        }, (err, data) => {
+            if (err) console.log(err)
+            else {
+                User.users.find({
+                    _id: mongoose.Types.ObjectId(`${id}`)
+                }, (err, data2) => {
+                    console.log(data)
+                    this.send1ParmFile(res, 'thanh cong')
+                })
+            }
+
+        }
+    )
+}
+module.exports.changeUserPassword = (res, pass, newPass, id) => {
+    User.users.find(
+        {
+            $and: [
+                { _id: mongoose.Types.ObjectId(`${id}`) },
+                { pass: pass }
+            ]
+        }, (err, data) => {
+            if (err) console.log(err)
+            else {
+                if (data.length != 0) {
+                    User.users.updateOne(
+                        { _id: mongoose.Types.ObjectId(`${id}`) },
+                        {
+                            $set: {
+                                pass: newPass,
+                            }
+                        }, (err, data2) => {
+                            console.log(data)
+                            this.send1ParmFile(res, 'thay doi thanh cong')
+
+                        })
+                }
+                else this.send1ParmFile(res, 'mat khau hien tai khong dung')
+
+            }
+
+        }
+    )
+}

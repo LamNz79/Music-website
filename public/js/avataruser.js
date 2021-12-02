@@ -5,26 +5,34 @@ const AVATAR = document.getElementById("avatar");
 UPLOAD_BUTTON.addEventListener("click", () => FILE_INPUT.click());
 
 FILE_INPUT.addEventListener("change", event => {
-  const file = event.target.files[0];
+  const file = event.target.files[0].name;
+  changeAva(file)
+  // const reader = new FileReader();
 
-  const reader = new FileReader();
+  // reader.readAsDataURL(file);
 
-  reader.readAsDataURL(file);
-
-  reader.onloadend = () => {
-    AVATAR.setAttribute("aria-label", file.name);
-    AVATAR.style.background = `url(${reader.result}) center center/cover`;
-    localStorage.setItem("user", JSON.stringify(file.name));
-    JSON.parse(localStorage.getItem(file.name));
-  };
+  // reader.onloadend = () => {
+  //   AVATAR.setAttribute("aria-label", file.name);
+  //   AVATAR.style.background = `url(${reader.result}) center center/cover`;
+  //   localStorage.setItem("user", JSON.stringify(file.name));
+  //   JSON.parse(localStorage.getItem(file.name));
+  // };
 });
 
 function changeAva(file) {
-  console.log(file.name)
+  var currentUser = JSON.parse(localStorage.getItem("user"))[0]
+
+  console.log(file)
   $.post('changeUserAva ', {
-    avaFile: file
+    avaFile: file,
+    currentUserID: currentUser._id,
+
   },
     (data, status) => {
-      alert(data.name)
+      alert(JSON.stringify(data))
+      localStorage.setItem("user", JSON.stringify(data));
+      console.log(localStorage.getItem("user"));
+      window.location.reload()
+
     })
 }

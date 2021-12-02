@@ -4,7 +4,8 @@ const { personal } = require("../controllers/controller");
 const router = express.Router();
 controller = require("../controllers/controller")
 dataCollector = require('../dataCollector')
-const bodyParser = require('body-parser')
+const bodyParser = require('body-parser');
+const { response } = require("express");
 
 router.use(bodyParser.urlencoded({ extended: true }))
 router.use(bodyParser.json())
@@ -118,6 +119,24 @@ router.get("/47dzEhPlfq/add_album_playlist", (req, res) => {
 
 
 // Post method
+
+router.post('/changeUserShownName', async (req, res) => {
+    var userName = await req.body.userName.trim()
+    var userID = await req.body.currentUserID.trim()
+    dataCollector.changeUserShownName(res, userName, userID)
+})
+router.post('/changeUserPassword', async (req, res) => {
+    var userID = await req.body.currentUserID.trim()
+    var password1 = await req.body.password1.trim()
+    var newPassword1 = await req.body.newPassword1.trim()
+    var newPassword2 = await req.body.newPassword2.trim()
+    if (newPassword1 == newPassword2) {
+        dataCollector.changeUserPassword(res, password1, newPassword1, userID)
+    }
+    else {
+        res.send('mat khau khong trung')
+    }
+})
 router.post('/createNewAlbum', async (req, res) => {
     var name = await req.body.name.trim()
     var image = await req.body.image.trim()
@@ -248,10 +267,11 @@ router.post('/getSongInfo', (req, res) => {
 })
 
 
-router.post('/changeUserAva', (req, res) => {
-    var avaFile = req.body.avaFile
+router.post('/changeUserAva', async (req, res) => {
+    var avaFile = await req.body.avaFile
+    var userID = await req.body.currentUserID.trim()
     console.log(avaFile)
-    res.send(avaFile.name)
+    dataCollector.changeUserAva(res, avaFile, userID)
 })
 
 module.exports = router
