@@ -98,7 +98,7 @@ router.get("/47dzEhPlfq/a_controls/:album", (req, res) => {
 router.get("/47dzEhPlfq/p_controls/:playlist", (req, res) => {
     var id = req.params[`playlist`]
     // var objUser = JSON.parse(localStorage.getItem("user"))
-    dataCollector.getPlaylistById(res, controller.playlist_Album_id, id)
+    dataCollector.getPlaylistById(res, controller.playlist_id, id)
 })
 router.get("/47dzEhPlfq/s_controls/:songId", (req, res) => {
     var id = req.params[`songId`]
@@ -117,8 +117,46 @@ router.get("/47dzEhPlfq/add_album_playlist", (req, res) => {
 })
 
 
+// Post method  
+router.post('/updatePlaylistUsingId', async (req, res) => {
+    var id = await (req.body.thisId).trim()
+    var name = await req.body.name
+    var image = await req.body.image
+    dataCollector.adminUpdatePlaylistOnClick(res, id, name, image)
+})
 
-// Post method
+router.post('/submitPlaylistAddSong', async (req, res) => {
+    var songList = await req.body.songList
+    var thisId = await req.body.thisId
+    console.log(songList)
+    console.log(`this id is ${thisId}`)
+
+    dataCollector.insertSongIntoPlaylist(songList, thisId, res)
+})
+router.post('/submitAddSong', async (req, res) => {
+    var songList = await req.body.songList
+    var thisId = await req.body.thisId
+    console.log(songList)
+    console.log(`this id is ${thisId}`)
+
+    dataCollector.insertSongIntoAlbum(songList, thisId, res)
+})
+
+router.post('/deleteSongFromPlaylistOnClick', async (req, res) => {
+    var thisAlbumId = await req.body.thisAlbumId
+    var thisID = await req.body.thisID
+    console.log(thisAlbumId)
+    console.log(thisID)
+    dataCollector.deleteSongFromPlaylist(thisID, thisAlbumId, res)
+})
+
+router.post('/deleteSongFromListOnClick', async (req, res) => {
+    var thisAlbumId = await req.body.thisAlbumId
+    var thisID = await req.body.thisID
+    console.log(thisAlbumId)
+    console.log(thisID)
+    dataCollector.deleteSongFromAlbum(thisID, thisAlbumId, res)
+})
 
 router.post('/changeUserShownName', async (req, res) => {
     var userName = await req.body.userName.trim()
@@ -171,12 +209,11 @@ router.post('/createNewUser', async (req, res) => {
 
 router.post('/updateUsingId', async (req, res) => {
     var id = await (req.body.thisId).trim()
-    await console.log(id)
-
     var name = await req.body.name
     var image = await req.body.image
     dataCollector.adminUpdateAlbumOnClick(res, id, name, image)
 })
+
 router.post('/updateSongUsingId', async (req, res) => {
     var id = await (req.body.songId).trim()
     var name = await (req.body.songName).trim()
