@@ -20,7 +20,7 @@
             <input type="text" name="" id="name" value="<%=element.name%>">
             <label for="">PATH</label>
             <input type="file" name="" id="image" value="<%=element.image%>">
-            <input type="button" value="submit Change" onclick="updateUsingId()">
+            <input type="button" value="submit" onclick="updateUsingId()">
 
             <% element.songList.forEach(song=>{ %>
     </form>
@@ -34,11 +34,12 @@
         </label>
 
         <label for="">
-            <button onclick="deleteSongFromListOnClick(`<%=song._id%>`)">delete</button>
+            <button onclick="deleteSongFromListOnClick(`<%=song._id%>`,`deleteSongOnClick`)">delete</button>
         </label>
     </form>
     <%})%>
         <%})%>
+
             <select name="" id="songList">
                 <% songData.forEach(element=>{ %>
                     <option>
@@ -46,13 +47,13 @@
                     </option>
                     <%})%>
             </select>
-            <input type="button" value="Add Song" id="submitAddSong" onclick="submitAddSongg()">
+            <input type="button" value="add song" id="submitAddSong" onclick="submitAddSongg()">
             <script>
                 function updateUsingId() {
-                    var thisId = ($('#thisId').text()).trim()
-                    var name = ($('#name').val()).trim()
+                    var thisId = ($('#thisId').text())
+                    var name = ($('#name').val())
                     var image = $('#image').val().split('\\').pop();
-                    $.post('../updateUsingId', {
+                    $.post('../updatePlaylistUsingId', {
                         thisId: thisId,
                         name: name,
                         image: image
@@ -60,10 +61,11 @@
                         alert(JSON.stringify(data))
                     })
                 }
+
                 function submitAddSongg() {
                     var songList = ($('#songList').val())
                     var thisId = ($('#thisId').text()).trim()
-                    $.post('../submitAddSong', {
+                    $.post('../submitPlaylistAddSong', {
                         songList: songList,
                         thisId: thisId
                     }, (data, status) => {
@@ -71,21 +73,19 @@
                         window.location.reload()
                     })
                 }
-                function deleteSongFromListOnClick(id) {
+                function deleteSongFromListOnClick(id, path) {
                     var thisID = id.replace(/ /g, "")
                     var thisAlbumId = ($('#thisId').text()).trim()
 
                     var answer = window.confirm("conform delete?");
                     if (answer) {
-                        $.post(`../deleteSongFromListOnClick`, {
+                        $.post(`../deleteSongFromPlaylistOnClick`, {
                             thisID: thisID,
                             thisAlbumId: thisAlbumId
-                        }, async (data, status) => {
+                        }, (data, status) => {
                             alert(JSON.stringify(data))
-                            await window.location.reload()
-
+                            window.location.reload()
                         })
-
                     }
                     else {
                         alert('khong the hoan thanh')
