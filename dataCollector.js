@@ -74,7 +74,13 @@ module.exports.getAlbumById = (res, getData, id) => {
                 }
             }], (err, data) => {
                 if (err) console.error
-                getData(res, data)
+                else {
+
+                    User.songs.find({}, (err, data2) => {
+                        if (err) console.log(err)
+                        getData(res, data, data2)
+                    })
+                }
             })
 }
 
@@ -96,7 +102,12 @@ module.exports.getPlaylistById = (res, getData, id) => {
                 }
             }], (err, data) => {
                 if (err) console.error
-                getData(res, data)
+                else {
+                    User.songs.find({}, (err, data2) => {
+                        if (err) console.log(err)
+                        getData(res, data, data2)
+                    })
+                }
             })
 }
 module.exports.getPlaylistAndAlbum = (res, getData) => {
@@ -267,6 +278,63 @@ module.exports.addingUser = (username, password, shownName, res, image) => {
     }
 }
 
+module.exports.insertSongIntoPlaylist = (name, albumName, res) => {
+    User.songs.find({
+        name: name,
+    }, (err, data) => {
+        console.log(mongoose.Types.ObjectId(`${data[0]._id}`))
+        if (err) console.log(err)
+        else if (data.length !== 0) {
+
+            User.playlists.updateOne(
+                { _id: albumName },
+                {
+                    $push:
+                    {
+                        songList: mongoose.Types.ObjectId(`${data[0]._id}`)
+                    }
+                }, (err, data2) => {
+                    if (err) console.log(err)
+                    else {
+                        console.log(JSON.stringify(data2))
+                        this.send1ParmFile(res, JSON.stringify(data2))
+                    }
+                }
+            )
+        }
+        else {
+            this.send1ParmFile(res, 'khong co bai hat do trong du lieu')
+        }
+    })
+}
+
+module.exports.deleteSongFromPlaylist = (name, albumName, res) => {
+    User.songs.find({
+        _id: name,
+    }, (err, data) => {
+        if (err) console.log(err)
+        else if (data.length !== 0) {
+            User.playlists.updateOne(
+                { _id: albumName },
+                {
+                    $pull:
+                    {
+                        songList: mongoose.Types.ObjectId(`${data[0]._id}`)
+                    }
+                }, (err, data2) => {
+                    if (err) console.log(err)
+                    else {
+                        console.log(JSON.stringify(data2))
+                        this.send1ParmFile(res, JSON.stringify(data2))
+                    }
+                }
+            )
+        }
+        else {
+            this.send1ParmFile(res, 'khong co bai hat do trong du lieu')
+        }
+    })
+}
 module.exports.insertSongIntoAlbum = (name, albumName, res) => {
     User.songs.find({
         name: name,
@@ -276,7 +344,7 @@ module.exports.insertSongIntoAlbum = (name, albumName, res) => {
         else if (data.length !== 0) {
 
             User.albums.updateOne(
-                { name: albumName },
+                { _id: albumName },
                 {
                     $push:
                     {
@@ -300,13 +368,12 @@ module.exports.insertSongIntoAlbum = (name, albumName, res) => {
 
 module.exports.deleteSongFromAlbum = (name, albumName, res) => {
     User.songs.find({
-        name: name,
+        _id: name,
     }, (err, data) => {
-        console.log(mongoose.Types.ObjectId(`${data[0]._id}`))
         if (err) console.log(err)
         else if (data.length !== 0) {
             User.albums.updateOne(
-                { name: albumName },
+                { _id: albumName },
                 {
                     $pull:
                     {
@@ -505,29 +572,50 @@ module.exports.adminUpdateUserOnClick = (res, id, name, showName, image) => {
 
 
 module.exports.adminUpdateAlbumOnClick = (res, id, name, image) => {
-    User.albums.updateOne(
+    User.albums.update(
         { _id: mongoose.Types.ObjectId(`${id}`) },
         {
             $set: {
                 name: name,
-                images: `images/${image}`
+                image: `images/${image}`
             }
-        }, (err, data) => {
+        },
+        { upsert: true }, (err, data) => {
             if (err) console.log(err)
             else {
-                User.playlists.updateOne(
-                    { _id: mongoose.Types.ObjectId(`${id}`) },
-                    {
-                        $set: {
-                            name: name,
-                            images: `images/${image}`
-                        }
-                    }, (err, data) => {
-                        if (err) console.log(err)
-                        console.log(data)
-                        this.send1ParmFile(res, data)
-                    }
-                )
+                // User.playlists.updateOne(
+                //     { _id: mongoose.Types.ObjectId(`${id}`) },
+                //     {
+                //         $set: {
+                //             name: name,
+                //             images: `images/${image}`
+                //         }
+                //     }, (err, data2) => {
+                //         if (err) console.log(err)
+                //         // console.log(data2)
+                this.send1ParmFile(res, data)
+                //     }
+                // )
+            }
+        }
+    )
+}
+
+module.exports.adminUpdatePlaylistOnClick = (res, id, name, image) => {
+    User.playlists.update(
+        { _id: mongoose.Types.ObjectId(`${id}`) },
+        {
+            $set: {
+                name: name,
+                image: `images/${image}`
+            }
+        },
+        { upsert: true }, (err, data) => {
+            if (err) console.log(err)
+            else {
+
+                this.send1ParmFile(res, data)
+
             }
         }
     )
@@ -640,16 +728,16 @@ module.exports.makeNewComment = (res, name, img, content) => {
         content: content
     });
     newComment.save();
-    this.send1ParmFile(res, 'thanh cong')
-    return newComment._id
+    return newComment
 }
 
-module.exports.addCommentToSong = (res, songName, comments) => {
+module.exports.addCommentToSong = (res, songName, callback, name, img, content) => {
+    var newComment = callback(res, name, img, content)
     User.songs.updateOne(
         { name: songName },
         {
             $push:
-                { comments: mongoose.Types.ObjectId(`${comments}`) }
+                { comments: mongoose.Types.ObjectId(`${newComment._id}`) }
         }, (err, data) => {
             if (err) console.log(err)
             this.send1ParmFile(res, data)
@@ -691,7 +779,7 @@ module.exports.changeUserAva = (res, image, id) => {
                     _id: mongoose.Types.ObjectId(`${id}`)
                 }, (err, data2) => {
                     console.log(data)
-                    this.send1ParmFile(res, data2)
+                    this.send1ParmFile(res, 'thanh cong')
                 })
             }
 

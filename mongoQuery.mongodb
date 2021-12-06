@@ -114,10 +114,7 @@ use('ZingMp3');
 //   comment: []
 // }})
 
-db.users.find(
-    {$and:[
-        {_id:ObjectId('6180c0a6c94e498d36a4cb05')},
-        {pass:'123'}
-    ]}
-)
+db.albums.find({})
+
+
 // db.users.remove( {$or:[{name : '3456'},{name : '678'},{name : 'asd'},{name : 'lamn'},{name : 'ong'},{name : 'qwe'}]})

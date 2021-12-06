@@ -107,9 +107,16 @@ exports.account_id = (res, data) => {
         data: data
     })
 }
-exports.playlist_Album_id = (res, data) => {
+exports.playlist_Album_id = (res, data, data2) => {
     res.render('playlist_Album_id', {
-        data: data
+        data: data,
+        songData: data2
+    })
+}
+exports.playlist_id = (res, data, data2) => {
+    res.render('playlist_id', {
+        data: data,
+        songData: data2
     })
 }
 exports.songs_id = (res, data) => {
@@ -117,8 +124,9 @@ exports.songs_id = (res, data) => {
         data: data
     })
 }
-exports.comment = (res, data) => {
+exports.comment = (res, data, songData) => {
     res.render('comment', {
-        data: data
+        data: data,
+        songData: songData
     })
 }

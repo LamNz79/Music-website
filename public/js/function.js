@@ -175,14 +175,23 @@ function findUsingSearchBar(inputName, ulName) {
 
 function deleteOnClick(id, path) {
     var thisID = id.replace(/ /g, "")
-    $.post(`../${path}`, {
-        thisID: thisID
-    }, (data, status) => {
-        alert(JSON.stringify(data))
-        window.location.reload()
-    })
-
+    var answer = window.confirm("conform delete?");
+    if (answer) {
+        $.post(`../${path}`, {
+            thisID: thisID
+        }, (data, status) => {
+            alert(JSON.stringify(data))
+            window.location.reload()
+        })
+    }
+    else {
+        alert('khong the hoan thanh')
+    }
 }
+
+
+
+
 
 function updateOnClick(id, path) {
     var thisID = id.replace(/ /g, "")
