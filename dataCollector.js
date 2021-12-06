@@ -691,7 +691,7 @@ module.exports.changeUserAva = (res, image, id) => {
                     _id: mongoose.Types.ObjectId(`${id}`)
                 }, (err, data2) => {
                     console.log(data)
-                    this.send1ParmFile(res, 'thanh cong')
+                    this.send1ParmFile(res, data2)
                 })
             }
 

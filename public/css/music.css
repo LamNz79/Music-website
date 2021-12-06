@@ -76,9 +76,11 @@
 }
 
 .media-body, .media-left, .media-right {
-    display: table-cell;
+    display: flex;
     vertical-align: top;
 }
+
+
 .media-left, .media>.pull-left {
     padding-right: 10px;
 }
@@ -374,8 +376,6 @@
 }
 .fav-music{
     display: flex;
-    flex-direction: column;
-    justify-content: center;
 }
 .fav-music #fav-no, #fav-yes{
     font-size: 1.3em;
@@ -387,3 +387,97 @@
     opacity: 0.8;
 }
 
+.show-comment{
+    width: 100%;
+    height: 100%;
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 3;
+    background-color: #0000005b;
+}
+
+.show-comment .comment-box{
+    width: 600px;
+    height: 90%;
+    background-color: #871db8;
+    margin: auto;
+    display: block;
+    padding: auto;
+    border-radius: 20px;
+    padding: 10px 0px;
+    
+}
+
+.show-comment .comment-box .top-comment-box{
+    display: flex;
+    justify-self:center;
+    border-bottom: solid 2px #e6deec6e;
+    padding: 0 1rem;
+    transition: 0.3s linear;
+}
+
+.show-comment .comment-box .top-comment-box button:hover{
+    opacity: 0.8;
+    transition: 0.3s linear;
+}
+
+.show-comment .comment-box .comment-list{
+    width: 100%;
+    height: 85%;
+    position: relative;
+}
+
+.show-comment .comment-box .comment-list .comment-user{
+    width: 100%;
+    height: 100%;
+    padding: 12px;
+
+}
+
+.show-comment .comment-box .comment-list .comment-user::-webkit-scrollbar {
+    width: 4px;
+    z-index: 1;
+}
+.show-comment .comment-box .comment-list .comment-user::-webkit-scrollbar-button {
+    height: 5px;
+}
+.show-comment .comment-box .comment-list .comment-user::-webkit-scrollbar-thumb {
+    background-color: #ddd5e0a4;
+    border-radius: 20px;
+}
+
+.show-comment .comment-box .comment-list .comment-user .comment-item{
+    display: flex;
+    align-items: flex-start;
+    width: 100%;
+    margin-bottom: 5px;
+    margin: 2.5rem 0;
+}
+.show-comment .comment-box .comment-list .comment-user .comment-item .media-content{
+    color: white;
+}
+
+.show-comment .comment-box .comment-input{
+    display: flex;
+    width: 100%;
+    height: 10%;
+    padding: 0 12px;
+}
+
+.show-comment .comment-box .comment-input textarea{
+    border-radius: 5px;
+    border: none;
+    height: 70%;
+    width: 80%;
+    background-color: rgba(255, 255, 255, 0.404);
+}
+
+.show-comment .comment-box .comment-input textarea:focus{
+    border: none;
+    outline: none;
+}
+.show-comment .comment-box .comment-input ::placeholder{
+    color: #fff
+}

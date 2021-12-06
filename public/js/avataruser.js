@@ -29,10 +29,11 @@ function changeAva(file) {
 
   },
     (data, status) => {
-      alert(JSON.stringify(data))
-      localStorage.setItem("user", JSON.stringify(data));
-      console.log(localStorage.getItem("user"));
-      window.location.reload()
-
+      if(data.length != 0) {
+        alert('Thanh Cong');
+        localStorage.setItem("user", JSON.stringify(data));
+        console.log(localStorage.getItem("user"));
+        window.location.reload()
+      }
     })
 }

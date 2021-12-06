@@ -7,32 +7,76 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <title>Admin - User</title>
+
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
+    <link href="/css/admin.css" rel="stylesheet">
 </head>
 
 <body>
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">User Account</h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <% data.forEach(element=>{ %>
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>id</th>
+                            <th>Name</th>
+                            <th style="width: 5%">path</th>
+                            <th>Show name</th>
+                            <th style="width: 10%">Action</th>
 
-    <form action="">
-        <% data.forEach(element=>{ %>
-            <label for="" id="userId">
-                <%=element._id%>
-            </label>
-            <label for="">NAME</label>
-            <input type="text" name="" id="userName" value="<%=element.name%>">
-            <label for="">PATH</label>
-            <input type="file" name="" id="userImage" value="<%=element.images%>">
-            <label for="">SHOW NAME</label>
-            <input type="text" name="" id="userShownName" value="<%=element.showName%>">
+                        </tr>
+                    </thead>
+                    <tbody id="UsersList">
 
-            <%})%>
-    </form>
-    <input type="button" value="submit" onclick="updateAccount()">
+                            <tr>
+                                <td>
+                                    <label for="" id="userId">
+                                        <%=element._id%>
+                                    </label>
+                                </td>
+                                <td>
+                                    <input type="text" name="" id="userName" value="<%=element.name%>">
+                                </td>
+                                <td>
+                                    <input type="file" accept="image/*" name="" id="userImage" value="<%=element.images%>">
+                                </td>
+                                <td>
+                                    <input type="text" name="" id="userShownName" value="<%=element.showName%>">
+                                </td>
+
+                                <td>
+                                    <button class="btn btn-primary fa-2x"
+                                        onclick="updateAccount()">SAVE</button>
+                                </td>
+                            </tr>
+
+                    </tbody>
+                </table>
+                <%})%>
+
+            </div>
+
+
+
+        </div>
+    </div>  
+</div>
+
     <script>
         function updateAccount() {
             var userId = ($('#userId').text())
             var userName = ($('#userName').val())
             var userImage = $('#userImage').val().split('\\').pop();
-            alert(userImage)
             var userShownName = String($("#userShownName").val())
             $.post('../updateAccount', {
                 userId: userId,
@@ -40,7 +84,7 @@
                 userImage: userImage,
                 userShownName: userShownName
             }, (data, status) => {
-                alert(JSON.stringify(data))
+                alert('Sửa đổi thành công!')
                 window.close()
 
             })

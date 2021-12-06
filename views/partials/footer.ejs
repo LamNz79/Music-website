@@ -23,9 +23,10 @@
                         </div>
 
                         <div class="fav-music">
-                            <i class="far fa-heart" id="fav-no" onclick="addFavMusic()" title="Thêm vào yêu thích"></i>
+                            <i class="far fa-heart" id="fav-no" onclick="addFavMusic()" title="Thêm vào yêu thích" style="padding: 2.32rem 0;"></i>
                             <i class="fas fa-heart" id="fav-yes" onclick="delFavMusic()" title="Hủy bỏ yêu thích"
                                 style="display:none;"></i>
+                            <button class="fas fa-comment" id="comment-show" onclick="showComment()" title="Xem bình luận" style="border: none; background-color: transparent; z-index: 2; color: #fff; width: 40px;"></button>
                         </div>
                     </div>
                 </div>
@@ -91,5 +92,6 @@
     <div class="layer-mv">
         <img src="/images/blur-background.jpg" alt="">
     </div>
+    
 </div>
 <script src="/js/music.js"></script>

@@ -13,7 +13,7 @@
                 <div class="puser-info">
                     <input type="file" name="image" id="image" accept="image/*" style="display: none;"/>
                     <div id="preview">
-                    <div class="user-avt" id="avatar"><img id="user_ava"></div>
+                    <div class="user-avt" id="avatar" style="border: 0px;"><img id="user_ava"></div>
                     <button
                         id="upload-button"
                         aria-labelledby="image"
@@ -28,12 +28,12 @@
                         <h2 id="shownName">Đăng Quang</i></h2>
                     </div>
                     <div class="changeInfo">
-                        <button class="changeName" onclick="window.open('/nameChange', 
+                        <button class="changeName" style="display: flex; justify-content: center;" onclick="window.open('/nameChange', 
                         'newwindow', 
-                        'width=500,height=600');">Đổi tên tài khoản</button>
-                        <button class="changePassword" onclick="window.open('/passwordChange', 
+                        'width=500,height=600');"><i class="fas fa-edit" style="font-size: 1em; width: 20px; padding: 7px 0;"></i><p style="padding: 6px 0; margin: 0;">Đổi tên hiển thị</p></button>
+                        <button class="changePassword" style="display: flex; justify-content: center;" onclick="window.open('/passwordChange', 
                         'newwindow', 
-                        'width=500,height=700');">Đổi mật khẩu</button>
+                        'width=500,height=700');"><i class="fas fa-lock" style="font-size: 1em; width: 20px; padding: 7px 0;"></i><p style="padding: 6px 0; margin: 0;">Đổi mật khẩu</p></button>
                     </div>
                 </div>
             </div>

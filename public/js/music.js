@@ -195,6 +195,14 @@ function delFavMusic() {
     })
 }
 
+function showComment(){
+  document.querySelector(".show-comment").style.cssText = `display: block`;
+}
+function hideComment(){
+  document.querySelector(".show-comment").style.cssText = `display: none`;
+}
+
+
 function getSelectedSongImage() {
 
   return curr_song.image

@@ -27,7 +27,7 @@
                     <div class="media-content">
                         <div class="content-top">
                             <h3>TOP 100 NHẠC <%=element.name%> HAY NHẤT</h3>
-                            <h5 style="opacity: 0.5;">Cập nhật: 05/11/2021</h5>
+                            <h5 style="opacity: 0.5;">Cập nhật: 29/11/2021</h5>
                             <h5 style="opacity: 0.5;">310 người yêu thích</h5>
                         </div>
                         <div class="action">
@@ -111,12 +111,13 @@
                                                             <div class="media-content">
                                                                 3:02
                                                             </div>
-                                                            <div class="media-right">
+                                                            <div class="media-right" >
                                                                 <i class="far fa-heart" onclick="addFavMusic()"
-                                                                    title="Thêm vào yêu thích"></i>
+                                                                    title="Thêm vào yêu thích" style="display:none"></i>
                                                                 <i class="fas fa-heart" onclick="delFavMusic()"
                                                                     title="Hủy bỏ yêu thích"
                                                                     style="display:none; color: #3B2F52;"></i>
+                                                                <button class="fas fa-comment" title="Xem bình luận" style="border: none; background-color: transparent; z-index: 2;"></button>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -131,6 +132,52 @@
                                     <!-- Song list header END-->
                             </div>
                             <!-- Main-content END -->
+                            <div class="show-comment" style="display: none;">
+                                <div class="comment-box">
+                                    <div class="top-comment-box">
+                                        <p style="padding: 1rem 1rem; font-size: 1.2em; margin: 0;">Bình luận</p>
+                                        <button onclick="hideComment()" title="Đóng cửa sổ" style="width: 60px; background-color: transparent; border: 0; font-size: 1.4em;" class="fas fa-times"></button>
+                                    </div>
+                                    <div class="comment-list">
+                                        <div class="comment-user" style="inset: 0px; overflow: hidden scroll; margin-right: -6px; margin-bottom: 0px;">
+                                            <div class="comment-item">
+                                                <div class="media-left" style="width: 60px;"><img src="/images/quangne.png" style="border-radius: 100%;"></div>
+                                                <div class="media-content">
+                                                    <div class="username-cmt">Đăng Quang</div>
+                                                    Ôi ngày nào cũng nghe bài này, hay thật sự luôn á!
+                                                </div>
+                                            </div>
+                                            <div class="comment-item">
+                                                <div class="media-left" style="width: 60px;"><img src="/images/yasuo.jpg" style="border-radius: 100%;"></div>
+                                                <div class="media-content">
+                                                    <div class="username-cmt">Minh Thiên</div>
+                                                    Nghe không biết chán luôn mà..
+                                                </div>
+                                            </div>
+                                            <div class="comment-item">
+                                                <div class="media-left" style="width: 60px;"><img src="/images/aong.png" style="border-radius: 100%;"></div>
+                                                <div class="media-content">
+                                                    <div class="username-cmt">Nhân Bảo Nguyễn</div>
+                                                    Mốt cover bài này luôn, đóng TUNE luôn 
+                                                </div>
+                                            </div>
+                                            <div class="comment-item">
+                                                <div class="media-left" style="width: 60px;"><img src="/images/lam.jpg" style="border-radius: 100%;"></div>
+                                                <div class="media-content">
+                                                    <div class="username-cmt">Min Lâm</div>
+                                                    Hay vãi
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="comment-input">
+                                        <div class="media-left" style="width: 60px;"><img src="/images/lam.jpg" style="border-radius: 100%;"></div>
+                                        <textarea name="" id="" placeholder="Nhập bình luận..."></textarea>
+                                        <button style="width: 10%; height: 70%; background-color: transparent; border: none;"><i class="fas fa-paper-plane"></i> GỬI</button>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         <footer>
                             <%- include('./partials/footer'); %>
