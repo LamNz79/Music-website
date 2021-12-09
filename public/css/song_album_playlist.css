@@ -285,12 +285,19 @@ body{
 	
 }
 
+.box-music-content .song-list-select{
+    height: 497px;
+
+}
+
 .song-list-select{
 	border-bottom: 1px solid #2a213a;
     height: 725px;
 	overflow:hidden;
 	overflow-y: scroll;
 }
+
+
 .song-list-select::-webkit-scrollbar {
     width: 4px;
     z-index: 1;

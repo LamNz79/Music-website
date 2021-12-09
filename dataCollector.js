@@ -258,17 +258,17 @@ module.exports.addingUser = (username, password, shownName, res, image) => {
                     console.log(data)
                     if (data.length == 0) {
                         makeNewUser(username, password, shownName, image)
-                        this.send1ParmFile(res, 'thanh cong')
+                        this.send1ParmFile(res, 'Thêm tài khoản thành công')
                     }
                     else {
-                        this.send1ParmFile(res, 'da co tai khoan')
+                        this.send1ParmFile(res, 'Tài khoản đã tồn tại')
 
                     }
                 }
             )
         }
         else {
-            this.send1ParmFile(res, 'tai khoan khong hop le')
+            this.send1ParmFile(res, 'Tài khoản không hợp lệ')
 
         }
     }
@@ -767,7 +767,7 @@ module.exports.changeUserShownName = (res, showName, id) => {
 }
 module.exports.changeUserAva = (res, image, id) => {
     User.users.updateOne(
-        { _id: mongoose.Types.ObjectId(`${id}`) },
+        { name: id },
         {
             $set: {
                 images: `images/${image}`,
@@ -776,10 +776,10 @@ module.exports.changeUserAva = (res, image, id) => {
             if (err) console.log(err)
             else {
                 User.users.find({
-                    _id: mongoose.Types.ObjectId(`${id}`)
+                    name: id
                 }, (err, data2) => {
                     console.log(data)
-                    this.send1ParmFile(res, 'thanh cong')
+                    this.send1ParmFile(res, data2)
                 })
             }
 

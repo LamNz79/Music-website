@@ -2,29 +2,61 @@
 <html lang="en">
 
 <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
+    <title>Admin - Album/Playlist</title>
+
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
+    <link href="/css/admin.css" rel="stylesheet">
 </head>
 
 <body>
-    <h1>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fugiat, similique libero accusantium quo in optio qui
-        natus aliquam provident, aspernatur aliquid illo quisquam eos? Omnis quas atque magnam quia. Vel.</h1>
-    <form action="">
-        <label for="">name</label>
-        <input type="text" name="name" id="name">
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Create Album/Playlist</h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Image</th>
+                            <th style="width: 25%">Create</th>
+                        </tr>
+                    </thead>
+                    <tbody id="UsersList">
 
-        <label for="">image</label>
-        <input type="file" name="image" id="image" value="c/hello.jpg">
+                            <tr>
+                                <td>
+                                    <input type="text" name="name" id="name">
+                                </td>
+                                <td>
+                                    <input type="file" accept="image/*" name="image" id="image" value="">
+                                </td>
+                                <td>
+                                    <button class="btn btn-primary fa-2x" value="Submit Album"
+                                        onclick="createNewAlbum()">ALBUM</button>
+                                    <button class="btn btn-success fa-2x" value="Submit Playlist"
+                                        onclick="createNewPlaylist()">PLAYLIST</button>
+                                </td>
+                            </tr>
+
+                    </tbody>
+                </table>
+            </div>
 
 
-        <input type="button" value="Submit Album" onclick="createNewAlbum()">
-        <input type="button" value="Submit Playlist" onclick="createNewPlaylist()">
 
-    </form>
+        </div>
+    </div>  
     <script>
         function createNewAlbum() {
             var name = $("#name").val()
@@ -34,7 +66,7 @@
                 name: name,
                 image: image
             }, (data, status) => {
-                alert(data)
+                alert('Tạo Album thành công!')
                 window.location.reload()
 
             })
@@ -47,7 +79,7 @@
                 name: name,
                 image: image
             }, (data, status) => {
-                alert(data)
+                alert('Tạo Playlist thành công!')
                 window.location.reload()
 
             })

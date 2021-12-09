@@ -108,22 +108,21 @@
 							<% a+=1%>
 								<div class="nsong nsong-galerry-1">
 									<div class="nsong-left">
-										<img src="<%= dataPlaylist[index].image%>" alt="">
 										<div class="new-layer">
+											<a href="./Playlist/<%=dataPlaylist[index].name%>">
 											<div class="new-icon">
-												<a href="./Playlist/<%=dataPlaylist[index].name%>">
 													<i class="fas fa-play-circle" title="Thêm vào thư viện"></i>
-												</a>
 											</div>
+											</a>
 										</div>
+										<img src="<%= dataPlaylist[index].image%>" alt="">
 									</div>
 									<div class="nsong-content">
 										<p>
 											<%=dataPlaylist[index].name%>
 										</p>
 										<p style="opacity: 0.7; font-size: 1em; color: white; text-shadow: white;">
-											Meep
-											& AONG
+											Nhiều nghệ sĩ
 										</p>
 										</p>
 										<span>#<%=a%></span>

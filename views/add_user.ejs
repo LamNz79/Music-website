@@ -33,7 +33,7 @@
     <body>
         <div class="card shadow mb-4">
             <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">Add user</h6>
+                <h6 class="m-0 font-weight-bold text-primary">Add User</h6>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
@@ -93,9 +93,9 @@
                 userImage: userImage,
                 userShowName: userShowName,
             }, (data, status) => {
-                alert(data)
-                if (data == 'da co tai khoan') adminResetRegisInputBox()
-                else if (data == 'tai khoan khong hop le') adminResetRegisInputBox()
+                alert('Tạo thành công!')
+                if (data == 'Tài khoản đã tồn tại!') adminResetRegisInputBox()
+                else if (data == 'Tài khoản không hợp lệ!') adminResetRegisInputBox()
                 window.location.reload()
 
             })

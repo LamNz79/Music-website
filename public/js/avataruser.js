@@ -20,16 +20,16 @@ FILE_INPUT.addEventListener("change", event => {
 });
 
 function changeAva(file) {
-  var currentUser = JSON.parse(localStorage.getItem("user"))[0]
+  var currentUser = JSON.parse(localStorage.getItem("user"))
 
-  console.log(file)
+
   $.post('changeUserAva ', {
     avaFile: file,
-    currentUserID: currentUser._id,
+    currentUserID: currentUser[0].name.trim()
 
   },
     (data, status) => {
-      if(data.length != 0) {
+      if (data.length != 0) {
         alert('Thanh Cong');
         localStorage.setItem("user", JSON.stringify(data));
         console.log(localStorage.getItem("user"));

@@ -53,7 +53,7 @@
 				currentUserID: currentUser._id,
 				userName: userName
 			}, (data, status) => {
-				alert(JSON.stringify(data))
+				alert('Thay đổi tên hiển thị thành công!')
 				localStorage.setItem("user", JSON.stringify(data));
 				console.log(localStorage.getItem("user"));
 				window.close()

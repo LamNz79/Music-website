@@ -7,47 +7,113 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+		integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
+		crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <title>Admin - Playlist</title>
+
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
+    <link href="/css/admin.css" rel="stylesheet">
 </head>
 
 <body>
-    <form action="">
-        <% data.forEach(element=>{ %>
-            <label for="" id="thisId">
-                <%=element._id%>
-            </label>
-            <label for="">NAME</label>
-            <input type="text" name="" id="name" value="<%=element.name%>">
-            <label for="">PATH</label>
-            <input type="file" name="" id="image" value="<%=element.image%>">
-            <input type="button" value="submit" onclick="updateUsingId()">
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Playlist</h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <% data.forEach(element=>{ %>
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>id</th>
+                            <th>Name</th>
+                            <th style="width: 5%">path</th>
+                            <th style="width: 10%">Action</th>
 
-            <% element.songList.forEach(song=>{ %>
-    </form>
+                        </tr>
+                    </thead>
+                    <tbody id="UsersList">
 
-    <form action="">
-        <label for="" id="songID">
-            <%=song._id%>
-        </label>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-        <label for="">
-            <%=song.name%>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-        </label>
+                            <tr>
+                                <td>
+                                    <label for="" id="thisId">
+                                        <%=element._id%>
+                                    </label>
+                                </td>
+                                <td>
+                                    <input type="text" name="" id="name" value="<%=element.name%>">
+                                </td>
+                                <td>
+                                    <input type="file" accept="image/*" name="" id="image" value="<%=element.image%>">
+                                </td>
+                                <td>
+                                    <button class="btn btn-primary fa-2x"
+                                        onclick="updateUsingId()"><i class="fas fa-save"></i></button>
+                                </td>
+                            </tr>
 
-        <label for="">
-            <button onclick="deleteSongFromListOnClick(`<%=song._id%>`,`deleteSongOnClick`)">delete</button>
-        </label>
-    </form>
-    <%})%>
-        <%})%>
+                    </tbody>
+                </table>
+                <select name="" id="songList">
+                    <% songData.forEach(element=>{ %>
+                        <option>
+                            <%= element.name%>
+                        </option>
+                        <%})%>
+                </select>
+                <input class="btn btn-primary" type="button" value="add song" id="submitAddSong" onclick="submitAddSongg()">
+            </div>
+        </div>
+    </div>  
 
-            <select name="" id="songList">
-                <% songData.forEach(element=>{ %>
-                    <option>
-                        <%= element.name%>
-                    </option>
-                    <%})%>
-            </select>
-            <input type="button" value="add song" id="submitAddSong" onclick="submitAddSongg()">
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Playlist</h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>id</th>
+                            <th style="width: 70%;">Name</th>
+                            <th>Action</th>
+                            <% element.songList.forEach(song=>{ %>
+                        </tr>
+                    </thead>
+                    <tbody id="UsersList">
+
+                            <tr>
+                                <td>
+                                    <label for="" id="songID">
+                                        <%=song._id%>
+                                    </label>
+                                </td>
+                                <td>
+                                    <%=song.name%>
+                                </td>
+
+                                <td>
+                                    <button class="btn btn-danger fa-2x"
+                                    onclick="deleteSongFromListOnClick(`<%=song._id%>`,`deleteSongOnClick`)"><i class="fas fa-times"></i></button>
+                                </td>
+                                <%})%>
+                                <%})%>
+                            </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+        </div>
+        
+    </div>  
+
             <script>
                 function updateUsingId() {
                     var thisId = ($('#thisId').text())
@@ -77,18 +143,18 @@
                     var thisID = id.replace(/ /g, "")
                     var thisAlbumId = ($('#thisId').text()).trim()
 
-                    var answer = window.confirm("conform delete?");
+                    var answer = window.confirm("Bạn có chắc muốn xóa bài hát này khỏi Album/Playlist?");
                     if (answer) {
                         $.post(`../deleteSongFromPlaylistOnClick`, {
                             thisID: thisID,
                             thisAlbumId: thisAlbumId
                         }, (data, status) => {
-                            alert(JSON.stringify(data))
+                            alert('Xóa bài hát thành công!')
                             window.location.reload()
                         })
                     }
                     else {
-                        alert('khong the hoan thanh')
+                        alert('Xóa không thành công, vui lòng thử lại!')
                     }
                 }
             </script>

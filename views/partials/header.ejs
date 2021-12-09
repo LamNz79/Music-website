@@ -67,7 +67,7 @@
                         onclick="userOptions()">
                         <div id="myDropdown" class="dropdown-content">
                             <a id="loginuser" href="/login" title="Đăng nhập">Đăng nhập</a>
-                            <a id="profile" href="/personal" title="Cá nhân">Cá nhân</a>
+                            <a id="profile" href="/personal" onclick="gotoPersonal()" title="Cá nhân">Cá nhân</a>
                             <a id="logOut" onclick="logOutUser()" title="Đăng xuất">Đăng xuất</a>
                         </div>
                     </button>
@@ -101,7 +101,7 @@
                     Hãy thõa sức khám phá những bài hát không giới hạn với Music You Love.
                     <a title="Đánh giá website"></a> </p>`
                 document.getElementById('canhan').innerHTML = `<i class="fas fa-icons"></i>
-                <a href="/personal/${objUser[0].name}" style="text-decoration: none; color: white;" title="Cá nhân">Cá Nhân</a>`
+                <a href="/personal/${objUser[0].name}" style="text-decoration: none; color: white;" title="Cá nhân">Cá Nhân</a>`;
             }
         })
 

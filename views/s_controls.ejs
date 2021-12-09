@@ -5,8 +5,9 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+		integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
+		crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <title>Admin - Songs</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -63,17 +64,17 @@
             <li class="nav-item">
                 <a class="nav-link collapsed" href="/47dzEhPlfq/a_controls" aria-expanded="true"
                     aria-controls="collapseUtilities">
-                    <i class="fas fa-fw fa-wrench"></i>
+                    <i class="fas fa-record-vinyl"></i>
                     <span>Albums</span>
                 </a>
                 <a class="nav-link collapsed" href="/47dzEhPlfq/p_controls" aria-expanded="true"
                     aria-controls="collapseUtilities">
-                    <i class="fas fa-fw fa-wrench"></i>
+                    <i class="fas fa-th-list"></i>
                     <span>Playlists</span>
                 </a>
                 <a class="nav-link collapsed" href="/47dzEhPlfq/s_controls" aria-expanded="true"
                     aria-controls="collapseUtilities">
-                    <i class="fas fa-fw fa-wrench"></i>
+                    <i class="fas fa-compact-disc"></i>
                     <span>Songs</span>
                 </a>
             </li>
@@ -93,20 +94,6 @@
                     <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
                         <i class="fa fa-bars"></i>
                     </button>
-
-                    <!-- Topbar Search -->
-                    <form
-                        class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-                        <div class="input-group">
-                            <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
-                                aria-label="Search" aria-describedby="basic-addon2">
-                            <div class="input-group-append">
-                                <button class="btn btn-primary" type="button">
-                                    <i class="fas fa-search fa-sm"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </form>
 
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
@@ -157,9 +144,9 @@
                             <h6 class="m-0 font-weight-bold text-primary">Songs</h6>
                         </div>
                         <div class="card-body">
-                            <input type="text" name="" id="songSearchBar" placeholder="Find Song"
+                            <input style="border-radius: 5px; border: solid 1px rgb(175, 175, 175)" type="text" name="" id="songSearchBar" placeholder="Find Song"
                                 title="Playlist search bar" onkeyup="findUsingSearchBar('songSearchBar','songList')">
-                            <input type="button" value="Add Song" onclick="goToEdit('add_song')">
+                            <input class="btn btn-primary fa-2x" type="button" value="Add Song" onclick="goToEdit('add_song')">
                             <div class="table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
@@ -168,7 +155,7 @@
                                             <th>Name</th>
                                             <th>Author</th>
                                             <th>id</th>
-                                            <th style="width: 20%">Control</th>
+                                            <th style="width: 10%">Action</th>
                                         </tr>
                                     </thead>
                                     <tbody id="songList">
@@ -188,11 +175,10 @@
                                                 </td>
                                                 <td>
                                                     <button class="btn btn-primary fa-2x"
-                                                        onclick="goToEditSong(`<%=element._id%>`)">Edit
+                                                        onclick="goToEditSong(`<%=element._id%>`)"><i class="fa fa-pen"></i>
                                                         </button>
                                                     <button class="btn btn-danger fa-2x"
-                                                        onclick="deleteOnClick(`<%=element._id%>`,'deleteSongOnClick')">Delete
-                                                        Song</button>
+                                                        onclick="deleteOnClick(`<%=element._id%>`,'deleteSongOnClick')"><i class="fas fa-times"></i></button>
                                                 </td>
                                                 <%});%>
                                             </tr>
@@ -260,7 +246,7 @@
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Your Website 2020</span>
+                        <span>Copyright &copy; Angels Team</span>
                     </div>
                 </div>
             </footer>
@@ -276,27 +262,6 @@
     <a class="scroll-to-top rounded" href="#page-top">
         <i class="fas fa-angle-up"></i>
     </a>
-
-    <!-- Logout Modal-->
-    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
-                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-                <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="login.html">Logout</a>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <!-- Custom scripts for all pages-->
     <script src="/js/function.js"></script>
 

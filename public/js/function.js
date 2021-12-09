@@ -175,17 +175,17 @@ function findUsingSearchBar(inputName, ulName) {
 
 function deleteOnClick(id, path) {
     var thisID = id.replace(/ /g, "")
-    var answer = window.confirm("conform delete?");
+    var answer = window.confirm("Bạn có chắc muốn xóa user này chứ?");
     if (answer) {
         $.post(`../${path}`, {
             thisID: thisID
         }, (data, status) => {
-            alert(JSON.stringify(data))
+            alert('Xóa thành công!')
             window.location.reload()
         })
     }
     else {
-        alert('khong the hoan thanh')
+        alert('Xóa không thành công')
     }
 }
 

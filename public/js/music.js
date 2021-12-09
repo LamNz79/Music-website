@@ -171,10 +171,8 @@ function addFavMusic() {
     },
     (data, status) => {
       document.querySelector("#fav-no").style.cssText = `display:none`;
-      document.querySelector("#fav-yes").style.cssText = `display:block`;
-      alert(data)
-      window.location.reload()
-
+      document.querySelector("#fav-yes").style.cssText = `display:block; padding: 2.32rem 0;`;
+      alert('Đã thêm bài hát vào danh sách yêu thích')
     })
 }
 

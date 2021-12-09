@@ -4,10 +4,10 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+		integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
+		crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <title>Admin - User</title>
 
@@ -63,17 +63,17 @@
             <li class="nav-item">
                 <a class="nav-link collapsed" href="/47dzEhPlfq/a_controls" aria-expanded="true"
                     aria-controls="collapseUtilities">
-                    <i class="fas fa-fw fa-wrench"></i>
+                    <i class="fas fa-record-vinyl"></i>
                     <span>Albums</span>
                 </a>
                 <a class="nav-link collapsed" href="/47dzEhPlfq/p_controls" aria-expanded="true"
                     aria-controls="collapseUtilities">
-                    <i class="fas fa-fw fa-wrench"></i>
+                    <i class="fas fa-th-list"></i>
                     <span>Playlists</span>
                 </a>
                 <a class="nav-link collapsed" href="/47dzEhPlfq/s_controls" aria-expanded="true"
                     aria-controls="collapseUtilities">
-                    <i class="fas fa-fw fa-wrench"></i>
+                    <i class="fas fa-compact-disc"></i>
                     <span>Songs</span>
                 </a>
             </li>
@@ -93,20 +93,6 @@
                     <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
                         <i class="fa fa-bars"></i>
                     </button>
-
-                    <!-- Topbar Search -->
-                    <form
-                        class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-                        <div class="input-group">
-                            <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
-                                aria-label="Search" aria-describedby="basic-addon2">
-                            <div class="input-group-append">
-                                <button class="btn btn-primary" type="button">
-                                    <i class="fas fa-search fa-sm"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </form>
 
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
@@ -157,9 +143,9 @@
                             <h6 class="m-0 font-weight-bold text-primary">User Account</h6>
                         </div>
                         <div class="card-body">
-                            <input type="text" name="" id="userSearchBar" placeholder="Find Account"
+                            <input style="border-radius: 5px; border: solid 1px rgb(175, 175, 175)" type="text" name="" id="userSearchBar" placeholder="Find Account"
                                 title="Playlist search bar" onkeyup="findUsingSearchBar('userSearchBar','UsersList')">
-                            <input type="button" value="Add User" onclick="goToEdit('add_user')">
+                            <input class="btn btn-primary fa-2x" type="button" value="Add User" onclick="goToEdit('add_user')">
                             <div class="table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
@@ -168,7 +154,7 @@
                                             <th>Name</th>
                                             <th>path</th>
                                             <th>Show name</th>
-                                            <th style="width: 20%">Permissions</th>
+                                            <th style="width: 15%">Action</th>
 
                                         </tr>
                                     </thead>
@@ -191,11 +177,10 @@
 
                                                 <td>
                                                     <button class="btn btn-primary fa-2x"
-                                                        onclick="goToEditAccount(`<%=element._id%>`)">Edit
+                                                        onclick="goToEditAccount(`<%=element._id%>`)"><i class="fas fa-pen"></i>
                                                         </button>
                                                     <button class="btn btn-danger fa-2x"
-                                                        onclick="deleteOnClick(`<%=element._id%>`,'deleteUserOnClick')">Delete
-                                                        Account</button>
+                                                        onclick="deleteOnClick(`<%=element._id%>`,'deleteUserOnClick')"><i class="fas fa-times"></i></button>
                                                 </td>
                                                 <%});%>
                                             </tr>
@@ -263,7 +248,7 @@
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Your Website 2020</span>
+                        <span>Copyright &copy; Angels Team</span>
                     </div>
                 </div>
             </footer>
@@ -279,27 +264,6 @@
     <a class="scroll-to-top rounded" href="#page-top">
         <i class="fas fa-angle-up"></i>
     </a>
-
-    <!-- Logout Modal-->
-    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
-                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-                <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="login.html">Logout</a>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <script src="/js/function.js"></script>
 
 </body>
